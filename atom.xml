@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2016-06-22T19:48:07-05:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BigData As A Service]]></title>
+    <link href="http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/"/>
+    <updated>2015-11-16T19:22:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service</id>
+    <content type="html"><![CDATA[<h3>A complete elastic Hadoop cluster with OpenStack + Sahara in 15 minutes</h3>
+
+<p><img class="center" src="http://yazpik.github.io/images/bigdata.gif" width="650" height="650" title="'Dilbert Data Accuracy'" ></p>
+
+<p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="http://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
+the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
+but anyway let&rsquo;s jump on the BigData stuff.</p>
+
+<p>One of our DBA&rsquo;s ask us for a Linux instance on the OpenStack cloud, first questions from me was, purpose ? , so he wanted to try and learn about Hadoop, so I started to look if there was an image ready for it or start to build one from scratch and meet the Hadoop pre-requisites, at the end the DBA won&rsquo;t install the Hadoop platform, that will be the sysadmins or Devops :)
+So I was on an interesting situation, reading in deep I found a pararell world about DataProcessing and BigData, and then project <a href="https://wiki.openstack.org/wiki/Sahara/">Sahara</a> formerly known as Savanna, immediatly I get caught on it.</p>
+
+<p>But WHAT IS SAHARA?</p>
+
+<p>Sahara began life as an Apache 2.0 project and is now an OpenStack integrated project, Sahara enables the fast provisioning and easy management of Hadoop clusters on Openstack, mainstream Hadoop distributions and elastic data processing (EDP) capability similar to Amazon Elastic MapReduce (EMR).</p>
+
+<p>So here are basic steps to add Sahara on an existing OpenStack deployment.</p>
+
+<p>On the OpenStack control Node (ubuntu)
+I started searching the packages for Sahara first, didn&rsquo;t break anything on control nodes :)</p>
+
+<pre>
+$ sudo apt-cache search sahara
+</pre>
+
+
+<p>That gets me sahara, python-saharaclient, and openstack-dashboard, I already have the dashboard installed, so just needed to install sahara package and the python-saharaclient.</p>
+
+<pre>
+$ sudo apt-get install sahara python-saharaclient
+</pre>
+
+
+<p>Find out the sahara configuratin file, default path is /etc/sahara, there are some samples placed in the sahara directory, you can use the basic sample or generate a new one with</p>
+
+<pre>
+$ sudo tox -e genconfig
+</pre>
+
+
+<p>That will get you a sahara.conf file, you can modify basic parameters, such as Networking(Neutron), Database(Mysql), Message systems(Rabbit), Identity(Keystone), for a reference guide please see: <a href="http://docs.openstack.org/developer/sahara/userdoc/configuration.guide.html" title="Sahara config guide">Sahara Configuration Guide</a></p>
+
+<p>Then a Database Schema for Shara is needed, you can create it as follows (on an existing empty database)</p>
+
+<pre>
+$ sudo sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head  
+</pre>
+
+
+<p>my db connection string on sahara.conf file is</p>
+
+<p><figure class='code'><figcaption>sahara.conf (snippet)</figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">connection</span><span class="o">=</span>mysql://admin:ridiculouspass@localhost:3306/saharadb
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Great, we have a database schema for Sahara, please make sure Database hosts is reacheable by sahara node and neutron management network.</p>
+
+<h5>Keystone configuration</h5>
+
+<p>This is another essencial part for sahara to be accesible in the OpenStack dasboard and for python sahara client to work properly we need to add sahara on keystone catalog</p>
+
+<p>As keystone admin, create the service &ldquo;sahara&rdquo; as data_processing type</p>
+
+<pre>
+(keystone_admin)# keystone service-create --name sahara --type data_processing \
+    --description "Sahara Data Processing"
+</pre>
+
+
+<p>Next create the endpoint and define the access + Region</p>
+
+<pre>
+(keystone_admin)# keystone endpoint-create --service sahara --region RegionOne \
+    --publicurl "http://172.16.0.2:8386/v1.1/%(tenant_id)s" \
+    --adminurl "http://10.0.0.2:8386/v1.1/%(tenant_id)s" \
+    --internalurl "http://192.168.0.2:8386/v1.1/%(tenant_id)s"
+</pre>
+
+
+<p>Make sue you match the admin, public and internal network on the new service, you can verify the current endpoints with</p>
+
+<pre>
+(keystone_admin)# keystone endpoint-list
+</pre>
+
+
+<h5>Configure Firewall to Allow Sahara service traffic</h5>
+
+<p>Add an INPUT rule allowing TCP traffic on port 8386, and restart iptables</p>
+
+<pre>
+-A INPUT -p tcp -m multiport --dports 8386 -j ACCEPT
+</pre>
+
+
+<p>Start Sahara service</p>
+
+<pre>
+    service sahara-all start
+</pre>
+
+
+<p>Also you can setup Sahara on a virtual python environment, I didn&rsquo;t try that, but can be found here
+<a href="http://docs.openstack.org/developer/sahara/userdoc/installation.guide.html#to-install-into-a-virtual-environment">Sahara Virtualenv</a></p>
+
+<p>There are also advanced configurations for Sahara, you can find them here
+<a href="http://docs.openstack.org/developer/sahara/userdoc/advanced.configuration.guide.html">Sahara Advanced configuration</a></p>
+
+<p>That is a high level steps for Sahara in OpenStack, so once we have them all and you can see Data Processing panel on Horizon, so from here 15 minutes can start to count to create a cutting-edge fresh hadoop cluster.</p>
+
+<p><img src="http://yazpik.github.io/images/Hadoop_Post/01_Hadoop.png" width="200" height="600" title="" ></p>
+
+<p>Then there are some pre-configured images for Hadoop vanilla plugin, you can download them from here
+<a href="http://docs.openstack.org/developer/sahara/userdoc/vanilla_plugin.html">Vanilla Plugin</a></p>
+
+<p>And it can be easily upload to glance, then to the Data processing image registry
+<img src="http://yazpik.github.io/images/Hadoop_Post/02_hadoop.png" width="600" height="200" title="" ></p>
+
+<p>Sahara makes it possible to create nodes and cluster templates, You can mix and match roles for a node, also you can scale out your cluster as many or few nodes you need.</p>
+
+<p><img src="http://yazpik.github.io/images/Hadoop_Post/03_hadoop.png" width="600" height="200" title="" ></p>
+
+<p><img src="http://yazpik.github.io/images/Hadoop_Post/05_hadoop.png" width="400" height="200" title="" ></p>
+
+<p>Because I couldn&rsquo;t say it better than mirantis.com</p>
+
+<p>&ldquo;Manually creating a Hadoop cluster on OpenStack requires spinning up instances, installing Hadoop on each instance, configuring the instances to work together, specifying the namenode, jobtracker, tasktrackers, and any storage nodes, and configuring each of hundreds, or even thousands, of nodes. Why spend all that time on manual configuration — with the possibility of human error — when you can use Sahara to specify node characteristics and roles, click to deploy, and access a individual or multiple robust, stable Hadoop clusters in parallel with minimal delay?&rdquo;</p>
+
+<p><img src="http://yazpik.github.io/images/Hadoop_Post/07_hadoop.png" width="600" height="200" title="" ></p>
+
+<p>Also the Hadoop cluster can be scalable with no pain, so you can save time
+when it comes to create and configure new nodes, only simply add node types by the OpenStack Sahara user interface</p>
+
+<p><img src="http://yazpik.github.io/images/Hadoop_Post/11_hadoop.gif" width="600" height="200" title="" ></p>
+
+<p>And voila you have a fresh Elastic Hadoop deployment ready in just a few minutes.</p>
+
+<p><img src="http://yazpik.github.io/images/Hadoop_Post/10_hadoop.png" width="500" height="200" title="" ></p>
+
+<p><img src="http://yazpik.github.io/images/Hadoop_Post/09_hadoop.png"></p>
+
+<p><img src="http://yazpik.github.io/images/Hadoop_Post/08_hadoop.png" width="600" height="300" title="" ></p>
+
+<p>So this is pretty much everything about the installation of Hadoop on OpenStack (Juno)
+Next post We&rsquo;ll run a job on the cluster, stay tunned :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Modern Cloud]]></title>
+    <link href="http://yazpik.github.io/blog/2015/05/14/the-modern-cloud/"/>
+    <updated>2015-05-14T21:22:00-05:00</updated>
+    <id>http://yazpik.github.io/blog/2015/05/14/the-modern-cloud</id>
+    <content type="html"><![CDATA[<h4>Or the containerization of the cloud</h4>
+
+<p><img class="center" src="http://yazpik.github.io/images/kubernetes.jpeg" width="350" height="350" title="'Kubernetes'" ></p>
+
+<p>That&rsquo;s right, Openstack and Containers are no enemies, and they are not fighting at all,
+Those two technologies are a powerful combination bringing the best of &ldquo;two worlds&rdquo; but in different layers of the stack, maybe combining them does not make sense,but actually it really does.</p>
+
+<p>Combining Openstack + Heat + Murano + Kubernetes it does sounds really complex but actually is becoming the opossite
+I want to share with you an interesting article from OpenStack SuperUser website, during the kubernetes meetup in San Francisco, there was a live demo where it was demostrated how to deploy a <a href="http://kubernetes.io/">kubernetes</a> cluster in minutes with OpenStack and Murano.
+<a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
+
+<p>Also <a href="https://www.mirantis.com/">Mirantis</a> is collaborating with Google to have a better integration of Kubernetes with OpenStack.
+<a href="https://www.mirantis.com/company/press-center/company-news/mirantis-collaborates-google-kubernetes-openstack-integration/">https://www.mirantis.com/company/press-center/company-news/mirantis-collaborates-google-kubernetes-openstack-integration/</a></p>
+
+<p>Docker on Openstack Kubernetes, Craig Peters from Mirantis and Kit Merker from Google
+<a href="https://openstacksummitmay2015vancouver.sched.org/event/57654c61f86cec3210d4d1065756409a">https://openstacksummitmay2015vancouver.sched.org/event/57654c61f86cec3210d4d1065756409a</a></p>
+
+<p><img class="center" src="http://yazpik.github.io/images/coreos-logo.png" width="350" height="350" title="'CoreOS'" ></p>
+
+<p>The guys from <a href="https://coreos.com">CoreOS</a> have already take significant advantage, they are running several projects inside CoreOS, just to mention some, <a href="https://coreos.com/etcd/">Etcd</a>, <a href="https://coreos.com/blog/rocket/">Rocket</a>, <a href="https://coreos.com/using-coreos/clustering/">Fleet</a>, all of them written in <a href="https://golang.org/">Go</a> language, helping to automatize and do things easy specially for developers delivering a powerful platform of containers.
+This topic deserve a more descriptive post, and I&rsquo;ll try to do it soon, In the meantime If you are interested to try CoreOS with all the nice stuff give it a try to <a href="https://www.vagrantup.com/">Vagrant</a>, they have put togheter some vagrant scripts to deploy a 3 nodes CoreOs cluster.</p>
+
+<p>And for the lucky ones that are going to OpenStack Summit in Vancouver, there is going to be plenty of talks covering containers, actually is a full day about it, just to have an idea what big is this Hot-Topic.</p>
+
+<p>The containerization of the cloud is becoming huge, and is going to change how we understand the definition of the cloud these days.</p>
+
+<p>See you in Vancouver!</p>
+
+<p>Francisco Moctezuma</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OpenCompute Re-Architecting the DataCenter]]></title>
+    <link href="http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/"/>
+    <updated>2015-03-22T19:43:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://yazpik.github.io/images/opencompute.png" width="260" height="80" title="'OpenCompute'" ></p>
+
+<p>The OpenCompute Summit 2015 has just finished and there are some interesting talks from the top companies such Intel, Facebook, Linux, foundation, Microsoft and Rackspace.
+For the ones that haven&rsquo;t heard about OpenCompute project, let me explain you with what is this about.</p>
+
+<h4>From OpenCompute.org</h4>
+
+<blockquote><p>"The Open Compute Project Foundation is a rapidly growing community of engineers around the world whose mission is to design and enable the delivery of the most efficient server, storage and data center hardware designs for scalable computing. We believe that openly sharing ideas, specifications and other intellectual property is the key to maximizing innovation and reducing operational complexity in the scalable computing space."</p></blockquote>
+
+
+<p>Believe it or not this is a Facebook initiative to share the design of datacenter architecture with the intention to improve efficiency on servers, storage and also general datacenter overall infrastructure with smart and &ldquo;ecofriendly&rdquo; deployments.
+I&rsquo;d say this is like an OpenSource project applied in hardware and is going to speed up the innovation on new hardware solutions.</p>
+
+<p><img src="http://yazpik.github.io/images/opencomputeserver-750.jpg" width="360" height="140" title="'OpenCompute Servers'" >
+<img src="http://yazpik.github.io/images/IODatacenter.jpg" width="360" height="140" title="'IO Datacenter in Scottsdale'" ></p>
+
+<p>Big names just joined to the OpenCompute project such as Apple and HP, So I believe in the next two years or so we will see a drastical change on Datacenter deployments as well as compute architecture, and we have to be ready to be competitive or much better be part of it, this is a good opportunity to join as one of the early adopters.</p>
+
+<p>So Does anyone out there is already working on OCP hardware? I&rsquo;d be really interested to participate in something like that.</p>
+
+<p>Most of the talks are already on OpenCompute youtube channel, I&rsquo;m gonna share some of the most remarkables, I&rsquo;ve watched so far.</p>
+
+<h5>Jay Parik VP of Engineering at Facebook.</h5>
+
+<p>This is one of the most interesting talks, Facebook is saving $2 Billion US Dls on the last three years applying a full stack optmization on the Datacenter, Software and Networking based on OpenCompute, But forget about the money one of the things it really matters is that the energy conservation they made is equals to power up 80,000 homes per year and carbon emission reduction equals to 95,000 cars also per year, I&rsquo;m not going to tell you the rest watch by yourself.</p>
+
+<p><a href="https://www.youtube.com/watch?v=6QBrRT0VpgY">https://www.youtube.com/watch?v=6QBrRT0VpgY</a></p>
+
+<h5>Sam Ramji from Linux foundation</h5>
+
+<p>He explain how OpenSource golden age can take place if we all collaborate in some way to create an OpenCloud platform, he made a point when Hortonworks went public with $1 Billion IPO using Hadoop and HDFS for Big Data, or Cloudera making $100M US Dls annual revenue to the other extreme when NTPd principal maintainer is making less than $20k per year, Well this is a must see talk.</p>
+
+<p><a href="https://www.youtube.com/watch?v=uFfcCJcxlpk">https://www.youtube.com/watch?v=uFfcCJcxlpk</a></p>
+
+<h5>Mark Shutterworth from Canonical</h5>
+
+<p>He really knows where the technology is moving, Mark showed on a live demo, an OpenStack Lab deployed with MAAS running a Ceph cluster on top of a JBOD (Just a Bunch of Disk) system provided by Quanta (OpenCompute provider), and the power of containers with Kubernetes (OpenSource container cluster orchestration) from Google. .. have a look.</p>
+
+<p><a href="https://www.youtube.com/watch?v=a4P7lvIUc5M">https://www.youtube.com/watch?v=a4P7lvIUc5M</a></p>
+
+<p>Greetings from Mexico!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to build a baby crib]]></title>
+    <link href="http://yazpik.github.io/blog/2015/03/06/how-to-build-a-baby-crib/"/>
+    <updated>2015-03-06T22:01:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2015/03/06/how-to-build-a-baby-crib</id>
+    <content type="html"><![CDATA[<h3>&mdash;With the help of a real-life hacker</h3>
+
+<p>A year ago while my wife was pregnant of my very first baby girl, I decided to build something special with my own hands for Naia, so I thought to build an small craddle, it seemed like an small project but I did not have any experience working with wood, I have to admit, it did sound crazy even for me, but possible.. why not?..
+I started looking on internet in too many DIY (Do It Yourself) sites, woodworking for newbies, and also bought a <a href="http://www.amazon.com/Childrens-Furniture-Projects-Step---Step/dp/1561585041/ref=sr_1_1?ie=UTF8&amp;qid=1425750403&amp;sr=8-1&amp;keywords=childrens+furniture+projects">e-book</a> on amazon, finally I ended up with a couple of woodworking plans that seemed reasonable to my poor skills.</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/sketchy1.jpg" width="300" height="480" title="'Sketchy1'" >   <img src="http://yazpik.github.io/images/cuna/sketchy2.jpg" width="300" height="450" title="'Sketchy2'" ></p>
+
+<p>Of course I couldn&rsquo;t build it by myself on my little space at home and no skills, So I threw an email to one of the most respectable and creative hacker nowadays, my friend <a href="https://people.gnome.org/~federico/">Federico Mena Quintero</a>, who has a passion for woodworking and a place to do it.
+To people that haven&rsquo;t hear before about Federico, he is one of the most brilliant persons I have met, he has contributed with Opensource in so many levels an he is always trying to help the community, Let&rsquo;s say he should be in the &ldquo;hall of fame&rdquo; of the OpenSource history, besides that he is a young guy with a really lovely family.</p>
+
+<p>Couple of days later I got Federico response, saying that he will be able to help me out with my &ldquo;little&rdquo; project!!! and we started some day back in Jan 2014, basically reviewing the woodworking plans and the options we had, Federico suggested me to &ldquo;Go big&rdquo; , he is also a father and knows the business of kids growing very fast, so we decided to build an actual crib that Naia can use at least until she turns six, and maybe can be passed on subsequent children, and then on and on throughout the family.</p>
+
+<p>So we went out to the local wood place and got all we needed.</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/IMG_0098.JPG" width="320" height="370" title="'Federico Mena'" >  <img src="http://yazpik.github.io/images/cuna/IMG_0102.JPG" width="400" height="300" title="'Truck loaded'" ></p>
+
+<p>We started sanding pretty much everything by hand, no electric weapons were used to sand the wood.
+Then we continue with front and end panels assembled</p>
+
+<!-- more -->
+
+
+<p><img src="http://yazpik.github.io/images/cuna/panel1.JPG" width="320" height="470">  <img src="http://yazpik.github.io/images/cuna/panel2.JPG" width="320" height="370" title="" ></p>
+
+<p>While the panels were glued, we worked on the legs, cutting the leg mortises for the end rails, and routing the shepperd&rsquo;s hook grooves.</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/leg_rails.JPG" width="600" height="750" title="'Leg rails'" ></p>
+
+<p>Then the lower back and front rails, and build the tenons to perfect assembly the crib, this is more likely artesan work</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/tenon1.JPG" width="300" height="350" title="'Tenon'" >  <img src="http://yazpik.github.io/images/cuna/tenon2.JPG" width="400" height="550" title="'Tenon'" >
+<img src="http://yazpik.github.io/images/cuna/tenon3.JPG" width="350" height="500" title="'Tenon'" ></p>
+
+<p>And we continue with the upper rails, more hand work :)</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/upper_rails.JPG" width="500" height="500" title="'Upper Rails'" ><img src="http://yazpik.github.io/images/cuna/upper_rails2.JPG" width="500" height="500" title="'Upper Rails'" ></p>
+
+<p>And that was a weekend work, So I asked my manager to work remotly for a couple of weeks, because Federico lives in Xalapa, (my hometown) and I&rsquo;m working and living in Puebla, Then I worked remotly from 9-5 from Federico&rsquo;s office, and after my regular work I could work on the crib, it was hard but is always fun to learn new things.</p>
+
+<h3>We are making progres !!!</h3>
+
+<p>We assembled legs to lower/upper end rails.</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/base1.JPG" width="500" height="500" title="" ><img src="http://yazpik.github.io/images/cuna/base_armada.JPG" width="400" height="400"></p>
+
+<p>The panels are really good looking !</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/paneles.JPG" width="480" height="640" title="" ></p>
+
+<p>This one was hard,and required time to get the job and the shepherd hook done.</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/artisan.jpg" width="480" height="640" title="" ></p>
+
+<p>And more artesanal work &hellip;.. having a great time with Luciana and Federico</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/artisans.JPG" width="480" height="640" title="" ></p>
+
+<p>I have to say this one was one of my favourite part of building a crib, I got skills by then.. at least some,  slats were challenging but not that hard, I&rsquo;d say they were sized, glued and perfectly fit on the first try !&hellip; well on second try, but maybe on the third one.</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/slats.jpg" width="280" height="440" title="" > <img src="http://yazpik.github.io/images/cuna/slats1.jpg" width="280" height="440" title="" ></p>
+
+<p>In the meantime mommy and Naia resting&hellip;. it was kind of a race, running out of time</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/mommy.jpg" width="480" height="640" title="" ></p>
+
+<h3>Putting all togheter</h3>
+
+<p>And finally we were finishing the crib!..</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/aerial.JPG" width="480" height="640" title="" ></p>
+
+<p><img src="http://yazpik.github.io/images/cuna/almostdone.jpg" width="480" height="640" title="" ></p>
+
+<p>As you can read, you will need perseverance and a lot to motivation to work in a project like this, and of course a friend like Federico with a lot of patience, (he also spent time to show me how to prepare good Sushi and Capuchinos)
+I&rsquo;m deeply thankful to had the oportunity to work on this and build something special for my baby.</p>
+
+<p>Here are the final results, my little one having fun with daddy !</p>
+
+<p><img src="http://yazpik.github.io/images/cuna/naia1.JPG" width="480" height="640" title="" ></p>
+
+<p><img src="http://yazpik.github.io/images/cuna/naia2.JPG" width="480" height="640" title="" ></p>
+
+<p>What can I say ? , it really feels great.</p>
+
+<p>If you want to check out the Woodworkings plans and/or the cutting list used, please feel free to shoot me an email
+<a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#121;&#97;&#122;&#x70;&#105;&#x6b;&#64;&#x67;&#109;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;">&#x79;&#x61;&#122;&#x70;&#105;&#107;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#109;</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ceph]]></title>
+    <link href="http://yazpik.github.io/blog/2015/03/02/ceph/"/>
+    <updated>2015-03-02T21:40:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2015/03/02/ceph</id>
+    <content type="html"><![CDATA[<h3>The future of the storage</h3>
+
+<p>I&rsquo;ve been working/playing with Storage systems since almost 4 years now, it&rsquo;s been a journey understand how things works on this side, I&rsquo;m a Netapp certified engineer on SAN environments now and personally speaking it was not hard to understand the Netapp world because my background is based in Linux and working with the cli is a day to day task, so my friend Reynaldo Pineda introduced me few storage concepts and useful commands for a week and the next week I was totally by my own supporting a production environment, at the end I could blame my manager if something went wrong to put an unexperienced guy behind the controls&hellip; :) But fortunately nothing happened, well played, weeeell played.</p>
+
+<p>Going back to my journey on storage, I learnt a lot, and I was able to manage the &ldquo;black box&rdquo; for the sysadmins,
+with more experience gained I faced ugly problems that cost me valuable time with family, celebrations, weekends, hollydays, and nights a lot of nights, but finally I got the point when I can do things easily, and my level of understanding how things works no matter the infraestructure was getting better.</p>
+
+<p>But this is the point when you are a curious guy and you like to know what else is out there, well, I&rsquo;m surprised how technology advance minute to minute , it&rsquo;s a progressive and infinite science, &hellip;. I took a deep dive on SAN and Netapp Storage systems and when I looked back, the technology world surprisly changed, to be more specific on OpenSource Projects and Cloud.</p>
+
+<p>Doing a bit of research I found a pretty darn interesting project called &ldquo;CEPH&rdquo; , it really blew my mind.
+I was looking for an inexpensive storage solution for an &ldquo;small&rdquo; private cloud, and basically we found in Ceph everything that we needed, it&rsquo;s a distributed storage system, and it&rsquo;s OpenSource!, they claim to have a really good performance, reliability and scalability and indeed they have it all.
+Ceph supports Object and Block storage, is integrated now on the Linux kernel, and the best thing, OpenStack included Ceph as well, Ceph also has its own filesystem (no yet ready for prod environments).</p>
+
+<p><img src="http://yazpik.github.io/images/ceph+openstack.png" width="350" height="350" title="'Ceph and Openstack'" ></p>
+
+<!-- more -->
+
+
+<p>We just deployed Ceph on a test environment and things seems to be really interesting, and functional, Still working on getting more experience with that, and I&rsquo;ll start posting some more specific facts about it.</p>
+
+<p>I see a huge potential here for companies who wants to build an inexpensive private clouds with all the privileges of performance, high availability and scalability that other technology leaders can offer, such as EMC, NetApp, IBM&hellip;
+That&rsquo;s why Redhat stepped out first and buy Inktank, (the company who leads Sage Weil , Ceph autor)</p>
+
+<p>I believe is the next big thing on Storage and cloud solutions.</p>
+
+<h5>References:</h5>
+
+<p>Ceph main site : <a href="http://ceph.com/">http://ceph.com/</a></p>
+
+<p>Hardware recomendations to run ceph: <a href="http://ceph.com/docs/master/start/hardware-recommendations/">http://ceph.com/docs/master/start/hardware-recommendations/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2015 Challenge accepted]]></title>
+    <link href="http://yazpik.github.io/blog/2015/01/01/2015-challenge-accepted/"/>
+    <updated>2015-01-01T22:47:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2015/01/01/2015-challenge-accepted</id>
+    <content type="html"><![CDATA[<p>It doesn&rsquo;t matter how many roadblocks are out there, I know is going to be fun!</p>
+
+<p><img src="http://yazpik.github.io/images/IMG_3183.JPG" width="550" height="550" title="'XamanEk'" ></p>
+
+<p>Photo was taken during my first ride of the year, I woke up early in the morning while everybody was sleeping after new years dinner, took my motorcycle (Yamaha XT660Z Tenere) baptized as &ldquo;XamanEk&rdquo; and rode around 80km, 30% pavement 70% offroad on an exploratory route, from my wife&rsquo;s hometown to a Geothermal zone near to Tinajitas, Veracruz, It was not hard to find the place even its not in a map, just took me one stop asking people and rest was purely joy, I rode between hills, without a GPS (currently evaluating to get one), but at the end this is part of the fun of Adventure riding!</p>
+
+<p>After a dip on crystal clear warm waters provided by mother earth, rode back with XamanEk just in time to had a lunch with the family.</p>
+
+<p>2015 here we go!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Virtual Machine migration from VMware to OpenStack/KVM]]></title>
+    <link href="http://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/"/>
+    <updated>2014-12-15T18:00:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack</id>
+    <content type="html"><![CDATA[<p>This is a quick and easy guide to migrate VMWare VM&rsquo;s to OpenStack (KVM) using Redhat Enterprise 6.5</p>
+
+<h4>Install virt-v2v</h4>
+
+<p>The virt-v2v command converts virtual machines from a foreign hypervisor to run on KVM, managed by libvirt.</p>
+
+<pre>
+# yum install virt-v2v
+</pre>
+
+
+<p>Next step is create an xml file for the pool and indicate the storage path, I created a very simple xml file, like this one:</p>
+
+<p><figure class='code'><figcaption>pool.xml</figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div><div data-line='6' class='line-number'></div></pre></td><td class='main  xml'><pre><div class='line'><span class="nt">&lt;pool</span> <span class="na">type=</span><span class="s">&quot;dir&quot;</span><span class="nt">&gt;</span>
+</div><div class='line'>        <span class="nt">&lt;name&gt;</span>virtimages<span class="nt">&lt;/name&gt;</span>
+</div><div class='line'>        <span class="nt">&lt;target&gt;</span>
+</div><div class='line'>          <span class="nt">&lt;path&gt;</span>/home/images<span class="nt">&lt;/path&gt;</span>
+</div><div class='line'>        <span class="nt">&lt;/target&gt;</span>
+</div><div class='line'><span class="nt">&lt;/pool&gt;</span>
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Create an storage pool based on the xml file with virsh command and refeer the xml file</p>
+
+<pre>
+# virsh pool-create --file pool.xml
+</pre>
+
+
+<p>List the storage pool, &ldquo;virtimages&rdquo; pool is refering to the path given on the xml file which is /home/images</p>
+
+<pre>
+# virsh pool-list
+</pre>
+
+
+<p><figure class='code'><figcaption>virsh output </figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  vim'><pre><div class='line'>Name                 State      Autostart
+</div><div class='line'><span class="p">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</span>
+</div><div class='line'>virtimages           active       no
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Create a .netrc file with ESX credentials, where the machine that you want to convert is hosted.</p>
+
+<pre>
+machine ESXi login root password s3cretitos
+</pre>
+
+
+<p>Convert the VMware VM to KVM, the virtual machine has to be stopped before to proceed with this, go to Virtual center and turn the VM off.</p>
+
+<!-- more -->
+
+
+
+
+<pre>
+# virt-v2v -ic esx://(ESX IP address or name) -o libvirt -os (Storagepool) (VMname)
+</pre>
+
+
+
+
+<pre> 
+# virt-v2v -ic esx://ESXi/?no_verify=1 -o libvirt -os virtimages Trusty_test_CLON
+</pre>
+
+
+<p><figure class='code'><figcaption>virt-v2v output</figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'>Trusty_test_Trusty_test: 100% <span class="o">[===============================]</span>D 0h04m25s
+</div><div class='line'>virt-v2v: Trusty_test_CLON configured without virtio drivers.
+</div></pre></td></tr></table></div></figure></p>
+
+<p>On my example I worked on a diferent server with libvirt, do not recommend to do this on a Openstack computer node running libvirt, so I performed this steps on a different node.</p>
+
+<p>Convert the recent generated RAW image to qcow2 using qemu.</p>
+
+<pre>
+qemu-img convert -f raw -O qcow2 images/Trusty_test_Trusty_test  images/Trusty_exported.qcow2
+</pre>
+
+
+<p>Let&rsquo;s play with Glance, adding/importing the new image into image repository, the .qcow2 image generated by qemu is the one that we need to point to be imported in glance.</p>
+
+<pre>
+glance image-create --name Ubuntu_exported --is-public False --container-format bare --disk-format qcow2 < Trusty_exported.qcow2
+</pre>
+
+
+<p>Go to Openstack dashboard and create a new instance based on the new imported image from ESX, which in this case is “Trusty_exported.qcow2”, make sure you match the flavor with the sizing used on ESX, I tried a couple of flavors and then voila the OS was able to boot.
+So you will be able to test the Exported/Imported VM from VMWare to Openstack/KVM.</p>
+
+<h4>References</h4>
+
+<p><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Virtualization/3.0/html-single/V2V_Guide/index.html#chap-V2V_Guide-Installing_virt_v2v">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Virtualization/3.0/html-single/V2V_Guide/index.html#chap-V2V_Guide-Installing_virt_v2v</a></p>
+
+<p><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Virtualization_for_Servers/2.2/html/Administration_Guide/virt-v2v-scripts.html">https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Virtualization_for_Servers/2.2/html/Administration_Guide/virt-v2v-scripts.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Xacxamayo]]></title>
+    <link href="http://yazpik.github.io/blog/2014/12/07/xacxamayo/"/>
+    <updated>2014-12-07T18:42:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/12/07/xacxamayo</id>
+    <content type="html"><![CDATA[<h4>Xacxamayo Episode 2</h4>
+
+<p>I recently posted on my fb page about a visit to an small-remote town called Xacxamayo near to Puebla city,
+Basically I was a volunteer for 3 saturdays,
+I wanted to teach about other existing options on compute software, and also wanted to show them there is a world outside commercial and common programs, One of this options called Linux is currently helping in science, medicine, education and even in movies and games to not mention alot of different daylife stuff, I believe all of the kids were excited about the way I made my point.  :)</p>
+
+<p>While driving with the guy in charge to coordinate efforts and make things happen <a href="https://twitter.com/Junkiezap" title="Azael Soriano">BalamEk</a> an interesting idea came up &hellip;..</p>
+
+<h5>&ldquo;We are going to spend 3 weekends with this kids, why we do not try something different?&rdquo;</h5>
+
+<p>The main idea was to get the attention of this kids at the same time participate as a team in off-school hours, and also &ldquo;we&rdquo; as volunteers will be able to understand more about their community.</p>
+
+<h3>The brillant idea&hellip;..</h3>
+
+<p>We bought four disposable cameras (we were a bit reduced on budget) the ones you can get on a convenience store, not really high end cameras, but it will help us to spread the kids in different teams, they will be able to work together and show their community to the world.  :)</p>
+
+<p><a href="https://twitter.com/Rogfloyd" title="Roger Romero">Roger</a> gave them a 7 minute course introduction to the whole new world of photography, showing them how to use the cameras, they were pretty excited to play for a week with the &ldquo;new toys&rdquo;.</p>
+
+<p><img src="http://yazpik.github.io/images/camaras.jpg" width="440" height="280" title="'Disposable cameras'" ></p>
+
+<!-- more -->
+
+
+<p>We also setup right away a photo contest, so the team with the best picture will be a winner of &ldquo;&mdash;&rdquo; &hellip; we actually didn&rsquo;t mention the real &ldquo;prize&rdquo; we just leaved it like that.</p>
+
+<p>During the second basic Linux class we taught them how to create a blog with Wordpress,
+and voila! they can speak up to the world!</p>
+
+<p>I believe it was also a good idea show them that there is no frontiers on the net, with this new tools learned they will have other options to be listen outside their community, Mexico mommentum is pretty bad, too many government crap, represion, and so on, at least they will have an &ldquo;option&rdquo; to fight back if things suddendly changes, maybe radical ideas&hellip;..</p>
+
+<p>They actually have internet access on the school and the access is open during the day and afternoon, the wifi is always on, and a couple of them have laptops given by the government.</p>
+
+<p>Anyway the main idea was based on start posting their own photos, on their own blog,</p>
+
+<p>Let me share the stunning results, (just few of them)</p>
+
+<p><img src="http://yazpik.github.io/images/foto1.jpg" width="490" height="330" title="'Foto1'" ></p>
+
+<p><img src="http://yazpik.github.io/images/foto3.jpg" width="490" height="330" title="'Foto3'" ></p>
+
+<p><img src="http://yazpik.github.io/images/foto4.jpg" width="490" height="330" title="'Foto4'" ></p>
+
+<p><img src="http://yazpik.github.io/images/foto5.jpg" width="490" height="330" title="'Foto5'" ></p>
+
+<p><img src="http://yazpik.github.io/images/foto6.jpg" width="490" height="330" title="'Foto6'" ></p>
+
+<p><img src="http://yazpik.github.io/images/foto2.jpg" width="490" height="330" title="'Foto2'" ></p>
+
+<p>Beautiful, isn&rsquo;t ?</p>
+
+<p>Unfortunately here is when the Mexican movie starts&hellip;.
+Couple of days after the second course, the community school financed by institutions (private and charity institutions) was taken over by SEP (Government institution for public education), and suddenly we were not able/allowed to go over again and finish with the third class, there is a lot of politics and crap that I do not understand, hopefully BalamEk get that sorted out soon.</p>
+
+<p>At the end is amazing how the kids see the world, and for two weekends I felt I was doing something right,
+Spread the word about Opensource, Linux and technology, it was a great personal experience to me.</p>
+
+<p>BTW, If you are interested to help us in a volunteer journey, please do not hesitate and mail me, is a great way to give back something to the community.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Troubleshoot a SAN environment]]></title>
+    <link href="http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/"/>
+    <updated>2014-11-27T12:15:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/11/27/san-troubleshooting</id>
+    <content type="html"><![CDATA[<p><img class="center" src="http://yazpik.github.io/images/mono_coco.png" width="300" height="168" title="'Chango'" ></p>
+
+<p>A couple of years a go, I wrote a basic troubleshooting guide for a SAN environment, but it was never shared,
+I believe is a good idea to have a list of considerations to take specially when there are a ton of variables to consider, so I&rsquo;ve decided to shared this list on my blog,
+If you are working on IT as Storage/Unix/Windows admin, you know how things are durig an issue on production, specially with managers, international teams when no one knows what is really going on and someone important is screaming on the phone waiting for answers.
+This list has truly helped me out asking questions to easily identify what the problem is, and also helps to improve the time to response if you are ready on those critical situations.</p>
+
+<p>So pretty much I based this guide on past experiences and vendor recommendations.</p>
+
+<h3>Let&rsquo;s check the list</h3>
+
+<ol>
+    <h5>
+<li>Do not freak out (very important)</li>
+<li>Calm yourself down (breath)</li>
+    </h5>
+    
+And we are ready to get the information
+
+<ul>
+<pre>
+<li>What exactly the problem is? (you will need to understand the situation first)</li>
+<li>What has been changed recently? (sometimes it was just a firmware update/upgrade on the host)</li>
+<li>What is the scope of the problem? </li>
+<li>Is Only one device/application, clustering affected?</li>
+<li>Are any specific protocols or applications related to the problem?</li>
+<li>Is the problem more prevalent at a given time of day or load condition?</li>
+<li>Is this issue impacting reads, writes, both, or something else?</li>
+<li>Is this issue persistent or only happening occasionally?</li>
+</pre>
+</ul>
+
+
+    <h5>
+<li>When you get all the information above, you should have a clear view of what is going on.
+<li>Ask for some minutes to perform the next steps... Take your time and remember to be calm.
+    </h5>
+</ol>
+
+
+<!-- more -->
+
+
+<h4>Next Steps</h4>
+
+<pre>
+• Identify storage controllers – Volumes – LUN’s involved
+
+• Based on timeline given from (sysadmins/applications teams) generate Latency vs IOPS on volumes/luns involved.
+
+• Take a look on Fiber channel switch port stats for respective server aliases
+
+• CRC (cyclic redundancy checking) errors: A high number of CRC errors can indicate a problem with GBIC/SFP connectors or problems with the physical cabling for a given port.
+ 
+• Examining port utilization, can help understand throughput and help identify whether there is a bottleneck here.
+ 
+• LOGS- check the SAN logs and compare the running configuration to the documentation.
+
+• Is it SAN reporting events or errors that may be related? 
+
+• Have any recent Storage changes occurred? 
+
+• Are there any SAN-related messages in the hosts system message logs?
+
+• Can other hosts see the storage controller involved? 
+
+• Is the storage port logged into the FC switch? 
+
+• Create a report and provide your feedback on it
+
+• Create a case with the Storage vendor if needed.
+
+</pre>
+
+
+<h3>So, Where is really the problem ?</h3>
+
+<p>I got the image from &hellip; honestly I do not remember it was two years a go, but it explains very well where to look at.</p>
+
+<p><img src="http://yazpik.github.io/images/SAN_Troubleshooting.jpg" width="835" height="590" title="'Where to look'" ></p>
+
+<h4>HOST</h4>
+
+<p><em>Application, Filesystems, Volume manager,Virtual memory, HBA driver</em></p>
+
+<pre>
+• Filesystems: check iSCSI, LUN’s ,NFS status include daemons
+• HBA drivers: Review drives & test SAN surfer, multipathing configuration and how is managed MPP?, HBA status
+</pre>
+
+
+<h4>STORAGE UNIT</h4>
+
+<p><em>Fiber channel, SAN/LAN switch , Storage controller, Cache, Backend, Disks</em></p>
+
+<pre>
+• Fiber channel: On case of many CRC errors request review of fiber jumpers, trunks, patch panel.
+
+• SAN/LAN switch: Review logs for failed ports CRC errors, 
+    ISL disconnections, multipathing, disable ports, power and fan redundant, 
+    Save statis and reset counters, gbic status, clock on the same time on both switches, zone status.
+
+• Storage Controller: Review redundant power supply, fan, connectivity issues to switch, 
+    HA enable and working fine.
+
+• Cache: Review failed memory banks, battery modules, disable modules
+
+• Back end: Review failed paths, LUN status
+ 
+• Disks: Review failed disks, alarm on shelves, connectivity issues, general alarm, firmware problems.
+</pre>
+
+
+<h3>Common problems for a deep explanation and useful links</h3>
+
+<p>There is a lot of things can go wrong in a complex Storage Area Network, based on the symptoms, narrowing a problem down to a probable cause in one of these areas should speed troubleshooting and resolution, each failure type can be grouped into one of the following areas:
+(Links are based on Netapp Storage appliance but basically the same kind of logic applies for different vendors such IBM, EMC or HP)</p>
+
+<h4>Compatibility issues</h4>
+
+<ul>
+<li>Check Netapp or SAN vendor compatibility matrix against the host</li>
+<li>Check host vendors software (volume manager) (cluster services), etc. </li>
+</ul>
+
+
+<p><a href="http://support.netapp.com/NOW/products/interoperability">http://support.netapp.com/NOW/products/interoperability</a></p>
+
+<p></ul></p>
+
+<h4>Volume Manager Issues</h4>
+
+<p><li>Go further with sysadmins and investigate Volume manager used version</li>
+<li>Disk layout Concat vs Stripped</li>
+Is well known disk layout on concat layout can cause performance</p>
+
+<p><em>A RAID theory</em>
+<a href="http://www.cuddletech.com/veritas/raidtheory.html">http://www.cuddletech.com/veritas/raidtheory.html</a></p>
+
+<p><em>From an SQL admin</em>
+<a href="http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx">http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx</a></p>
+
+<p><em>From Oracle</em>
+<a href="https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html">https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html</a></p>
+
+<h4>LUN alignment</h4>
+
+<p>I have A LOT to say about LUN alignment issues, due I spent almost a year fixing production environments with Lun&rsquo;s created in a wrong format, because I&rsquo;m done with it, this is a copy/past from Netapp.com</p>
+
+<p>File system misalignment is a storage industry problem that generates an un-optimized workload on a storage system.
+Please refer to a complete guide how to address LUN alignment problems on SAN environment on the following guides:</p>
+
+<p><em>How to identify LUNs misaligned</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1014109&amp;actp=search&amp;viewlocale=en_US&amp;searchid=null">https://kb.netapp.com/support/index?page=content&amp;id=1014109&amp;actp=search&amp;viewlocale=en_US&amp;searchid=null</a></p>
+
+<p><em>How to create aligned partitions</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US">https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US</a></p>
+
+<p><em>Best Practices for File System Alignment in Virtual Environments</em>
+<a href="http://media.netapp.com/documents/tr-3747.pdf">http://media.netapp.com/documents/tr-3747.pdf</a></p>
+
+<h4>Multipath configuration</h4>
+
+<p>A bad multipath configuration can lead to disconnections on the host side, Storage controller work harder
+Following recommendations:
+Ask the sysadmins to contact their vendor and review multipath configuration to support High availability</p>
+
+<p><em>How to verify HP-UX fibre channel configurations with multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1010434">https://kb.netapp.com/support/index?page=content&amp;id=1010434</a></p>
+
+<p><em>How to verify VMware ESX Fibre Channel configurations with Multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1011577">https://kb.netapp.com/support/index?page=content&amp;id=1011577</a></p>
+
+<p><em>How to verify Windows fibre channel configurations with multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1012650">https://kb.netapp.com/support/index?page=content&amp;id=1012650</a></p>
+
+<h4>Partnerpath configuration</h4>
+
+<p><li>Storage Controller work harder</li>
+<li>Performance issues on controller to reach the LUN thru the partner</li></p>
+
+<p><em>What do partner path configuration means?</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=3010111&amp;actp=LIST_POPULAR">https://kb.netapp.com/support/index?page=content&amp;id=3010111&amp;actp=LIST_POPULAR</a></p>
+
+<h4>Incorrect configuration or zoning</h4>
+
+<p>If needed, go ahead validate your zoning setup configuration with Netapp or SAN vendor
+<em>FiberChannel and iSCSI best practices</em>
+<a href="https://library.netapp.com/ecm/ecm_get_file/ECMM1280844">https://library.netapp.com/ecm/ecm_get_file/ECMM1280844</a></p>
+
+<h4>Exceeding the capacity limits</h4>
+
+<p>-Check Fabric Zoning and host vendors software if clustering or tunning on host side need to investigate further with sysadmins</p>
+
+<p>Please feel free to contribute with your experience and perspective, on how to address such kind of problems.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Docker]]></title>
+    <link href="http://yazpik.github.io/blog/2014/11/25/docker/"/>
+    <updated>2014-11-25T12:46:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/11/25/docker</id>
+    <content type="html"><![CDATA[<p>If you think you already know all about virtualization, well you should have a look on this&hellip;
+As you may know, there are virtualization technologies such as VMware, VirtualBox and Openstack, those technologies allow us to create Virtual machines that run on top of physical hardware, So we can create VM&rsquo;s for different purposes, capabilities and functionalities, and that was actually a big step in technology and everyone is happy with it&hellip;.</p>
+
+<p>But if you think twice maybe you don&rsquo;t really need an entire operative system to run just an small application, and from the sysadmin point of view, there is no reason to have the overhead to virtualize an entire virtual vachine to run a L.A.M.P server, just to give you a quick example, and there is when docker comes in the game.</p>
+
+<h3>Sysadmins vs DevOps the war has just begun&hellip;</h3>
+
+<p><img class="center" src="http://yazpik.github.io/images/docker_logo.jpg" width="625" height="275" title="'Docker'" ></p>
+
+<p><a href="http://www.docker.com" title="Docker">Docker</a> it&rsquo;s a virtualization technology using Linux containers, let&rsquo;s say Docker use resource isolation of the Linux kernel (Cgroups and Kernel namespaces) So you can have multiple containers running on a single server, and those &ldquo;containers&rdquo; avoid the overhead of running an entire operative system, encapsulating functionalities or personalities, :)</p>
+
+<!-- more -->
+
+
+<p>In a real world use case, suppose your are a developer and you want to test your app on several different linux distributions, what normally you need to do is virtualize the whole operative systems and test the application on each server, that is time and resource consuming, there are a lot of aplications/use cases where docker can save the day.</p>
+
+<h4>From Docker.com</h4>
+
+<p><em>Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications. Consisting of Docker Engine, a portable, lightweight runtime and packaging tool, and Docker Hub, a cloud service for sharing applications and automating workflows, Docker enables apps to be quickly assembled from components and eliminates the friction between development, QA, and production environments. As a result, IT can ship faster and run the same app, unchanged, on laptops, data center VMs, and any cloud.</em></p>
+
+<p><img class="center" src="http://yazpik.github.io/images/Docker_arch.jpg" width="587" height="438" title="'Docker vs VM'" ></p>
+
+<p>There is a docker registry which is an OS image respositorie, basically a bunch of images ready to use by docker
+<a href="https://registry.hub.docker.com/">https://registry.hub.docker.com/</a>
+on your hardware, that simple.</p>
+
+<p>Docker was created by Solomon Hykes just two years a go&hellip; It is really crazy how new opensource projects are growing so quickly,<br/>
+I&rsquo;ll be posting more about the use of docker in a much more detailed technical way.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lucy - a couple of quotes]]></title>
+    <link href="http://yazpik.github.io/blog/2014/11/25/lucy-quote/"/>
+    <updated>2014-11-25T11:41:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/11/25/lucy-quote</id>
+    <content type="html"><![CDATA[<p><img class="right" src="http://yazpik.github.io/images/Lucy_(2014_film)_poster.jpg" width="225" height="421" title="'Lucy Poster'" >
+A bit late but I had the opportunity to watch <a href="http://www.imdb.com/video/imdb/vi2092674329/" title="Lucy Trailer">&ldquo;Lucy&rdquo;</a>
+last weekend and I really loved it, I found it pretty interesting and it deserves a long post, I believe is pure science fiction, maybe some freaky science guys are going to hate it, But it really doesn&rsquo;t matters if it&rsquo;s scientific accurate in some topics as long as Scarlett Johansson do her thing, Anyways if you enjoy this genere judge by yourself and watch it.
+Here is a couple of my favourite quotes&hellip;</p>
+
+<blockquote><p>The dolphin did not invent the sonar — it developed it, naturally. And this is the crucial part of our philosophical reflection we have today: can we therefore conclude that humans are more concerned with "having" than "being"?</p><footer><strong>Professor Norman</strong> <cite>Played by Morgan Freeman in the Movie “Lucy”</cite></footer></blockquote>
+
+
+
+
+<!-- more -->
+
+
+<p>And this one applies to a couple of my friends&hellip;.</p>
+
+<blockquote><p>You know...if you think about the very nature of life. I mean, from the very beginning. The development of the first cell divided into two cells. This whole purpose of life has been to pass on what was learned. There is no higher purpose. So, if you're asking me what to do with all this knowledge you're accumulating, I'd say, pass it on. Just like any simple cell going through time.</p><footer><strong>Professor Norman</strong> <cite>Played by Morgan Freeman in the Movie “Lucy”</cite></footer></blockquote>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A new beginning]]></title>
+    <link href="http://yazpik.github.io/blog/2014/11/18/a-new-beginning/"/>
+    <updated>2014-11-18T21:07:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/11/18/a-new-beginning</id>
+    <content type="html"><![CDATA[<p>Hi everyone outta there, Finally I&rsquo;ve decided to start writing again after some major changes on my life, I think it would be a good idea to document my recent work/ activity/ thoughts on a blog, to have access to those memories and do a favor to myself going back in time and resolve recurrent ugly technical issues, or Why not maybe help others to do so, Anyway everything can be found on internet, and this blog is not going to be any different, for sure better and high quality technical information can be found in other sites, but somehow is going to be fun.</p>
+
+<p>As a Sysadmin the best we can save in time the best we balance our personal lifes, And I&rsquo;ll call this part of my life &ldquo;Motivation&rdquo;
+Here&rsquo;s the reason &hellip;.</p>
+
+<p><img src="http://yazpik.github.io/images/Naia_homeoffice.jpg" width="650" height="650" title="'Naia'" ></p>
+
+<p>It really doesn&rsquo;t matter how important is the project or how high the issue that you are working on is escalated with the higher management, your little one wants to be feeded, and that&rsquo;s a huge priority as well, at least for me.</p>
+
+<p>I&rsquo;ll try to post frequently about the life of a Sysadmin, Feel free to stop by and leave a comment :)</p>
+]]></content>
+  </entry>
+  
+</feed>

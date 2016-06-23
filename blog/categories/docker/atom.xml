@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: docker | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/docker/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2016-06-22T19:48:07-05:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Docker]]></title>
+    <link href="http://yazpik.github.io/blog/2014/11/25/docker/"/>
+    <updated>2014-11-25T12:46:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/11/25/docker</id>
+    <content type="html"><![CDATA[<p>If you think you already know all about virtualization, well you should have a look on this&hellip;
+As you may know, there are virtualization technologies such as VMware, VirtualBox and Openstack, those technologies allow us to create Virtual machines that run on top of physical hardware, So we can create VM&rsquo;s for different purposes, capabilities and functionalities, and that was actually a big step in technology and everyone is happy with it&hellip;.</p>
+
+<p>But if you think twice maybe you don&rsquo;t really need an entire operative system to run just an small application, and from the sysadmin point of view, there is no reason to have the overhead to virtualize an entire virtual vachine to run a L.A.M.P server, just to give you a quick example, and there is when docker comes in the game.</p>
+
+<h3>Sysadmins vs DevOps the war has just begun&hellip;</h3>
+
+<p><img class="center" src="/images/docker_logo.jpg" width="625" height="275" title="&lsquo;Docker&rsquo;" ></p>
+
+<p><a href="http://www.docker.com" title="Docker">Docker</a> it&rsquo;s a virtualization technology using Linux containers, let&rsquo;s say Docker use resource isolation of the Linux kernel (Cgroups and Kernel namespaces) So you can have multiple containers running on a single server, and those &ldquo;containers&rdquo; avoid the overhead of running an entire operative system, encapsulating functionalities or personalities, :)</p>
+
+<!-- more -->
+
+
+<p>In a real world use case, suppose your are a developer and you want to test your app on several different linux distributions, what normally you need to do is virtualize the whole operative systems and test the application on each server, that is time and resource consuming, there are a lot of aplications/use cases where docker can save the day.</p>
+
+<h4>From Docker.com</h4>
+
+<p><em>Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications. Consisting of Docker Engine, a portable, lightweight runtime and packaging tool, and Docker Hub, a cloud service for sharing applications and automating workflows, Docker enables apps to be quickly assembled from components and eliminates the friction between development, QA, and production environments. As a result, IT can ship faster and run the same app, unchanged, on laptops, data center VMs, and any cloud.</em></p>
+
+<p><img class="center" src="/images/Docker_arch.jpg" width="587" height="438" title="&lsquo;Docker vs VM&rsquo;" ></p>
+
+<p>There is a docker registry which is an OS image respositorie, basically a bunch of images ready to use by docker
+<a href="https://registry.hub.docker.com/">https://registry.hub.docker.com/</a>
+on your hardware, that simple.</p>
+
+<p>Docker was created by Solomon Hykes just two years a go&hellip; It is really crazy how new opensource projects are growing so quickly,<br/>
+I&rsquo;ll be posting more about the use of docker in a much more detailed technical way.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: coreos | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/coreos/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2016-06-22T19:48:07-05:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Modern Cloud]]></title>
+    <link href="http://yazpik.github.io/blog/2015/05/14/the-modern-cloud/"/>
+    <updated>2015-05-14T21:22:00-05:00</updated>
+    <id>http://yazpik.github.io/blog/2015/05/14/the-modern-cloud</id>
+    <content type="html"><![CDATA[<h4>Or the containerization of the cloud</h4>
+
+<p><img class="center" src="/images/kubernetes.jpeg" width="350" height="350" title="&lsquo;Kubernetes&rsquo;" ></p>
+
+<p>That&rsquo;s right, Openstack and Containers are no enemies, and they are not fighting at all,
+Those two technologies are a powerful combination bringing the best of &ldquo;two worlds&rdquo; but in different layers of the stack, maybe combining them does not make sense,but actually it really does.</p>
+
+<p>Combining Openstack + Heat + Murano + Kubernetes it does sounds really complex but actually is becoming the opossite
+I want to share with you an interesting article from OpenStack SuperUser website, during the kubernetes meetup in San Francisco, there was a live demo where it was demostrated how to deploy a <a href="http://kubernetes.io/">kubernetes</a> cluster in minutes with OpenStack and Murano.
+<a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
+
+<p>Also <a href="https://www.mirantis.com/">Mirantis</a> is collaborating with Google to have a better integration of Kubernetes with OpenStack.
+<a href="https://www.mirantis.com/company/press-center/company-news/mirantis-collaborates-google-kubernetes-openstack-integration/">https://www.mirantis.com/company/press-center/company-news/mirantis-collaborates-google-kubernetes-openstack-integration/</a></p>
+
+<p>Docker on Openstack Kubernetes, Craig Peters from Mirantis and Kit Merker from Google
+<a href="https://openstacksummitmay2015vancouver.sched.org/event/57654c61f86cec3210d4d1065756409a">https://openstacksummitmay2015vancouver.sched.org/event/57654c61f86cec3210d4d1065756409a</a></p>
+
+<p><img class="center" src="/images/coreos-logo.png" width="350" height="350" title="&lsquo;CoreOS&rsquo;" ></p>
+
+<p>The guys from <a href="https://coreos.com">CoreOS</a> have already take significant advantage, they are running several projects inside CoreOS, just to mention some, <a href="https://coreos.com/etcd/">Etcd</a>, <a href="https://coreos.com/blog/rocket/">Rocket</a>, <a href="https://coreos.com/using-coreos/clustering/">Fleet</a>, all of them written in <a href="https://golang.org/">Go</a> language, helping to automatize and do things easy specially for developers delivering a powerful platform of containers.
+This topic deserve a more descriptive post, and I&rsquo;ll try to do it soon, In the meantime If you are interested to try CoreOS with all the nice stuff give it a try to <a href="https://www.vagrantup.com/">Vagrant</a>, they have put togheter some vagrant scripts to deploy a 3 nodes CoreOs cluster.</p>
+
+<p>And for the lucky ones that are going to OpenStack Summit in Vancouver, there is going to be plenty of talks covering containers, actually is a full day about it, just to have an idea what big is this Hot-Topic.</p>
+
+<p>The containerization of the cloud is becoming huge, and is going to change how we understand the definition of the cloud these days.</p>
+
+<p>See you in Vancouver!</p>
+
+<p>Francisco Moctezuma</p>
+]]></content>
+  </entry>
+  
+</feed>

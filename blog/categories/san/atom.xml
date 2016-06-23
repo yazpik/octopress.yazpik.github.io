@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: san | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/san/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2016-06-22T19:48:07-05:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Troubleshoot a SAN environment]]></title>
+    <link href="http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/"/>
+    <updated>2014-11-27T12:15:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/11/27/san-troubleshooting</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/mono_coco.png" width="300" height="168" title="&lsquo;Chango&rsquo;" ></p>
+
+<p>A couple of years a go, I wrote a basic troubleshooting guide for a SAN environment, but it was never shared,
+I believe is a good idea to have a list of considerations to take specially when there are a ton of variables to consider, so I&rsquo;ve decided to shared this list on my blog,
+If you are working on IT as Storage/Unix/Windows admin, you know how things are durig an issue on production, specially with managers, international teams when no one knows what is really going on and someone important is screaming on the phone waiting for answers.
+This list has truly helped me out asking questions to easily identify what the problem is, and also helps to improve the time to response if you are ready on those critical situations.</p>
+
+<p>So pretty much I based this guide on past experiences and vendor recommendations.</p>
+
+<h3>Let&rsquo;s check the list</h3>
+
+<ol>
+    <h5>
+<li>Do not freak out (very important)</li>
+<li>Calm yourself down (breath)</li>
+    </h5>
+    
+And we are ready to get the information
+
+<ul>
+<pre>
+<li>What exactly the problem is? (you will need to understand the situation first)</li>
+<li>What has been changed recently? (sometimes it was just a firmware update/upgrade on the host)</li>
+<li>What is the scope of the problem? </li>
+<li>Is Only one device/application, clustering affected?</li>
+<li>Are any specific protocols or applications related to the problem?</li>
+<li>Is the problem more prevalent at a given time of day or load condition?</li>
+<li>Is this issue impacting reads, writes, both, or something else?</li>
+<li>Is this issue persistent or only happening occasionally?</li>
+</pre>
+</ul>
+
+
+    <h5>
+<li>When you get all the information above, you should have a clear view of what is going on.
+<li>Ask for some minutes to perform the next steps... Take your time and remember to be calm.
+    </h5>
+</ol>
+
+
+<!-- more -->
+
+
+<h4>Next Steps</h4>
+
+<pre>
+• Identify storage controllers – Volumes – LUN’s involved
+
+• Based on timeline given from (sysadmins/applications teams) generate Latency vs IOPS on volumes/luns involved.
+
+• Take a look on Fiber channel switch port stats for respective server aliases
+
+• CRC (cyclic redundancy checking) errors: A high number of CRC errors can indicate a problem with GBIC/SFP connectors or problems with the physical cabling for a given port.
+ 
+• Examining port utilization, can help understand throughput and help identify whether there is a bottleneck here.
+ 
+• LOGS- check the SAN logs and compare the running configuration to the documentation.
+
+• Is it SAN reporting events or errors that may be related? 
+
+• Have any recent Storage changes occurred? 
+
+• Are there any SAN-related messages in the hosts system message logs?
+
+• Can other hosts see the storage controller involved? 
+
+• Is the storage port logged into the FC switch? 
+
+• Create a report and provide your feedback on it
+
+• Create a case with the Storage vendor if needed.
+
+</pre>
+
+
+<h3>So, Where is really the problem ?</h3>
+
+<p>I got the image from &hellip; honestly I do not remember it was two years a go, but it explains very well where to look at.</p>
+
+<p><img src="/images/SAN_Troubleshooting.jpg" width="835" height="590" title="&lsquo;Where to look&rsquo;" ></p>
+
+<h4>HOST</h4>
+
+<p><em>Application, Filesystems, Volume manager,Virtual memory, HBA driver</em></p>
+
+<pre>
+• Filesystems: check iSCSI, LUN’s ,NFS status include daemons
+• HBA drivers: Review drives & test SAN surfer, multipathing configuration and how is managed MPP?, HBA status
+</pre>
+
+
+<h4>STORAGE UNIT</h4>
+
+<p><em>Fiber channel, SAN/LAN switch , Storage controller, Cache, Backend, Disks</em></p>
+
+<pre>
+• Fiber channel: On case of many CRC errors request review of fiber jumpers, trunks, patch panel.
+
+• SAN/LAN switch: Review logs for failed ports CRC errors, 
+    ISL disconnections, multipathing, disable ports, power and fan redundant, 
+    Save statis and reset counters, gbic status, clock on the same time on both switches, zone status.
+
+• Storage Controller: Review redundant power supply, fan, connectivity issues to switch, 
+    HA enable and working fine.
+
+• Cache: Review failed memory banks, battery modules, disable modules
+
+• Back end: Review failed paths, LUN status
+ 
+• Disks: Review failed disks, alarm on shelves, connectivity issues, general alarm, firmware problems.
+</pre>
+
+
+<h3>Common problems for a deep explanation and useful links</h3>
+
+<p>There is a lot of things can go wrong in a complex Storage Area Network, based on the symptoms, narrowing a problem down to a probable cause in one of these areas should speed troubleshooting and resolution, each failure type can be grouped into one of the following areas:
+(Links are based on Netapp Storage appliance but basically the same kind of logic applies for different vendors such IBM, EMC or HP)</p>
+
+<h4>Compatibility issues</h4>
+
+<ul>
+<li>Check Netapp or SAN vendor compatibility matrix against the host</li>
+<li>Check host vendors software (volume manager) (cluster services), etc. </li>
+</ul>
+
+
+<p><a href="http://support.netapp.com/NOW/products/interoperability">http://support.netapp.com/NOW/products/interoperability</a></p>
+
+<p></ul></p>
+
+<h4>Volume Manager Issues</h4>
+
+<p><li>Go further with sysadmins and investigate Volume manager used version</li>
+<li>Disk layout Concat vs Stripped</li>
+Is well known disk layout on concat layout can cause performance</p>
+
+<p><em>A RAID theory</em>
+<a href="http://www.cuddletech.com/veritas/raidtheory.html">http://www.cuddletech.com/veritas/raidtheory.html</a></p>
+
+<p><em>From an SQL admin</em>
+<a href="http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx">http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx</a></p>
+
+<p><em>From Oracle</em>
+<a href="https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html">https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html</a></p>
+
+<h4>LUN alignment</h4>
+
+<p>I have A LOT to say about LUN alignment issues, due I spent almost a year fixing production environments with Lun&rsquo;s created in a wrong format, because I&rsquo;m done with it, this is a copy/past from Netapp.com</p>
+
+<p>File system misalignment is a storage industry problem that generates an un-optimized workload on a storage system.
+Please refer to a complete guide how to address LUN alignment problems on SAN environment on the following guides:</p>
+
+<p><em>How to identify LUNs misaligned</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1014109&amp;actp=search&amp;viewlocale=en_US&amp;searchid=null">https://kb.netapp.com/support/index?page=content&amp;id=1014109&amp;actp=search&amp;viewlocale=en_US&amp;searchid=null</a></p>
+
+<p><em>How to create aligned partitions</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US">https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US</a></p>
+
+<p><em>Best Practices for File System Alignment in Virtual Environments</em>
+<a href="http://media.netapp.com/documents/tr-3747.pdf">http://media.netapp.com/documents/tr-3747.pdf</a></p>
+
+<h4>Multipath configuration</h4>
+
+<p>A bad multipath configuration can lead to disconnections on the host side, Storage controller work harder
+Following recommendations:
+Ask the sysadmins to contact their vendor and review multipath configuration to support High availability</p>
+
+<p><em>How to verify HP-UX fibre channel configurations with multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1010434">https://kb.netapp.com/support/index?page=content&amp;id=1010434</a></p>
+
+<p><em>How to verify VMware ESX Fibre Channel configurations with Multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1011577">https://kb.netapp.com/support/index?page=content&amp;id=1011577</a></p>
+
+<p><em>How to verify Windows fibre channel configurations with multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1012650">https://kb.netapp.com/support/index?page=content&amp;id=1012650</a></p>
+
+<h4>Partnerpath configuration</h4>
+
+<p><li>Storage Controller work harder</li>
+<li>Performance issues on controller to reach the LUN thru the partner</li></p>
+
+<p><em>What do partner path configuration means?</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=3010111&amp;actp=LIST_POPULAR">https://kb.netapp.com/support/index?page=content&amp;id=3010111&amp;actp=LIST_POPULAR</a></p>
+
+<h4>Incorrect configuration or zoning</h4>
+
+<p>If needed, go ahead validate your zoning setup configuration with Netapp or SAN vendor
+<em>FiberChannel and iSCSI best practices</em>
+<a href="https://library.netapp.com/ecm/ecm_get_file/ECMM1280844">https://library.netapp.com/ecm/ecm_get_file/ECMM1280844</a></p>
+
+<h4>Exceeding the capacity limits</h4>
+
+<p>-Check Fabric Zoning and host vendors software if clustering or tunning on host side need to investigate further with sysadmins</p>
+
+<p>Please feel free to contribute with your experience and perspective, on how to address such kind of problems.</p>
+]]></content>
+  </entry>
+  
+</feed>

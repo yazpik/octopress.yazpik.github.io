@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>OpenCompute Re-Architecting the DataCenter - Life of a Sysadmin</title>
+  <meta name="author" content="Francisco Moctezuma">
+
+  
+  <meta name="description" content="The OpenCompute Summit 2015 has just finished and there are some interesting talks from the top companies such Intel, Facebook, Linux, foundation, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Life of a Sysadmin" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-56875014-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Life of a Sysadmin</a></h1>
+  
+    <h2>Blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yazpik.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">OpenCompute Re-Architecting the DataCenter</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-22T19:43:00-06:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2015</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="center" src="/images/opencompute.png" width="260" height="80" title="'OpenCompute'" ></p>
+
+<p>The OpenCompute Summit 2015 has just finished and there are some interesting talks from the top companies such Intel, Facebook, Linux, foundation, Microsoft and Rackspace.
+For the ones that haven&rsquo;t heard about OpenCompute project, let me explain you with what is this about.</p>
+
+<h4>From OpenCompute.org</h4>
+
+<blockquote><p>"The Open Compute Project Foundation is a rapidly growing community of engineers around the world whose mission is to design and enable the delivery of the most efficient server, storage and data center hardware designs for scalable computing. We believe that openly sharing ideas, specifications and other intellectual property is the key to maximizing innovation and reducing operational complexity in the scalable computing space."</p></blockquote>
+
+
+<p>Believe it or not this is a Facebook initiative to share the design of datacenter architecture with the intention to improve efficiency on servers, storage and also general datacenter overall infrastructure with smart and &ldquo;ecofriendly&rdquo; deployments.
+I&rsquo;d say this is like an OpenSource project applied in hardware and is going to speed up the innovation on new hardware solutions.</p>
+
+<p><img src="/images/opencomputeserver-750.jpg" width="360" height="140" title="'OpenCompute Servers'" >
+<img src="/images/IODatacenter.jpg" width="360" height="140" title="'IO Datacenter in Scottsdale'" ></p>
+
+<p>Big names just joined to the OpenCompute project such as Apple and HP, So I believe in the next two years or so we will see a drastical change on Datacenter deployments as well as compute architecture, and we have to be ready to be competitive or much better be part of it, this is a good opportunity to join as one of the early adopters.</p>
+
+<p>So Does anyone out there is already working on OCP hardware? I&rsquo;d be really interested to participate in something like that.</p>
+
+<p>Most of the talks are already on OpenCompute youtube channel, I&rsquo;m gonna share some of the most remarkables, I&rsquo;ve watched so far.</p>
+
+<h5>Jay Parik VP of Engineering at Facebook.</h5>
+
+<p>This is one of the most interesting talks, Facebook is saving $2 Billion US Dls on the last three years applying a full stack optmization on the Datacenter, Software and Networking based on OpenCompute, But forget about the money one of the things it really matters is that the energy conservation they made is equals to power up 80,000 homes per year and carbon emission reduction equals to 95,000 cars also per year, I&rsquo;m not going to tell you the rest watch by yourself.</p>
+
+<p><a href="https://www.youtube.com/watch?v=6QBrRT0VpgY">https://www.youtube.com/watch?v=6QBrRT0VpgY</a></p>
+
+<h5>Sam Ramji from Linux foundation</h5>
+
+<p>He explain how OpenSource golden age can take place if we all collaborate in some way to create an OpenCloud platform, he made a point when Hortonworks went public with $1 Billion IPO using Hadoop and HDFS for Big Data, or Cloudera making $100M US Dls annual revenue to the other extreme when NTPd principal maintainer is making less than $20k per year, Well this is a must see talk.</p>
+
+<p><a href="https://www.youtube.com/watch?v=uFfcCJcxlpk">https://www.youtube.com/watch?v=uFfcCJcxlpk</a></p>
+
+<h5>Mark Shutterworth from Canonical</h5>
+
+<p>He really knows where the technology is moving, Mark showed on a live demo, an OpenStack Lab deployed with MAAS running a Ceph cluster on top of a JBOD (Just a Bunch of Disk) system provided by Quanta (OpenCompute provider), and the power of containers with Kubernetes (OpenSource container cluster orchestration) from Google. .. have a look.</p>
+
+<p><a href="https://www.youtube.com/watch?v=a4P7lvIUc5M">https://www.youtube.com/watch?v=a4P7lvIUc5M</a></p>
+
+<p>Greetings from Mexico!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Francisco Moctezuma</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-22T19:43:00-06:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bussiness/'>bussiness</a>, <a class='category' href='/blog/categories/hyperscale/'>hyperscale,</a>, <a class='category' href='/blog/categories/kubernetes/'>kubernetes</a>, <a class='category' href='/blog/categories/model/'>model,</a>, <a class='category' href='/blog/categories/opencompute/'>opencompute,</a>, <a class='category' href='/blog/categories/opensource/'>opensource</a>, <a class='category' href='/blog/categories/optimization/'>optimization,</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/" data-via="yazpik" data-counturl="http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/03/06/how-to-build-a-baby-crib/" title="Previous Post: How to build a baby crib">&laquo; How to build a baby crib</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/05/14/the-modern-cloud/" title="Next Post: The Modern Cloud">The Modern Cloud &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/11/16/bigdata-as-a-service/">BigData as a Service</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/14/the-modern-cloud/">The Modern Cloud</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/22/opencompute-re-architecting-the-datacenter/">OpenCompute Re-Architecting the DataCenter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/06/how-to-build-a-baby-crib/">How to Build a Baby Crib</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/02/ceph/">Ceph</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/yazpik">@yazpik</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yazpik',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/yazpik?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Francisco Moctezuma -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'yazpik';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/';
+        var disqus_url = 'http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

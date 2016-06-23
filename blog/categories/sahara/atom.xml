@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sahara | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/sahara/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2016-06-22T19:48:07-05:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[BigData As A Service]]></title>
+    <link href="http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/"/>
+    <updated>2015-11-16T19:22:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service</id>
+    <content type="html"><![CDATA[<h3>A complete elastic Hadoop cluster with OpenStack + Sahara in 15 minutes</h3>
+
+<p><img class="center" src="/images/bigdata.gif" width="650" height="650" title="&lsquo;Dilbert Data Accuracy&rsquo;" ></p>
+
+<p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="http://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
+the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
+but anyway let&rsquo;s jump on the BigData stuff.</p>
+
+<p>One of our DBA&rsquo;s ask us for a Linux instance on the OpenStack cloud, first questions from me was, purpose ? , so he wanted to try and learn about Hadoop, so I started to look if there was an image ready for it or start to build one from scratch and meet the Hadoop pre-requisites, at the end the DBA won&rsquo;t install the Hadoop platform, that will be the sysadmins or Devops :)
+So I was on an interesting situation, reading in deep I found a pararell world about DataProcessing and BigData, and then project <a href="https://wiki.openstack.org/wiki/Sahara/">Sahara</a> formerly known as Savanna, immediatly I get caught on it.</p>
+
+<p>But WHAT IS SAHARA?</p>
+
+<p>Sahara began life as an Apache 2.0 project and is now an OpenStack integrated project, Sahara enables the fast provisioning and easy management of Hadoop clusters on Openstack, mainstream Hadoop distributions and elastic data processing (EDP) capability similar to Amazon Elastic MapReduce (EMR).</p>
+
+<p>So here are basic steps to add Sahara on an existing OpenStack deployment.</p>
+
+<p>On the OpenStack control Node (ubuntu)
+I started searching the packages for Sahara first, didn&rsquo;t break anything on control nodes :)</p>
+
+<pre>
+$ sudo apt-cache search sahara
+</pre>
+
+
+<p>That gets me sahara, python-saharaclient, and openstack-dashboard, I already have the dashboard installed, so just needed to install sahara package and the python-saharaclient.</p>
+
+<pre>
+$ sudo apt-get install sahara python-saharaclient
+</pre>
+
+
+<p>Find out the sahara configuratin file, default path is /etc/sahara, there are some samples placed in the sahara directory, you can use the basic sample or generate a new one with</p>
+
+<pre>
+$ sudo tox -e genconfig
+</pre>
+
+
+<p>That will get you a sahara.conf file, you can modify basic parameters, such as Networking(Neutron), Database(Mysql), Message systems(Rabbit), Identity(Keystone), for a reference guide please see: <a href="http://docs.openstack.org/developer/sahara/userdoc/configuration.guide.html" title="Sahara config guide">Sahara Configuration Guide</a></p>
+
+<p>Then a Database Schema for Shara is needed, you can create it as follows (on an existing empty database)</p>
+
+<pre>
+$ sudo sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head  
+</pre>
+
+
+<p>my db connection string on sahara.conf file is</p>
+
+<p>```bash sahara.conf (snippet)
+connection=mysql://admin:ridiculouspass@localhost:3306/saharadb</p>
+
+<p>```</p>
+
+<p>Great, we have a database schema for Sahara, please make sure Database hosts is reacheable by sahara node and neutron management network.</p>
+
+<h5>Keystone configuration</h5>
+
+<p>This is another essencial part for sahara to be accesible in the OpenStack dasboard and for python sahara client to work properly we need to add sahara on keystone catalog</p>
+
+<p>As keystone admin, create the service &ldquo;sahara&rdquo; as data_processing type</p>
+
+<pre>
+(keystone_admin)# keystone service-create --name sahara --type data_processing \
+    --description "Sahara Data Processing"
+</pre>
+
+
+<p>Next create the endpoint and define the access + Region</p>
+
+<pre>
+(keystone_admin)# keystone endpoint-create --service sahara --region RegionOne \
+    --publicurl "http://172.16.0.2:8386/v1.1/%(tenant_id)s" \
+    --adminurl "http://10.0.0.2:8386/v1.1/%(tenant_id)s" \
+    --internalurl "http://192.168.0.2:8386/v1.1/%(tenant_id)s"
+</pre>
+
+
+<p>Make sue you match the admin, public and internal network on the new service, you can verify the current endpoints with</p>
+
+<pre>
+(keystone_admin)# keystone endpoint-list
+</pre>
+
+
+<h5>Configure Firewall to Allow Sahara service traffic</h5>
+
+<p>Add an INPUT rule allowing TCP traffic on port 8386, and restart iptables</p>
+
+<pre>
+-A INPUT -p tcp -m multiport --dports 8386 -j ACCEPT
+</pre>
+
+
+<p>Start Sahara service</p>
+
+<pre>
+    service sahara-all start
+</pre>
+
+
+<p>Also you can setup Sahara on a virtual python environment, I didn&rsquo;t try that, but can be found here
+<a href="http://docs.openstack.org/developer/sahara/userdoc/installation.guide.html#to-install-into-a-virtual-environment">Sahara Virtualenv</a></p>
+
+<p>There are also advanced configurations for Sahara, you can find them here
+<a href="http://docs.openstack.org/developer/sahara/userdoc/advanced.configuration.guide.html">Sahara Advanced configuration</a></p>
+
+<p>That is a high level steps for Sahara in OpenStack, so once we have them all and you can see Data Processing panel on Horizon, so from here 15 minutes can start to count to create a cutting-edge fresh hadoop cluster.</p>
+
+<p><img src="/images/Hadoop_Post/01_Hadoop.png" width="200" height="600" title="" ></p>
+
+<p>Then there are some pre-configured images for Hadoop vanilla plugin, you can download them from here
+<a href="http://docs.openstack.org/developer/sahara/userdoc/vanilla_plugin.html">Vanilla Plugin</a></p>
+
+<p>And it can be easily upload to glance, then to the Data processing image registry
+<img src="/images/Hadoop_Post/02_hadoop.png" width="600" height="200" title="" ></p>
+
+<p>Sahara makes it possible to create nodes and cluster templates, You can mix and match roles for a node, also you can scale out your cluster as many or few nodes you need.</p>
+
+<p><img src="/images/Hadoop_Post/03_hadoop.png" width="600" height="200" title="" ></p>
+
+<p><img src="/images/Hadoop_Post/05_hadoop.png" width="400" height="200" title="" ></p>
+
+<p>Because I couldn&rsquo;t say it better than mirantis.com</p>
+
+<p>&ldquo;Manually creating a Hadoop cluster on OpenStack requires spinning up instances, installing Hadoop on each instance, configuring the instances to work together, specifying the namenode, jobtracker, tasktrackers, and any storage nodes, and configuring each of hundreds, or even thousands, of nodes. Why spend all that time on manual configuration — with the possibility of human error — when you can use Sahara to specify node characteristics and roles, click to deploy, and access a individual or multiple robust, stable Hadoop clusters in parallel with minimal delay?&rdquo;</p>
+
+<p><img src="/images/Hadoop_Post/07_hadoop.png" width="600" height="200" title="" ></p>
+
+<p>Also the Hadoop cluster can be scalable with no pain, so you can save time
+when it comes to create and configure new nodes, only simply add node types by the OpenStack Sahara user interface</p>
+
+<p><img src="/images/Hadoop_Post/11_hadoop.gif" width="600" height="200" title="" ></p>
+
+<p>And voila you have a fresh Elastic Hadoop deployment ready in just a few minutes.</p>
+
+<p><img src="/images/Hadoop_Post/10_hadoop.png" width="500" height="200" title="" ></p>
+
+<p><img src="/images/Hadoop_Post/09_hadoop.png"></p>
+
+<p><img src="/images/Hadoop_Post/08_hadoop.png" width="600" height="300" title="" ></p>
+
+<p>So this is pretty much everything about the installation of Hadoop on OpenStack (Juno)
+Next post We&rsquo;ll run a job on the cluster, stay tunned :)</p>
+]]></content>
+  </entry>
+  
+</feed>

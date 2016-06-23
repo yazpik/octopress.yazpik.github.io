@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: bussiness | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/bussiness/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2016-06-22T19:48:07-05:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OpenCompute Re-Architecting the DataCenter]]></title>
+    <link href="http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/"/>
+    <updated>2015-03-22T19:43:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter</id>
+    <content type="html"><![CDATA[<p><img class="center" src="/images/opencompute.png" width="260" height="80" title="&lsquo;OpenCompute&rsquo;" ></p>
+
+<p>The OpenCompute Summit 2015 has just finished and there are some interesting talks from the top companies such Intel, Facebook, Linux, foundation, Microsoft and Rackspace.
+For the ones that haven&rsquo;t heard about OpenCompute project, let me explain you with what is this about.</p>
+
+<h4>From OpenCompute.org</h4>
+
+<p><blockquote><p></p></p><p><p>&ldquo;The Open Compute Project Foundation is a rapidly growing community of engineers around the world whose mission is to design and enable the delivery of the most efficient server, storage and data center hardware designs for scalable computing. We believe that openly sharing ideas, specifications and other intellectual property is the key to maximizing innovation and reducing operational complexity in the scalable computing space.&rdquo;</p></p><p><p></p></blockquote></p>
+
+<p>Believe it or not this is a Facebook initiative to share the design of datacenter architecture with the intention to improve efficiency on servers, storage and also general datacenter overall infrastructure with smart and &ldquo;ecofriendly&rdquo; deployments.
+I&rsquo;d say this is like an OpenSource project applied in hardware and is going to speed up the innovation on new hardware solutions.</p>
+
+<p><img src="/images/opencomputeserver-750.jpg" width="360" height="140" title="&lsquo;OpenCompute Servers&rsquo;" >
+<img src="/images/IODatacenter.jpg" width="360" height="140" title="&lsquo;IO Datacenter in Scottsdale&rsquo;" ></p>
+
+<p>Big names just joined to the OpenCompute project such as Apple and HP, So I believe in the next two years or so we will see a drastical change on Datacenter deployments as well as compute architecture, and we have to be ready to be competitive or much better be part of it, this is a good opportunity to join as one of the early adopters.</p>
+
+<p>So Does anyone out there is already working on OCP hardware? I&rsquo;d be really interested to participate in something like that.</p>
+
+<p>Most of the talks are already on OpenCompute youtube channel, I&rsquo;m gonna share some of the most remarkables, I&rsquo;ve watched so far.</p>
+
+<h5>Jay Parik VP of Engineering at Facebook.</h5>
+
+<p>This is one of the most interesting talks, Facebook is saving $2 Billion US Dls on the last three years applying a full stack optmization on the Datacenter, Software and Networking based on OpenCompute, But forget about the money one of the things it really matters is that the energy conservation they made is equals to power up 80,000 homes per year and carbon emission reduction equals to 95,000 cars also per year, I&rsquo;m not going to tell you the rest watch by yourself.</p>
+
+<p><a href="https://www.youtube.com/watch?v=6QBrRT0VpgY">https://www.youtube.com/watch?v=6QBrRT0VpgY</a></p>
+
+<h5>Sam Ramji from Linux foundation</h5>
+
+<p>He explain how OpenSource golden age can take place if we all collaborate in some way to create an OpenCloud platform, he made a point when Hortonworks went public with $1 Billion IPO using Hadoop and HDFS for Big Data, or Cloudera making $100M US Dls annual revenue to the other extreme when NTPd principal maintainer is making less than $20k per year, Well this is a must see talk.</p>
+
+<p><a href="https://www.youtube.com/watch?v=uFfcCJcxlpk">https://www.youtube.com/watch?v=uFfcCJcxlpk</a></p>
+
+<h5>Mark Shutterworth from Canonical</h5>
+
+<p>He really knows where the technology is moving, Mark showed on a live demo, an OpenStack Lab deployed with MAAS running a Ceph cluster on top of a JBOD (Just a Bunch of Disk) system provided by Quanta (OpenCompute provider), and the power of containers with Kubernetes (OpenSource container cluster orchestration) from Google. .. have a look.</p>
+
+<p><a href="https://www.youtube.com/watch?v=a4P7lvIUc5M">https://www.youtube.com/watch?v=a4P7lvIUc5M</a></p>
+
+<p>Greetings from Mexico!</p>
+]]></content>
+  </entry>
+  
+</feed>

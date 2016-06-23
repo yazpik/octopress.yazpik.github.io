@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How to Troubleshoot a SAN environment - Life of a Sysadmin</title>
+  <meta name="author" content="Francisco Moctezuma">
+
+  
+  <meta name="description" content="A couple of years a go, I wrote a basic troubleshooting guide for a SAN environment, but it was never shared,
+I believe is a good idea to have a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yazpik.github.io/blog/2014/11/27/san-troubleshooting">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Life of a Sysadmin" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-56875014-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Life of a Sysadmin</a></h1>
+  
+    <h2>Blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yazpik.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Troubleshoot a SAN Environment</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-27T12:15:00-06:00" pubdate data-updated="true">Nov 27<span>th</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="center" src="/images/mono_coco.png" width="300" height="168" title="'Chango'" ></p>
+
+<p>A couple of years a go, I wrote a basic troubleshooting guide for a SAN environment, but it was never shared,
+I believe is a good idea to have a list of considerations to take specially when there are a ton of variables to consider, so I&rsquo;ve decided to shared this list on my blog,
+If you are working on IT as Storage/Unix/Windows admin, you know how things are durig an issue on production, specially with managers, international teams when no one knows what is really going on and someone important is screaming on the phone waiting for answers.
+This list has truly helped me out asking questions to easily identify what the problem is, and also helps to improve the time to response if you are ready on those critical situations.</p>
+
+<p>So pretty much I based this guide on past experiences and vendor recommendations.</p>
+
+<h3>Let&rsquo;s check the list</h3>
+
+<ol>
+    <h5>
+<li>Do not freak out (very important)</li>
+<li>Calm yourself down (breath)</li>
+    </h5>
+    
+And we are ready to get the information
+
+<ul>
+<pre>
+<li>What exactly the problem is? (you will need to understand the situation first)</li>
+<li>What has been changed recently? (sometimes it was just a firmware update/upgrade on the host)</li>
+<li>What is the scope of the problem? </li>
+<li>Is Only one device/application, clustering affected?</li>
+<li>Are any specific protocols or applications related to the problem?</li>
+<li>Is the problem more prevalent at a given time of day or load condition?</li>
+<li>Is this issue impacting reads, writes, both, or something else?</li>
+<li>Is this issue persistent or only happening occasionally?</li>
+</pre>
+</ul>
+
+
+    <h5>
+<li>When you get all the information above, you should have a clear view of what is going on.
+<li>Ask for some minutes to perform the next steps... Take your time and remember to be calm.
+    </h5>
+</ol>
+
+
+<!-- more -->
+
+
+<h4>Next Steps</h4>
+
+<pre>
+• Identify storage controllers – Volumes – LUN’s involved
+
+• Based on timeline given from (sysadmins/applications teams) generate Latency vs IOPS on volumes/luns involved.
+
+• Take a look on Fiber channel switch port stats for respective server aliases
+
+• CRC (cyclic redundancy checking) errors: A high number of CRC errors can indicate a problem with GBIC/SFP connectors or problems with the physical cabling for a given port.
+ 
+• Examining port utilization, can help understand throughput and help identify whether there is a bottleneck here.
+ 
+• LOGS- check the SAN logs and compare the running configuration to the documentation.
+
+• Is it SAN reporting events or errors that may be related? 
+
+• Have any recent Storage changes occurred? 
+
+• Are there any SAN-related messages in the hosts system message logs?
+
+• Can other hosts see the storage controller involved? 
+
+• Is the storage port logged into the FC switch? 
+
+• Create a report and provide your feedback on it
+
+• Create a case with the Storage vendor if needed.
+
+</pre>
+
+
+<h3>So, Where is really the problem ?</h3>
+
+<p>I got the image from &hellip; honestly I do not remember it was two years a go, but it explains very well where to look at.</p>
+
+<p><img src="/images/SAN_Troubleshooting.jpg" width="835" height="590" title="'Where to look'" ></p>
+
+<h4>HOST</h4>
+
+<p><em>Application, Filesystems, Volume manager,Virtual memory, HBA driver</em></p>
+
+<pre>
+• Filesystems: check iSCSI, LUN’s ,NFS status include daemons
+• HBA drivers: Review drives & test SAN surfer, multipathing configuration and how is managed MPP?, HBA status
+</pre>
+
+
+<h4>STORAGE UNIT</h4>
+
+<p><em>Fiber channel, SAN/LAN switch , Storage controller, Cache, Backend, Disks</em></p>
+
+<pre>
+• Fiber channel: On case of many CRC errors request review of fiber jumpers, trunks, patch panel.
+
+• SAN/LAN switch: Review logs for failed ports CRC errors, 
+    ISL disconnections, multipathing, disable ports, power and fan redundant, 
+    Save statis and reset counters, gbic status, clock on the same time on both switches, zone status.
+
+• Storage Controller: Review redundant power supply, fan, connectivity issues to switch, 
+    HA enable and working fine.
+
+• Cache: Review failed memory banks, battery modules, disable modules
+
+• Back end: Review failed paths, LUN status
+ 
+• Disks: Review failed disks, alarm on shelves, connectivity issues, general alarm, firmware problems.
+</pre>
+
+
+<h3>Common problems for a deep explanation and useful links</h3>
+
+<p>There is a lot of things can go wrong in a complex Storage Area Network, based on the symptoms, narrowing a problem down to a probable cause in one of these areas should speed troubleshooting and resolution, each failure type can be grouped into one of the following areas:
+(Links are based on Netapp Storage appliance but basically the same kind of logic applies for different vendors such IBM, EMC or HP)</p>
+
+<h4>Compatibility issues</h4>
+
+<ul>
+<li>Check Netapp or SAN vendor compatibility matrix against the host</li>
+<li>Check host vendors software (volume manager) (cluster services), etc. </li>
+</ul>
+
+
+<p><a href="http://support.netapp.com/NOW/products/interoperability">http://support.netapp.com/NOW/products/interoperability</a></p>
+
+<p></ul></p>
+
+<h4>Volume Manager Issues</h4>
+
+<p><li>Go further with sysadmins and investigate Volume manager used version</li>
+<li>Disk layout Concat vs Stripped</li>
+Is well known disk layout on concat layout can cause performance</p>
+
+<p><em>A RAID theory</em>
+<a href="http://www.cuddletech.com/veritas/raidtheory.html">http://www.cuddletech.com/veritas/raidtheory.html</a></p>
+
+<p><em>From an SQL admin</em>
+<a href="http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx">http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx</a></p>
+
+<p><em>From Oracle</em>
+<a href="https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html">https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html</a></p>
+
+<h4>LUN alignment</h4>
+
+<p>I have A LOT to say about LUN alignment issues, due I spent almost a year fixing production environments with Lun&rsquo;s created in a wrong format, because I&rsquo;m done with it, this is a copy/past from Netapp.com</p>
+
+<p>File system misalignment is a storage industry problem that generates an un-optimized workload on a storage system.
+Please refer to a complete guide how to address LUN alignment problems on SAN environment on the following guides:</p>
+
+<p><em>How to identify LUNs misaligned</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1014109&amp;actp=search&amp;viewlocale=en_US&amp;searchid=null">https://kb.netapp.com/support/index?page=content&amp;id=1014109&amp;actp=search&amp;viewlocale=en_US&amp;searchid=null</a></p>
+
+<p><em>How to create aligned partitions</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US">https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US</a></p>
+
+<p><em>Best Practices for File System Alignment in Virtual Environments</em>
+<a href="http://media.netapp.com/documents/tr-3747.pdf">http://media.netapp.com/documents/tr-3747.pdf</a></p>
+
+<h4>Multipath configuration</h4>
+
+<p>A bad multipath configuration can lead to disconnections on the host side, Storage controller work harder
+Following recommendations:
+Ask the sysadmins to contact their vendor and review multipath configuration to support High availability</p>
+
+<p><em>How to verify HP-UX fibre channel configurations with multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1010434">https://kb.netapp.com/support/index?page=content&amp;id=1010434</a></p>
+
+<p><em>How to verify VMware ESX Fibre Channel configurations with Multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1011577">https://kb.netapp.com/support/index?page=content&amp;id=1011577</a></p>
+
+<p><em>How to verify Windows fibre channel configurations with multipathing I/O (MPIO)</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=1012650">https://kb.netapp.com/support/index?page=content&amp;id=1012650</a></p>
+
+<h4>Partnerpath configuration</h4>
+
+<p><li>Storage Controller work harder</li>
+<li>Performance issues on controller to reach the LUN thru the partner</li></p>
+
+<p><em>What do partner path configuration means?</em>
+<a href="https://kb.netapp.com/support/index?page=content&amp;id=3010111&amp;actp=LIST_POPULAR">https://kb.netapp.com/support/index?page=content&amp;id=3010111&amp;actp=LIST_POPULAR</a></p>
+
+<h4>Incorrect configuration or zoning</h4>
+
+<p>If needed, go ahead validate your zoning setup configuration with Netapp or SAN vendor
+<em>FiberChannel and iSCSI best practices</em>
+<a href="https://library.netapp.com/ecm/ecm_get_file/ECMM1280844">https://library.netapp.com/ecm/ecm_get_file/ECMM1280844</a></p>
+
+<h4>Exceeding the capacity limits</h4>
+
+<p>-Check Fabric Zoning and host vendors software if clustering or tunning on host side need to investigate further with sysadmins</p>
+
+<p>Please feel free to contribute with your experience and perspective, on how to address such kind of problems.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Francisco Moctezuma</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-27T12:15:00-06:00" pubdate data-updated="true">Nov 27<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/netapp/'>netapp</a>, <a class='category' href='/blog/categories/san/'>san</a>, <a class='category' href='/blog/categories/storage/'>storage</a>, <a class='category' href='/blog/categories/troubleshooting/'>troubleshooting</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/" data-via="yazpik" data-counturl="http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/11/25/docker/" title="Previous Post: Docker">&laquo; Docker</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/12/07/xacxamayo/" title="Next Post: Xacxamayo">Xacxamayo &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/11/16/bigdata-as-a-service/">BigData as a Service</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/14/the-modern-cloud/">The Modern Cloud</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/22/opencompute-re-architecting-the-datacenter/">OpenCompute Re-Architecting the DataCenter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/06/how-to-build-a-baby-crib/">How to Build a Baby Crib</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/02/ceph/">Ceph</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/yazpik">@yazpik</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yazpik',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/yazpik?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Francisco Moctezuma -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'yazpik';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/';
+        var disqus_url = 'http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

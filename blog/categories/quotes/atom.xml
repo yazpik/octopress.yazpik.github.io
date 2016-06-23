@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: quotes | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/quotes/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2016-06-22T19:48:07-05:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Lucy - a couple of quotes]]></title>
+    <link href="http://yazpik.github.io/blog/2014/11/25/lucy-quote/"/>
+    <updated>2014-11-25T11:41:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2014/11/25/lucy-quote</id>
+    <content type="html"><![CDATA[<p><img class="right" src="/images/Lucy<em>(2014_film)</em>poster.jpg" width="225" height="421" title="&lsquo;Lucy Poster&rsquo;" >
+A bit late but I had the opportunity to watch <a href="http://www.imdb.com/video/imdb/vi2092674329/" title="Lucy Trailer">&ldquo;Lucy&rdquo;</a>
+last weekend and I really loved it, I found it pretty interesting and it deserves a long post, I believe is pure science fiction, maybe some freaky science guys are going to hate it, But it really doesn&rsquo;t matters if it&rsquo;s scientific accurate in some topics as long as Scarlett Johansson do her thing, Anyways if you enjoy this genere judge by yourself and watch it.
+Here is a couple of my favourite quotes&hellip;</p>
+
+<p><blockquote><p>The dolphin did not invent the sonar — it developed it, naturally. And this is the crucial part of our philosophical reflection we have today: can we therefore conclude that humans are more concerned with &ldquo;having&rdquo; than &ldquo;being&rdquo;?</p><footer><strong>Professor Norman</strong> <cite>Played by Morgan Freeman in the Movie “Lucy”</cite></footer></blockquote></p>
+
+<!-- more -->
+
+
+<p>And this one applies to a couple of my friends&hellip;.</p>
+
+<p><blockquote><p>You know&hellip;if you think about the very nature of life. I mean, from the very beginning. The development of the first cell divided into two cells. This whole purpose of life has been to pass on what was learned. There is no higher purpose. So, if you&rsquo;re asking me what to do with all this knowledge you&rsquo;re accumulating, I&rsquo;d say, pass it on. Just like any simple cell going through time.</p><footer><strong>Professor Norman</strong> <cite>Played by Morgan Freeman in the Movie “Lucy”</cite></footer></blockquote></p>
+]]></content>
+  </entry>
+  
+</feed>
