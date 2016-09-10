@@ -2,70 +2,74 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://yazpik.github.io/blog/2014/11/18/a-new-beginning/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2014/11/25/lucy-quote/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2014/11/25/docker/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2014/12/07/xacxamayo/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/
         </loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2015/01/01/2015-challenge-accepted/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2015/03/02/ceph/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2015/03/06/how-to-build-a-baby-crib/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/
         </loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2015/05/14/the-modern-cloud/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye/</loc>
+        <lastmod>2016-09-09T20:48:49-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/about/about/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/blog/archives/blog/archives/</loc>
-        <lastmod>2016-06-22T19:42:59-05:00</lastmod>
+        <lastmod>2016-09-09T20:48:49-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/</loc>
-        <lastmod>2016-06-22T19:43:00-05:00</lastmod>
+        <lastmod>2016-09-09T20:48:49-05:00</lastmod>
     </url>
     <url>
         <loc>http://yazpik.github.io/robots.txt</loc>
-        <lastmod>2016-06-22T19:43:00-05:00</lastmod>
+        <lastmod>2016-07-06T20:12:43-05:00</lastmod>
     </url>
 </urlset>
