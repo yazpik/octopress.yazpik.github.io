@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How I Learn OpenStack by failing - Life of a Sysadmin</title>
+  <meta name="author" content="Francisco Moctezuma">
+
+  
+  <meta name="description" content="Desmotivation of Innovation Last night having a beer with my friend Arturo Ochoa we were talking about what really motivates you to innovate and/or &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Life of a Sysadmin" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-56875014-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Life of a Sysadmin</a></h1>
+  
+    <h2>Blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:yazpik.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How I Learn OpenStack by Failing</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-09-09T21:21:00-05:00" pubdate data-updated="true">Sep 9<span>th</span>, 2016</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3><strong><em> Desmotivation of Innovation </em></strong></h3>
+
+<p><img src="/images/lops/cloud-domination.jpg" width="650" height="550" title="'Our idea of Cloud computing back in 2014'" ></p>
+
+<p>Last night having a beer with my friend <a href="http://arturoochoa.wordpress.com">Arturo Ochoa</a> we were talking about what really motivates you to innovate and/or create something that help fixing problems.
+We were not sure what is all about,
+but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
+But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
+We tent to underestimate our efforts in a really bad way, and maybe that stop us going to the next level&hellip;</p>
+
+<p>I&rsquo;d like to share my story, how I learnt by doing and I&rsquo;ll say trying to simplifying things and solving existing problems using OpenStack as a platform.</p>
+
+<p>-Back in 2013 on my former employer I had plenty of time due I got some storage skills on my position, as a Sr Storage Engineer at that time being. Not too much automated stuff but enough to give me time to learn something else.
+Bash, Perl, ssh-keys and one big xls file involved here :)</p>
+
+<p>-I started testing Openstack (Grizzly) and Eucaliptus on my own laptop but didn&rsquo;t work at all.</p>
+
+<p>-I heard some guys from the same company but in Slovakia, were trying to connect Netapp as backend storage on an OpenStack test cloud. &ndash; I offered my help but I got rejected.</p>
+
+<p>-So I continued on my self learning pace.</p>
+
+<p>-One of my previous managers wanted a solution to store files on the internal network, I offered him some help and he
+gave me 3 very old servers and one disk array. Just for the records &ndash; <strong><em>never finished what he really wanted.</em></strong></p>
+
+<p>-Managed to build one server from 3 I got, a very old Proliant G4 with 12GB of RAM and 2 CPUs at 2.4GHz, and a Disk array with 5 failed disks of 12, and suddenly <strong>Nazgul01</strong> was born.</p>
+
+<p><img src="/images/lops/lab02.jpg" width="350" height="550" title="'lab'" ></p>
+
+<p><strong>-I felt like I have something here</strong></p>
+
+<p>-Got access to the electronic Junk and trash, hardware listed to be donated by my previous employer.</p>
+
+<p>-In the meantime annoyed my co-workers with really noise old and dusty hardware from the cracks.</p>
+
+<p>-For some reason big companies tent to underestimate a &ldquo;barrio bajo&rdquo; guy with roedor skills, to find usable hardware
+So one idiot from networking team, throw to the trash a Cisco Catalyst switch, I took it, test it, configured and failed configuring it like ten times, the idiot was not longer an idiot, and I realized something was wrong with the switch. my intern number 2 managed to rebuilt the OS for me, and it worked very nicely supporting jumbo frames&hellip; so intern wins, and I was just another idiot.</p>
+
+<p>-Also from the trash, found 4xG5 Proliants, lead to built 3 &ldquo;<em>decents</em>&rdquo; servers using the parts of those 4.</p>
+
+<p><strong>-I felt, invincible.. and dusty</strong></p>
+
+<p>-Realized I needed some extra help, my Linux skills were not as good as I thought anymore, due I spent a lot of time playing with a SAN appliance.
+So I sent an email to my friend <a href="https://karkul.github.io">Ramon Morales</a>, if he would like to join me, and I got an email from him five minutes later with a &ldquo; <strong>let&rsquo;s fucking do it!</strong> &rdquo;  or something like that.</p>
+
+<p><img src="/images/lops/lab03.jpg" width="350" height="550" title="'lab'" ></p>
+
+<p>-We spent several days trying to Install Openstack in 3 nodes not even configure it.
+One month mark passed and we started to think this Openstack thing was a myth because we failed and failed
+and&hellip;&hellip;.failed.</p>
+
+<p><strong>So we started to read manuals&hellip;.</strong></p>
+
+<p>-Like two months later, we were able to spin up our first instance running CirrOS.
+and <strong>Booooom</strong> an inovation explosion just happened.</p>
+
+<p><strong>-We felt unstopable</strong></p>
+
+<p>We can even were able to launch virtual instances from a mobile phone, using a VPN, see images below.</p>
+
+<p><img src="/images/lops/cloudportal_movil.png" width="650" height="400" title="'lab'" ></p>
+
+<p><img src="/images/lops/cloudportal_movil2.png" width="650" height="450" title="'lab'" ></p>
+
+<p>-We have had a lot of ideas, we learnt as we use it, that platform was awesome&hellip; with a lot of patches and networking hacks but awesome,
+none of us managed vmware previously, also we didn&rsquo;t understand the disadvantages against vmware at that time.</p>
+
+<p>-I attended a meeting with the Innovation department, excited and wanted to show them our little monster.</p>
+
+<p>When a big company has a solution for years, and sell that solution in millions of dollars,
+and always have been successful, everything is running flawlessly..
+<strong>Why other platform that was buggy, without support, complex, and SAP is not certifiying your crap could have place in this company?</strong></p>
+
+<p>Basically that was the output from that meeting&hellip;</p>
+
+<p>-You can be really demoralized after a meeting like that, but I&rsquo;m necio as fuck&hellip;
+At the end of October 2014, We ended up releasing our very first buggy version of OpenStack based on Juno.  <strong>CATRINA</strong> was born..</p>
+
+<p>We offered some instances for Trial &amp; Demo, -Hey free virtual instances with no internet access for free!
+None, nadie, nobody&hellip;</p>
+
+<p>-Some sort of support
+At least one guy of the management team saw something on our idea, he supported us with 4 more servers, that we can use our little monster as compute nodes.
+then this guy joined SAP team, and suggested them to use our platform for learning SAP porpuses.
+We started serving cloud services for SAP, with the power of OpenStack, very easy and fast, performance was really good,
+nobody complained they never thought their instances were running on a test platform managed from some linux hippies.
+We ran SAP Bussiness Object, SAP Solman, SAP W-something, and belive or not <strong>SAP HANA.</strong></p>
+
+<p>Our next releases were</p>
+
+<ul>
+<li><p><strong>TYRION</strong> &ndash; A clever version with automated bootstraping, and PXE.</p></li>
+<li><p><strong>MUTANT</strong> Using CEPH with a crappy disk array built from the junk as well, but it was running great.</p></li>
+</ul>
+
+
+<p>And we started to make some noise back then,
+We got a meeting with some of the high level managers, we showed them our monster, and&hellip; <strong>we didn&rsquo;t meet their expectactions by far.</strong></p>
+
+<p>They were thinking on an enhanced version of VMware, and we failed to explained them in a non technical way why we think this technology could help the company saving money and time.</p>
+
+<p>They said we need a TCO, Bussines Cases and so on, &hellip;again believe or not, we built a TCO and a BC with our poor financial skills, even a freaking promotional video.
+<img src="/images/lops/produccion1.jpg" width="500" height="500" title="'Video'" ></p>
+
+<p><img src="/images/lops/produccion2.jpg" width="500" height="500" title="'Video'" ></p>
+
+<p>But for some reason it wasn&rsquo;t not enough, here are the results</p>
+
+<div class="embed-video-container"><iframe src="//www.youtube.com/embed/SF5rz2rdBLs" allowfullscreen></iframe></div>
+
+
+<h4>OpenStack Summit in Vancouver 2015 &ndash; Cloud or die.</h4>
+
+<p>So we took our savings, booked the cheapest hotel we found in Vancouver downtown, bought flight tickets, got Canadian VISA approved, and boooom we were in Canada with no support from our employer.</p>
+
+<p>We learnt a lot about new concepts, new technologies, we met interesting and smart people, we had fun, and even <strong>Ramon got the OpenStack certification by Redhat</strong>, I tried but failed.. again  :) , just fun so we realized after that trip, this is the new thing, not Openstack but Cloud and containers revolution.</p>
+
+<p><img src="/images/lops/vancouver2.jpg" width="600" height="600" title="'Vancouver'" ></p>
+
+<h5>Spread the word!</h5>
+
+<p>We were invited to gave some speeches on universities, ITESM, BUAP, Universidad Veracruzana, and we organized a SysAdminDay in our company.
+By the end of 2015 one year later of Catrina creation,
+We were considered by the management to attend the <strong>OPENTELEKOM Cloud</strong> technical talk in Budapest, Hungary. <strong>(we no longer use our own money to pay for beers on that trip)</strong> ,
+OTC is a Deustche Telekom initiative to build a public cloud based on OpenStack to offer in the European Market.</p>
+
+<p><img src="/images/lops/frankfurt3.jpg" width="500" height="500" title="'Frankfurt'" ></p>
+
+<p>Also taking advantage of the long trip we had the opportunity to show a demo in Frankfurt, Germany, to some of the Senior Cloud engineers, pretty much how we managed to run OpenStack as an Enterprise private cloud, supporting all SAP toys, SAP HANA, Big Data with Hadoop, our progress with OpenStack + VMWare, and Docker.
+we were able to launch a Hadoop cluster in just a few minutes, as I described on a previous post <a href="https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/">Big Data as a Service</a> , that was by the end of the 2015.</p>
+
+<p><img src="/images/lops/frankfurt.jpg" width="500" height="500" title="'Frankfurt'" ></p>
+
+<p>We went back to Mexico with a good feedback from Germany and Hungary, and we were proud of what we have achieved so far, but not enough for us.</p>
+
+<p>We always asked ourselfs</p>
+
+<p><strong>Why as a company, as a country, we need to wait the innovation from USA, Europe or Asia? and not step up first, even when you have the resources and the customers&hellip;.</strong></p>
+
+<p>So this OpenStack lab built from the junk, in less than two years took us to three different countries and a new continent for us.
+We were wrong in so many levels, and failed to explain to the management our vision, perhaps.</p>
+
+<p>The only thing we were not wrong, was about to learn new things and have fun by doing it, push our own limits, and do not underestimate what we built, at the end, no one else was doing it on our small environment.</p>
+
+<p><img src="/images/lops/lab04.png" width="650" height="650" title="'Lab04'" ></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Francisco Moctezuma</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-09-09T21:21:00-05:00" pubdate data-updated="true">Sep 9<span>th</span>, 2016</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/" data-via="yazpik" data-counturl="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/06/22/its-hard-to-say-goodbye/" title="Previous Post: It's hard to say goodbye...">&laquo; It's hard to say goodbye...</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learn OpenStack by Failing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/22/its-hard-to-say-goodbye/">It's Hard to Say Goodbye...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/16/bigdata-as-a-service/">BigData as a Service</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/05/14/the-modern-cloud/">The Modern Cloud</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/22/opencompute-re-architecting-the-datacenter/">OpenCompute Re-Architecting the DataCenter</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/yazpik">@yazpik</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yazpik',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/yazpik?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - Francisco Moctezuma -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'yazpik';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/';
+        var disqus_url = 'http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
