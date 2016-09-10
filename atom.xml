@@ -4,7 +4,7 @@
   <title><![CDATA[Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-09-10T01:43:47-05:00</updated>
+  <updated>2016-09-10T01:54:41-05:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -143,7 +143,7 @@ By the end of 2015 one year later of Catrina creation,
 We were considered by the management to attend the <strong>OPENTELEKOM Cloud</strong> technical talk in Budapest, Hungary. <strong>(we no longer use our own money to pay for beers on that trip)</strong> ,
 OTC is a Deustche Telekom initiative to build a public cloud based on OpenStack to offer in the European Market.</p>
 
-<p><img src="http://yazpik.github.io/images/lops/frankfurt3.jpg" width="500" height="500" title="'Frankfurt'" ></p>
+<p><img src="http://yazpik.github.io/images/lops/frankfurt3.jpg" width="650" height="650" title="'Frankfurt'" ></p>
 
 <p>Also taking advantage of the long trip we had the opportunity to show a demo in Frankfurt, Germany, to some of the Senior Cloud engineers, pretty much how we managed to run OpenStack as an Enterprise private cloud, supporting all SAP toys, SAP HANA, Big Data with Hadoop, our progress with OpenStack + VMWare, and Docker.
 we were able to launch a Hadoop cluster in just a few minutes, as I described on a previous post <a href="https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/">Big Data as a Service</a> , that was by the end of the 2015.</p>
@@ -523,7 +523,7 @@ I&rsquo;m deeply thankful to had the oportunity to work on this and build someth
 <p>What can I say ? , it really feels great.</p>
 
 <p>If you want to check out the Woodworkings plans and/or the cutting list used, please feel free to shoot me an email
-<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#121;&#97;&#x7a;&#112;&#x69;&#107;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#x79;&#x61;&#122;&#x70;&#x69;&#x6b;&#x40;&#103;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;</a></p>
+<a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#x3a;&#x79;&#x61;&#x7a;&#x70;&#105;&#107;&#64;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#109;">&#x79;&#97;&#x7a;&#x70;&#105;&#107;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;</a></p>
 ]]></content>
   </entry>
   
