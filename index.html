@@ -9,7 +9,7 @@
   <meta name="author" content="Francisco Moctezuma">
 
   
-  <meta name="description" content="Demotivation of Innovation Last night having a beer with my friend Arturo Ochoa we were talking about what really motivates you to innovate and/or &hellip;">
+  <meta name="description" content="Kubernetes &ldquo;Fly my Pretties fly! &hellip; continue the research&rdquo; When I recently started to work with Docker and Kubernetes, this &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,94 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/11/23/getting-started-with-kubernetes/">Getting Started With Kubernetes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-11-23T05:15:00-06:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2016</time>
+        
+         | <a href="/blog/2016/11/23/getting-started-with-kubernetes/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3><strong><em> Kubernetes  &ldquo;Fly my Pretties fly! &hellip; continue the research&rdquo;  </em></strong></h3>
+
+<p><img class="center" src="/images/burns01.jpg" width="500" height="500" title="'Fly my pretties'" ></p>
+
+<p>When I recently started to work with Docker and Kubernetes, this <a href="https://www.youtube.com/watch?v=m-H8PuweRVA">Simposon&rsquo;s Episode</a>   came to my mind,
+Is very similar to me in the very beginning trying to deploy kubernetes.</p>
+
+<p>I have tried different ways to use it and test it out,
+I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>
+
+<p>The problem with this projects is that I don&rsquo;t have the compute resources on my personal laptop to have an Openstack deployment and then kubernetes, so I started dig in a bit further on the way to have a kubernetes cluster up and running.</p>
+
+<p>Found this guide from <a href="https://twitter.com/kelseyhightower">Kelsey Hightower</a>, <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;kubernetes the hardway&rdquo;</a> this helped me a lot to understand more what is all about all the
+kubernetes components, the guide is based on GCE (Google Compute Engine), I did the installation on a different cloud provider, it&rsquo;s challenging but worked well for me.</p>
+
+<p>Eventually I had to delete my instances running on the public cloud by obvious reasons, and I found another gnarly way to run kubernetes very easy, using
+<a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-vagrant.html">Vagrant and CoreOS</a>, I have 16GB of RAM so it works great, so far running on a 4 nodes deployment, taking half of my compute power,
+but still great, it already comes with heapster, kubedns, kube-dashboard, so this is a great way to learn how to manage a kubernetes cluster.</p>
+
+<p>Also there is the option released on kubernetes 1.4 is <a href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>
+I haven&rsquo;t tested it out yet, but I&rsquo;ve heard is a good option to start on this kubernetes world.</p>
+
+<h3>So you have kubernetes up and running.. now what?</h3>
+
+<p>And we are back again with &ldquo;Mr. Burns fly my pretties&rdquo; mood, so just continue the research..</p>
+
+<p>Is a good idea to have a look at this video from <a href="https://twitter.com/brendandburns">Brendan Burns</a> one of the kubernetes creators/founders, he is a former Google employee, now Microsoft owns his soul, he is a brilliant guy and I personal consider this is one of the best kubernetes technical explanations on internet.
+I think is easier to understand the technical concepts having already a kubernetes deploy up and running and play around a bit,
+that is why looks like I&rsquo;m starting backwards, but believe me is better to start in that way.</p>
+
+<div class="embed-video-container"><iframe src="//www.youtube.com/embed/WwBdNXt6wO4" allowfullscreen></iframe></div>
+
+
+<p>I&rsquo;d like to quote/highlight some of his comments that are really valuable on this talk, among others.</p>
+
+<blockquote><p>&ldquo;kubernetes is about decouple, decouple infrastructure&rdquo;</p>
+
+<p>&ldquo;kubernetes is really about trying to provide a cluster a decoupling between you and the hardware ops and the kernel ops below you and the app ops you providing on top.
+This also means is that your app containers view the world essentially as this sea of compute, and kubernetes means it takes any machine that you have available to use
+they&rsquo;re entirely homogeneous every single machine you create in your fleet looks and feel exactly the same and they are indistinguishable so if one of them dies it
+doesn&rsquo;t really matter all your application sees is there slightly less compute power available in the pool, is a really powerful abstraction it means I don&rsquo;t have to
+worry about whats&rsquo;s going on in the OS, I don&rsquo;t have to ask someone to go and install a particular version of an OS, or a particular version of a library , and I do not have
+to worry that somebody else is asking for an upgrade to a library that I also depend on, this decoupling of the application from the lower level compute on which it runs really
+enables both the app developers and the people who run the machines, to live easier happier more decouple lives.&rdquo;</p>
+
+<p>&ldquo;kubernetes is really intended to be an online system a control system that is responsible not just for creating the world but actually maintaining and healing the world,
+so again, if something goes wrong on the middle of the night, kubernetes can come along and actually fix and you never even get paged, that is a really powerful thing for developers
+and sysadmins as well.&rdquo;</p></blockquote>
+
+<p>Have fun playing with kubernetes, I have documented some of my progress but is going to be a separate post&hellip;.
+keep an eye here more to come.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -897,67 +985,6 @@ machine ESXi login root password s3cretitos
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/07/xacxamayo/">Xacxamayo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-07T18:42:00-06:00" pubdate data-updated="true">Dec 7<span>th</span>, 2014</time>
-        
-         | <a href="/blog/2014/12/07/xacxamayo/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>Xacxamayo Episode 2</h4>
-
-<p>I recently posted on my fb page about a visit to an small-remote town called Xacxamayo near to Puebla city,
-Basically I was a volunteer for 3 saturdays,
-I wanted to teach about other existing options on compute software, and also wanted to show them there is a world outside commercial and common programs, One of this options called Linux is currently helping in science, medicine, education and even in movies and games to not mention alot of different daylife stuff, I believe all of the kids were excited about the way I made my point.  :)</p>
-
-<p>While driving with the guy in charge to coordinate efforts and make things happen <a href="https://twitter.com/Junkiezap" title="Azael Soriano">BalamEk</a> an interesting idea came up &hellip;..</p>
-
-<h5>&ldquo;We are going to spend 3 weekends with this kids, why we do not try something different?&rdquo;</h5>
-
-<p>The main idea was to get the attention of this kids at the same time participate as a team in off-school hours, and also &ldquo;we&rdquo; as volunteers will be able to understand more about their community.</p>
-
-<h3>The brillant idea&hellip;..</h3>
-
-<p>We bought four disposable cameras (we were a bit reduced on budget) the ones you can get on a convenience store, not really high end cameras, but it will help us to spread the kids in different teams, they will be able to work together and show their community to the world.  :)</p>
-
-<p><a href="https://twitter.com/Rogfloyd" title="Roger Romero">Roger</a> gave them a 7 minute course introduction to the whole new world of photography, showing them how to use the cameras, they were pretty excited to play for a week with the &ldquo;new toys&rdquo;.</p>
-
-<p><img src="/images/camaras.jpg" width="440" height="280" title="'Disposable cameras'" ></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/07/xacxamayo/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2">&larr; Older</a>
@@ -973,6 +1000,10 @@ I wanted to teach about other existing options on compute software, and also wan
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/11/23/getting-started-with-kubernetes/">Getting Started With Kubernetes</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learned OpenStack by Failing</a>
       </li>
     
@@ -986,10 +1017,6 @@ I wanted to teach about other existing options on compute software, and also wan
     
       <li class="post">
         <a href="/blog/2015/05/14/the-modern-cloud/">The Modern Cloud</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/03/22/opencompute-re-architecting-the-datacenter/">OpenCompute Re-Architecting the DataCenter</a>
       </li>
     
   </ul>
