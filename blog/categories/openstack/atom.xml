@@ -4,7 +4,7 @@
   <title><![CDATA[Category: openstack | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:28:01-06:00</updated>
+  <updated>2016-11-26T15:36:44-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -12,6 +12,161 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How I Learned OpenStack by failing]]></title>
+    <link href="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
+    <updated>2016-09-09T21:21:00-05:00</updated>
+    <id>http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
+    <content type="html"><![CDATA[<h3><strong><em> Demotivation of Innovation </em></strong></h3>
+
+<p><img src="/images/lops/cloud-domination.jpg" width="650" height="550" title="&lsquo;Our idea of Cloud computing back in 2014&rsquo;" ></p>
+
+<p>Last night having a beer with my friend <a href="http://arturoochoa.wordpress.com">Arturo Ochoa</a> we were talking about what really motivates you to innovate and/or create something that help fixing problems.
+We were not sure what is all about,
+but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
+But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
+We tent to underestimate our efforts in a really bad way, and maybe that stop us going to the next level&hellip;</p>
+
+<p>I&rsquo;d like to share my story, how I learnt by doing and I&rsquo;ll say trying to simplifying things and solving existing problems using OpenStack as a platform.</p>
+
+<p>-Back in 2013 on my former employer I had plenty of time due I got some storage skills on my position, as a Sr Storage Engineer at that time being. Not too much automated stuff but enough to give me time to learn something else.
+Bash, Perl, ssh-keys and one big xls file involved here :)</p>
+
+<p>-I started testing Openstack (Grizzly) and Eucaliptus on my own laptop but didn&rsquo;t work at all.</p>
+
+<p>-I heard some guys from the same company but in Slovakia, were trying to connect Netapp as backend storage on an OpenStack test cloud. &ndash; I offered my help but I got rejected.</p>
+
+<p>-So I continued on my self learning pace.</p>
+
+<p>-One of my previous managers wanted a solution to store files on the internal network, I offered him some help and he
+gave me 3 very old servers and one disk array. Just for the records &ndash; <strong><em>never finished what he really wanted.</em></strong></p>
+
+<p>-Managed to build one server from 3 I got, a very old Proliant G4 with 12GB of RAM and 2 CPUs at 2.4GHz, and a Disk array with 5 failed disks of 12, and suddenly <strong>Nazgul01</strong> was born.</p>
+
+<p><img src="/images/lops/lab02.jpg" width="350" height="550" title="&lsquo;lab&rsquo;" ></p>
+
+<p><strong>-I felt like I have something here</strong></p>
+
+<!-- more -->
+
+
+<p>-Got access to the electronic Junk and trash, hardware listed to be donated by my previous employer.</p>
+
+<p>-In the meantime annoyed my co-workers with really noise old and dusty hardware from the cracks.</p>
+
+<p>-For some reason big companies tent to underestimate a &ldquo;barrio bajo&rdquo; guy with roedor skills, to find usable hardware
+So one idiot from networking team, throw to the trash a Cisco Catalyst switch, I took it, test it, configured and failed configuring it like ten times, the idiot was not longer an idiot, and I realized something was wrong with the switch. my intern number 2 managed to rebuilt the OS for me, and it worked very nicely supporting jumbo frames&hellip; so intern wins, and I was just another idiot.</p>
+
+<p>-Also from the trash, found 4xG5 Proliants, lead to built 3 &ldquo;<em>decents</em>&rdquo; servers using the parts of those 4.</p>
+
+<p><strong>-I felt, invincible.. and dusty</strong></p>
+
+<p>-Realized I needed some extra help, my Linux skills were not as good as I thought anymore, due I spent a lot of time playing with a SAN appliance.
+So I sent an email to my friend <a href="https://karkul.github.io">Ramon Morales</a>, if he would like to join me, and I got an email from him five minutes later with a &ldquo; <strong>let&rsquo;s fucking do it!</strong> &rdquo;  or something like that.</p>
+
+<p><img src="/images/lops/lab03.jpg" width="350" height="550" title="&lsquo;lab&rsquo;" ></p>
+
+<p>-We spent several days trying to Install Openstack in 3 nodes not even configure it.
+One month mark passed and we started to think this Openstack thing was a myth because we failed and failed
+and&hellip;&hellip;.failed.</p>
+
+<p><strong>So we started to read manuals&hellip;.</strong></p>
+
+<p>-Like two months later, we were able to spin up our first instance running CirrOS.
+and <strong>Booooom</strong> an inovation explosion just happened.</p>
+
+<p><strong>-We felt unstopable</strong></p>
+
+<p>We can even were able to launch virtual instances from a mobile phone, using a VPN, see images below.</p>
+
+<p><img src="/images/lops/cloudportal_movil.png" width="650" height="400" title="&lsquo;lab&rsquo;" ></p>
+
+<p><img src="/images/lops/cloudportal_movil2.png" width="650" height="450" title="&lsquo;lab&rsquo;" ></p>
+
+<p>-We have had a lot of ideas, we learnt as we use it, that platform was awesome&hellip; with a lot of patches and networking hacks but awesome,
+none of us managed vmware previously, also we didn&rsquo;t understand the disadvantages against vmware at that time.</p>
+
+<p>-I attended a meeting with the Innovation department, excited and wanted to show them our little monster.</p>
+
+<p>When a big company has a solution for years, and sell that solution in millions of dollars,
+and always have been successful, everything is running flawlessly..
+<strong>Why other platform that was buggy, without support, complex, and SAP is not certifiying your crap could have place in this company?</strong></p>
+
+<p>Basically that was the output from that meeting&hellip;</p>
+
+<p>-You can be really demoralized after a meeting like that, but sometimes I&rsquo;m stubborn as fuck&hellip;
+At the end of October 2014, We ended up releasing our very first buggy version of OpenStack based on Juno.  <strong>CATRINA</strong> was born..</p>
+
+<p>We offered some instances for Trial &amp; Demo, -Hey free virtual instances with no internet access for free!
+None, nadie, nobody&hellip;</p>
+
+<p><strong>-Some sort of support</strong></p>
+
+<p>A young Entrepreneur &ndash;<a href="https://twitter.com/jarocho_1">Francisco Fuentes</a> from the management, saw something on our idea, and supported us with four more servers, that we can use on our little monster as compute nodes,
+Then Fuentes joined SAP team as the new manager, and suggested them to use our platform for learning SAP porpuses.
+We started serving cloud services for SAP, with the power of OpenStack, very easy and fast, performance was really good,
+nobody complained they never thought their instances were running on a test platform managed from some linux hippies.
+We ran SAP Business Object, SAP Solman, SAP W-something, and believe or not <strong>SAP HANA.</strong></p>
+
+<p>Our next releases were</p>
+
+<ul>
+<li><p><strong>TYRION</strong> &ndash; A clever version with automated bootstrapping, and PXE.</p></li>
+<li><p><strong>MUTANT</strong> Using CEPH with a crappy disk array built from the junk as well, but it was running great.</p></li>
+</ul>
+
+
+<p>And we started to make some noise back then,
+We got a meeting with some of the high level managers, we showed them our monster, and&hellip; <strong>we didn&rsquo;t meet their expectactions by far.</strong></p>
+
+<p>They were thinking on an enhanced version of VMware, and we failed to explained them in a non technical way why we think this technology could help the company saving money and time.</p>
+
+<p>They said we need a TCO, Bussines Cases and so on, &hellip;again believe or not, we built a TCO and a BC with our poor financial skills, even a freaking promotional video.
+<img src="/images/lops/produccion1.jpg" width="500" height="500" title="&lsquo;Video&rsquo;" ></p>
+
+<p><img src="/images/lops/produccion2.jpg" width="500" height="500" title="&lsquo;Video&rsquo;" ></p>
+
+<p>But for some reason it wasn&rsquo;t not enough, here are the results</p>
+
+<p><div class="embed-video-container"><iframe src="//www.youtube.com/embed/SF5rz2rdBLs" allowfullscreen></iframe></div></p>
+
+<h4>OpenStack Summit in Vancouver 2015 &ndash; Cloud or die.</h4>
+
+<p>So we took our savings, booked the cheapest hotel we found in Vancouver downtown, bought flight tickets, got Canadian VISA approved, and boooom we were in Canada with no support from our employer.</p>
+
+<p>We learnt a lot about new concepts, new technologies, we met interesting and smart people, we had fun, and even <strong>Ramon got the OpenStack certification by Redhat</strong>, I tried but failed.. again  :) , just fun so we realized after that trip, this is the new thing, not Openstack but Cloud and containers revolution.</p>
+
+<p><img src="/images/lops/vancouver2.jpg" width="600" height="600" title="&lsquo;Vancouver&rsquo;" ></p>
+
+<h5>Spread the word!</h5>
+
+<p>We were invited to gave some speeches on universities, ITESM, BUAP, Universidad Veracruzana, and we organized a SysAdminDay in our company.
+By the end of 2015 one year later of Catrina creation,
+We were considered by the management to attend the <strong>OPENTELEKOM Cloud</strong> technical talk in Budapest, Hungary. <strong>(we no longer use our own money to pay for beers on that trip)</strong> ,
+OTC is a Deustche Telekom initiative to build a public cloud based on OpenStack to offer in the European Market.</p>
+
+<p><img src="/images/lops/frankfurt3.jpg" width="650" height="650" title="&lsquo;Frankfurt&rsquo;" ></p>
+
+<p>Also taking advantage of the long trip we had the opportunity to show a demo in Frankfurt, Germany, to some of the Senior Cloud engineers, pretty much how we managed to run OpenStack as an Enterprise private cloud, supporting all SAP toys, SAP HANA, Big Data with Hadoop, our progress with OpenStack + VMWare, and Docker.
+we were able to launch a Hadoop cluster in just a few minutes, as I described on a previous post <a href="https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/">Big Data as a Service</a> , that was by the end of the 2015.</p>
+
+<p><img src="/images/lops/frankfurt.jpg" width="500" height="500" title="&lsquo;Frankfurt&rsquo;" ></p>
+
+<p>We went back to Mexico with a good feedback from Germany and Hungary, and we were proud of what we have achieved so far, but not enough for us.</p>
+
+<p>We always asked ourselfs</p>
+
+<p><strong>Why as a company, as a country, we need to wait the innovation from USA, Europe or Asia? and not step up first, even when you have the resources and the customers&hellip;.</strong></p>
+
+<p>So this OpenStack lab built from the junk, in less than two years took us to three different countries and a new continent for us.
+We were wrong in so many levels, and failed to explain to the management our vision, perhaps.</p>
+
+<p>The only thing we were not wrong, was about to learn new things and have fun by doing it, push our own limits, and do not underestimate what we built, at the end, no one else was doing it on our small environment.</p>
+
+<p><img src="/images/lops/lab04.png" width="650" height="650" title="&lsquo;Lab04&rsquo;" ></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[BigData As A Service]]></title>

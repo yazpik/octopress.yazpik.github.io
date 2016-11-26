@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: kube-dashboard | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/kube-dashboard/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2016-11-26T15:36:44-06:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Kubernetes management dashboard]]></title>
+    <link href="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/"/>
+    <updated>2016-11-25T19:50:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards</id>
+    <content type="html"><![CDATA[<h4>Yes there is a kubernetes dashboard.</h4>
+
+<p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
+
+<p>There is a lot of documentation out there on how to reach the dashboard but actually didn&rsquo;t work for me, so I find this solution by myself, and I&rsquo;m not really sure if that is the right way, but it works.
+Just need to find your kubernetes-dashboard pod on the kube-system namespace and do a port forwarding to 9090 port.</p>
+
+<p>Get the kubernetes-dashboard pod name.
+<code>bash
+$ kubectl get pods -l k8s-app=kubernetes-dashboard --namespace=kube-system
+</code>
+Having a closer look to the kubernetes-dashboard pod to verify what port is actually listening, I use &ldquo;describe&rdquo; command which is always helpful
+<code>bash
+$ kubectl get describe pods  {kube-dashboard-podname}  --namespace=kube-system
+</code>
+Put attention to line #18 the Pod is using/listening on port 9090</p>
+
+<script src="https://gist.github.com/yazpik/b00ffa49dbbb52c29b2976307ac3b870.js"></script>
+
+
+<p>When you get the pod name just do port-fwd</p>
+
+<p><code>bash
+$ kubectl port-fwd {kube-dashboard-podname} 9090:9090 --namespace=kube-system
+</code>
+Here is an small asccinema recording on how I launch the dashboard.</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/94128.js" id="asciicast-94128" async></script>
+
+
+<p>And then you will have a clean and descriptive kubernetes dashboard running on <a href="http://localhost:9090">http://localhost:9090</a></p>
+
+<p><img class="<a" src="href="https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png">https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png</a>" width="750" height="750" title="&lsquo;kube-dashboard01&rsquo;" ></p>
+
+<p><img class="<a" src="href="https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png">https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png</a>" width="750" height="750" title="&lsquo;kube-dashboard02&rsquo;" ></p>
+
+<p>Have fun out there.</p>
+]]></content>
+  </entry>
+  
+</feed>

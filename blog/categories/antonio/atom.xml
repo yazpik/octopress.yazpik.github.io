@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: personal | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/personal/atom.xml" rel="self"/>
+  <title><![CDATA[Category: antonio | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/antonio/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
   <updated>2016-11-26T15:36:44-06:00</updated>
   <id>http://yazpik.github.io/</id>

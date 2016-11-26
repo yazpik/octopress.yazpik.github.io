@@ -4,7 +4,7 @@
   <title><![CDATA[Category: docker | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/docker/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:28:01-06:00</updated>
+  <updated>2016-11-26T15:36:44-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kubernetes management dashboard]]></title>
+    <link href="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/"/>
+    <updated>2016-11-25T19:50:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards</id>
+    <content type="html"><![CDATA[<h4>Yes there is a kubernetes dashboard.</h4>
+
+<p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
+
+<p>There is a lot of documentation out there on how to reach the dashboard but actually didn&rsquo;t work for me, so I find this solution by myself, and I&rsquo;m not really sure if that is the right way, but it works.
+Just need to find your kubernetes-dashboard pod on the kube-system namespace and do a port forwarding to 9090 port.</p>
+
+<p>Get the kubernetes-dashboard pod name.
+<code>bash
+$ kubectl get pods -l k8s-app=kubernetes-dashboard --namespace=kube-system
+</code>
+Having a closer look to the kubernetes-dashboard pod to verify what port is actually listening, I use &ldquo;describe&rdquo; command which is always helpful
+<code>bash
+$ kubectl get describe pods  {kube-dashboard-podname}  --namespace=kube-system
+</code>
+Put attention to line #18 the Pod is using/listening on port 9090</p>
+
+<script src="https://gist.github.com/yazpik/b00ffa49dbbb52c29b2976307ac3b870.js"></script>
+
+
+<p>When you get the pod name just do port-fwd</p>
+
+<p><code>bash
+$ kubectl port-fwd {kube-dashboard-podname} 9090:9090 --namespace=kube-system
+</code>
+Here is an small asccinema recording on how I launch the dashboard.</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/94128.js" id="asciicast-94128" async></script>
+
+
+<p>And then you will have a clean and descriptive kubernetes dashboard running on <a href="http://localhost:9090">http://localhost:9090</a></p>
+
+<p><img class="<a" src="href="https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png">https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png</a>" width="750" height="750" title="&lsquo;kube-dashboard01&rsquo;" ></p>
+
+<p><img class="<a" src="href="https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png">https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png</a>" width="750" height="750" title="&lsquo;kube-dashboard02&rsquo;" ></p>
+
+<p>Have fun out there.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Getting started with Kubernetes]]></title>
+    <link href="http://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes/"/>
+    <updated>2016-11-23T05:15:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes</id>
+    <content type="html"><![CDATA[<h3><strong><em> Kubernetes  &ldquo;Fly my Pretties fly! &hellip; continue the research&rdquo;  </em></strong></h3>
+
+<p><img class="center" src="/images/burns01.jpg" width="500" height="500" title="&lsquo;Fly my pretties&rsquo;" ></p>
+
+<p>When I recently started to work with Docker and Kubernetes, this <a href="https://www.youtube.com/watch?v=m-H8PuweRVA">Simpson&rsquo;s Episode</a>   came to my mind,
+Is very similar to me in the very beginning trying to deploy kubernetes.</p>
+
+<p>I have tried different ways to use it and test it out,
+I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>
+
+<p>The problem with this projects is that I don&rsquo;t have the compute resources on my personal laptop to have an Openstack deployment and then kubernetes, so I started dig in a bit further on the way to have a kubernetes cluster up and running.</p>
+
+<p>Found this guide from <a href="https://twitter.com/kelseyhightower">Kelsey Hightower</a>, <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;kubernetes the hardway&rdquo;</a> this helped me a lot to understand more what is all about all the
+kubernetes components, the guide is based on GCE (Google Compute Engine), I did the installation on a different cloud provider, it&rsquo;s challenging but worked well for me.</p>
+
+<p>Eventually I had to delete my instances running on the public cloud by obvious reasons, and I found another gnarly way to run kubernetes very easy, using
+<a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-vagrant.html">Vagrant and CoreOS</a>, I have 16GB of RAM so it works great, so far running on a 4 nodes deployment, taking half of my compute power,
+but still great, it already comes with heapster, kubedns, kube-dashboard, so this is a great way to learn how to manage a kubernetes cluster.</p>
+
+<p>Also there is the option released on kubernetes 1.4 is <a href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>
+I haven&rsquo;t tested it out yet, but I&rsquo;ve heard is a good option to start on this kubernetes world.</p>
+
+<h3>So you have kubernetes up and running.. now what?</h3>
+
+<p>And we are back again with &ldquo;Mr. Burns fly my pretties&rdquo; mood, so just continue the research..</p>
+
+<p>Is a good idea to have a look at this video from <a href="https://twitter.com/brendandburns">Brendan Burns</a> one of the kubernetes creators/founders, he is a former Google employee, now Microsoft owns his soul, he is a brilliant guy and I personal consider this is one of the best kubernetes technical explanations on internet.
+I think is easier to understand the technical concepts having already a kubernetes deploy up and running and play around a bit,
+that is why looks like I&rsquo;m starting backwards, but believe me is better to start in that way.</p>
+
+<p><div class="embed-video-container"><iframe src="//www.youtube.com/embed/WwBdNXt6wO4" allowfullscreen></iframe></div></p>
+
+<p>I&rsquo;d like to quote/highlight some of his comments that are really valuable on this talk, among others.</p>
+
+<blockquote><p>&ldquo;kubernetes is about decouple, decouple infrastructure&rdquo;</p>
+
+<p>&ldquo;kubernetes is really about trying to provide a cluster a decoupling between you and the hardware ops and the kernel ops below you and the app ops you providing on top.
+This also means is that your app containers view the world essentially as this sea of compute, and kubernetes means it takes any machine that you have available to use
+they&rsquo;re entirely homogeneous every single machine you create in your fleet looks and feel exactly the same and they are indistinguishable so if one of them dies it
+doesn&rsquo;t really matter all your application sees is there slightly less compute power available in the pool, is a really powerful abstraction it means I don&rsquo;t have to
+worry about whats&rsquo;s going on in the OS, I don&rsquo;t have to ask someone to go and install a particular version of an OS, or a particular version of a library , and I do not have
+to worry that somebody else is asking for an upgrade to a library that I also depend on, this decoupling of the application from the lower level compute on which it runs really
+enables both the app developers and the people who run the machines, to live easier happier more decouple lives.&rdquo;</p>
+
+<p>&ldquo;kubernetes is really intended to be an online system a control system that is responsible not just for creating the world but actually maintaining and healing the world,
+so again, if something goes wrong on the middle of the night, kubernetes can come along and actually fix and you never even get paged, that is a really powerful thing for developers
+and sysadmins as well.&rdquo;</p></blockquote>
+
+<p>Have fun playing with kubernetes, I have documented some of my progress but is going to be a separate post&hellip;.
+keep an eye here more to come.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Docker]]></title>

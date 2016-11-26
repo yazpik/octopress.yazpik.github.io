@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: cloud | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/cloud/atom.xml" rel="self"/>
+  <title><![CDATA[Category: innovation | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/innovation/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
   <updated>2016-11-26T15:36:44-06:00</updated>
   <id>http://yazpik.github.io/</id>
@@ -12,51 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Kubernetes management dashboard]]></title>
-    <link href="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/"/>
-    <updated>2016-11-25T19:50:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards</id>
-    <content type="html"><![CDATA[<h4>Yes there is a kubernetes dashboard.</h4>
-
-<p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
-
-<p>There is a lot of documentation out there on how to reach the dashboard but actually didn&rsquo;t work for me, so I find this solution by myself, and I&rsquo;m not really sure if that is the right way, but it works.
-Just need to find your kubernetes-dashboard pod on the kube-system namespace and do a port forwarding to 9090 port.</p>
-
-<p>Get the kubernetes-dashboard pod name.
-<code>bash
-$ kubectl get pods -l k8s-app=kubernetes-dashboard --namespace=kube-system
-</code>
-Having a closer look to the kubernetes-dashboard pod to verify what port is actually listening, I use &ldquo;describe&rdquo; command which is always helpful
-<code>bash
-$ kubectl get describe pods  {kube-dashboard-podname}  --namespace=kube-system
-</code>
-Put attention to line #18 the Pod is using/listening on port 9090</p>
-
-<script src="https://gist.github.com/yazpik/b00ffa49dbbb52c29b2976307ac3b870.js"></script>
-
-
-<p>When you get the pod name just do port-fwd</p>
-
-<p><code>bash
-$ kubectl port-fwd {kube-dashboard-podname} 9090:9090 --namespace=kube-system
-</code>
-Here is an small asccinema recording on how I launch the dashboard.</p>
-
-<script type="text/javascript" src="https://asciinema.org/a/94128.js" id="asciicast-94128" async></script>
-
-
-<p>And then you will have a clean and descriptive kubernetes dashboard running on <a href="http://localhost:9090">http://localhost:9090</a></p>
-
-<p><img class="<a" src="href="https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png">https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png</a>" width="750" height="750" title="&lsquo;kube-dashboard01&rsquo;" ></p>
-
-<p><img class="<a" src="href="https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png">https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png</a>" width="750" height="750" title="&lsquo;kube-dashboard02&rsquo;" ></p>
-
-<p>Have fun out there.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[How I Learned OpenStack by failing]]></title>
@@ -210,42 +165,6 @@ We were wrong in so many levels, and failed to explain to the management our vis
 <p>The only thing we were not wrong, was about to learn new things and have fun by doing it, push our own limits, and do not underestimate what we built, at the end, no one else was doing it on our small environment.</p>
 
 <p><img src="/images/lops/lab04.png" width="650" height="650" title="&lsquo;Lab04&rsquo;" ></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Docker]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/25/docker/"/>
-    <updated>2014-11-25T12:46:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/25/docker</id>
-    <content type="html"><![CDATA[<p>If you think you already know all about virtualization, well you should have a look on this&hellip;
-As you may know, there are virtualization technologies such as VMware, VirtualBox and Openstack, those technologies allow us to create Virtual machines that run on top of physical hardware, So we can create VM&rsquo;s for different purposes, capabilities and functionalities, and that was actually a big step in technology and everyone is happy with it&hellip;.</p>
-
-<p>But if you think twice maybe you don&rsquo;t really need an entire operative system to run just an small application, and from the sysadmin point of view, there is no reason to have the overhead to virtualize an entire virtual vachine to run a L.A.M.P server, just to give you a quick example, and there is when docker comes in the game.</p>
-
-<h3>Sysadmins vs DevOps the war has just begun&hellip;</h3>
-
-<p><img class="center" src="/images/docker_logo.jpg" width="625" height="275" title="&lsquo;Docker&rsquo;" ></p>
-
-<p><a href="http://www.docker.com" title="Docker">Docker</a> it&rsquo;s a virtualization technology using Linux containers, let&rsquo;s say Docker use resource isolation of the Linux kernel (Cgroups and Kernel namespaces) So you can have multiple containers running on a single server, and those &ldquo;containers&rdquo; avoid the overhead of running an entire operative system, encapsulating functionalities or personalities, :)</p>
-
-<!-- more -->
-
-
-<p>In a real world use case, suppose your are a developer and you want to test your app on several different linux distributions, what normally you need to do is virtualize the whole operative systems and test the application on each server, that is time and resource consuming, there are a lot of aplications/use cases where docker can save the day.</p>
-
-<h4>From Docker.com</h4>
-
-<p><em>Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications. Consisting of Docker Engine, a portable, lightweight runtime and packaging tool, and Docker Hub, a cloud service for sharing applications and automating workflows, Docker enables apps to be quickly assembled from components and eliminates the friction between development, QA, and production environments. As a result, IT can ship faster and run the same app, unchanged, on laptops, data center VMs, and any cloud.</em></p>
-
-<p><img class="center" src="/images/Docker_arch.jpg" width="587" height="438" title="&lsquo;Docker vs VM&rsquo;" ></p>
-
-<p>There is a docker registry which is an OS image respositorie, basically a bunch of images ready to use by docker
-<a href="https://registry.hub.docker.com/">https://registry.hub.docker.com/</a>
-on your hardware, that simple.</p>
-
-<p>Docker was created by Solomon Hykes just two years a go&hellip; It is really crazy how new opensource projects are growing so quickly,<br/>
-I&rsquo;ll be posting more about the use of docker in a much more detailed technical way.</p>
 ]]></content>
   </entry>
   
