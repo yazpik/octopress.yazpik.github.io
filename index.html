@@ -9,7 +9,7 @@
   <meta name="author" content="Francisco Moctezuma">
 
   
-  <meta name="description" content="Kubernetes &ldquo;Fly my Pretties fly! &hellip; continue the research&rdquo; When I recently started to work with Docker and Kubernetes, this &hellip;">
+  <meta name="description" content="Yes there is a kubernetes dashboard. As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,80 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/11/25/kubernetes-management-dashboards/">Kubernetes Management Dashboard</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-11-25T19:50:00-06:00" pubdate data-updated="true">Nov 25<span>th</span>, 2016</time>
+        
+         | <a href="/blog/2016/11/25/kubernetes-management-dashboards/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>Yes there is a kubernetes dashboard.</h4>
+
+<p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
+
+<p>There is a lot of documentation out there on how to reach the dashboard but actually didn&rsquo;t work for me, so I find this solution by myself, and I&rsquo;m not really sure if that is the right way, but it works.
+Just need to find your kubernetes-dashboard pod on the kube-system namespace and do a port forwarding to 9090 port.</p>
+
+<p>Get the kubernetes-dashboard pod name.
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl get pods -l k8s-app<span class="o">=</span>kubernetes-dashboard &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Having a closer look to the kubernetes-dashboard pod to verify what port is actually listening, I use &ldquo;describe&rdquo; command which is always helpful
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl get describe pods  <span class="o">{</span>kube-dashboard-podname<span class="o">}</span>  &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Put attention to line #18 the Pod is using/listening on port 9090</p>
+
+<script src="https://gist.github.com/yazpik/b00ffa49dbbb52c29b2976307ac3b870.js"></script>
+
+
+<p>When you get the pod name just do port-fwd</p>
+
+<p><figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl port-fwd <span class="o">{</span>kube-dashboard-podname<span class="o">}</span> 9090:9090 &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Here is an small asccinema recording on how I launch the dashboard.</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/94128.js" id="asciicast-94128" async></script>
+
+
+<p>And then you will have a clean and descriptive kubernetes dashboard</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png" width="750" height="750" title="'kube-dashboard01'" ></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png" width="750" height="750" title="'kube-dashboard02'" ></p>
+
+<p>Have fun out there.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -895,96 +969,6 @@ Ceph supports Object and Block storage, is integrated now on the Linux kernel, a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/">Virtual Machine Migration From VMware to OpenStack/KVM</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-15T18:00:00-06:00" pubdate data-updated="true">Dec 15<span>th</span>, 2014</time>
-        
-         | <a href="/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is a quick and easy guide to migrate VMWare VM&rsquo;s to OpenStack (KVM) using Redhat Enterprise 6.5</p>
-
-<h4>Install virt-v2v</h4>
-
-<p>The virt-v2v command converts virtual machines from a foreign hypervisor to run on KVM, managed by libvirt.</p>
-
-<pre>
-# yum install virt-v2v
-</pre>
-
-
-<p>Next step is create an xml file for the pool and indicate the storage path, I created a very simple xml file, like this one:</p>
-
-<p><figure class='code'><figcaption>pool.xml</figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div><div data-line='6' class='line-number'></div></pre></td><td class='main  xml'><pre><div class='line'><span class="nt">&lt;pool</span> <span class="na">type=</span><span class="s">&quot;dir&quot;</span><span class="nt">&gt;</span>
-</div><div class='line'>        <span class="nt">&lt;name&gt;</span>virtimages<span class="nt">&lt;/name&gt;</span>
-</div><div class='line'>        <span class="nt">&lt;target&gt;</span>
-</div><div class='line'>          <span class="nt">&lt;path&gt;</span>/home/images<span class="nt">&lt;/path&gt;</span>
-</div><div class='line'>        <span class="nt">&lt;/target&gt;</span>
-</div><div class='line'><span class="nt">&lt;/pool&gt;</span>
-</div></pre></td></tr></table></div></figure></p>
-
-<p>Create an storage pool based on the xml file with virsh command and refeer the xml file</p>
-
-<pre>
-# virsh pool-create --file pool.xml
-</pre>
-
-
-<p>List the storage pool, &ldquo;virtimages&rdquo; pool is refering to the path given on the xml file which is /home/images</p>
-
-<pre>
-# virsh pool-list
-</pre>
-
-
-<p><figure class='code'><figcaption>virsh output </figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  vim'><pre><div class='line'>Name                 State      Autostart
-</div><div class='line'><span class="p">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</span>
-</div><div class='line'>virtimages           active       no
-</div></pre></td></tr></table></div></figure></p>
-
-<p>Create a .netrc file with ESX credentials, where the machine that you want to convert is hosted.</p>
-
-<pre>
-machine ESXi login root password s3cretitos
-</pre>
-
-
-<p>Convert the VMware VM to KVM, the virtual machine has to be stopped before to proceed with this, go to Virtual center and turn the VM off.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/2">&larr; Older</a>
@@ -1000,6 +984,10 @@ machine ESXi login root password s3cretitos
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/11/25/kubernetes-management-dashboards/">Kubernetes Management Dashboard</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/11/23/getting-started-with-kubernetes/">Getting Started With Kubernetes</a>
       </li>
     
@@ -1013,10 +1001,6 @@ machine ESXi login root password s3cretitos
     
       <li class="post">
         <a href="/blog/2015/11/16/bigdata-as-a-service/">BigData as a Service</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/05/14/the-modern-cloud/">The Modern Cloud</a>
       </li>
     
   </ul>

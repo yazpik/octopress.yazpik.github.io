@@ -4,7 +4,7 @@
   <title><![CDATA[Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-24T08:47:53-06:00</updated>
+  <updated>2016-11-25T21:23:01-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kubernetes management dashboard]]></title>
+    <link href="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/"/>
+    <updated>2016-11-25T19:50:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards</id>
+    <content type="html"><![CDATA[<h4>Yes there is a kubernetes dashboard.</h4>
+
+<p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
+
+<p>There is a lot of documentation out there on how to reach the dashboard but actually didn&rsquo;t work for me, so I find this solution by myself, and I&rsquo;m not really sure if that is the right way, but it works.
+Just need to find your kubernetes-dashboard pod on the kube-system namespace and do a port forwarding to 9090 port.</p>
+
+<p>Get the kubernetes-dashboard pod name.
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl get pods -l k8s-app<span class="o">=</span>kubernetes-dashboard &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Having a closer look to the kubernetes-dashboard pod to verify what port is actually listening, I use &ldquo;describe&rdquo; command which is always helpful
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl get describe pods  <span class="o">{</span>kube-dashboard-podname<span class="o">}</span>  &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Put attention to line #18 the Pod is using/listening on port 9090</p>
+
+<script src="https://gist.github.com/yazpik/b00ffa49dbbb52c29b2976307ac3b870.js"></script>
+
+
+<p>When you get the pod name just do port-fwd</p>
+
+<p><figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl port-fwd <span class="o">{</span>kube-dashboard-podname<span class="o">}</span> 9090:9090 &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Here is an small asccinema recording on how I launch the dashboard.</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/94128.js" id="asciicast-94128" async></script>
+
+
+<p>And then you will have a clean and descriptive kubernetes dashboard</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png" width="750" height="750" title="'kube-dashboard01'" ></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png" width="750" height="750" title="'kube-dashboard02'" ></p>
+
+<p>Have fun out there.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Getting started with Kubernetes]]></title>
@@ -583,7 +628,7 @@ I&rsquo;m deeply thankful to had the oportunity to work on this and build someth
 <p>What can I say ? , it really feels great.</p>
 
 <p>If you want to check out the Woodworkings plans and/or the cutting list used, please feel free to shoot me an email
-<a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#x79;&#x61;&#x7a;&#x70;&#x69;&#x6b;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#121;&#97;&#x7a;&#112;&#105;&#107;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#111;&#109;</a></p>
+<a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x79;&#x61;&#122;&#112;&#105;&#107;&#64;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#121;&#97;&#122;&#x70;&#105;&#x6b;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a></p>
 ]]></content>
   </entry>
   

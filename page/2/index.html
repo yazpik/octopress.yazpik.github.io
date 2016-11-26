@@ -9,8 +9,7 @@
   <meta name="author" content="Francisco Moctezuma">
 
   
-  <meta name="description" content="Xacxamayo Episode 2 I recently posted on my fb page about a visit to an small-remote town called Xacxamayo near to Puebla city,
-Basically I was a &hellip;">
+  <meta name="description" content="This is a quick and easy guide to migrate VMWare VM&rsquo;s to OpenStack (KVM) using Redhat Enterprise 6.5 Install virt-v2v The virt-v2v command &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +78,96 @@ Basically I was a &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/">Virtual Machine Migration From VMware to OpenStack/KVM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-15T18:00:00-06:00" pubdate data-updated="true">Dec 15<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is a quick and easy guide to migrate VMWare VM&rsquo;s to OpenStack (KVM) using Redhat Enterprise 6.5</p>
+
+<h4>Install virt-v2v</h4>
+
+<p>The virt-v2v command converts virtual machines from a foreign hypervisor to run on KVM, managed by libvirt.</p>
+
+<pre>
+# yum install virt-v2v
+</pre>
+
+
+<p>Next step is create an xml file for the pool and indicate the storage path, I created a very simple xml file, like this one:</p>
+
+<p><figure class='code'><figcaption>pool.xml</figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div><div data-line='6' class='line-number'></div></pre></td><td class='main  xml'><pre><div class='line'><span class="nt">&lt;pool</span> <span class="na">type=</span><span class="s">&quot;dir&quot;</span><span class="nt">&gt;</span>
+</div><div class='line'>        <span class="nt">&lt;name&gt;</span>virtimages<span class="nt">&lt;/name&gt;</span>
+</div><div class='line'>        <span class="nt">&lt;target&gt;</span>
+</div><div class='line'>          <span class="nt">&lt;path&gt;</span>/home/images<span class="nt">&lt;/path&gt;</span>
+</div><div class='line'>        <span class="nt">&lt;/target&gt;</span>
+</div><div class='line'><span class="nt">&lt;/pool&gt;</span>
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Create an storage pool based on the xml file with virsh command and refeer the xml file</p>
+
+<pre>
+# virsh pool-create --file pool.xml
+</pre>
+
+
+<p>List the storage pool, &ldquo;virtimages&rdquo; pool is refering to the path given on the xml file which is /home/images</p>
+
+<pre>
+# virsh pool-list
+</pre>
+
+
+<p><figure class='code'><figcaption>virsh output </figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  vim'><pre><div class='line'>Name                 State      Autostart
+</div><div class='line'><span class="p">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</span>
+</div><div class='line'>virtimages           active       no
+</div></pre></td></tr></table></div></figure></p>
+
+<p>Create a .netrc file with ESX credentials, where the machine that you want to convert is hosted.</p>
+
+<pre>
+machine ESXi login root password s3cretitos
+</pre>
+
+
+<p>Convert the VMware VM to KVM, the virtual machine has to be stopped before to proceed with this, go to Virtual center and turn the VM off.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -387,6 +476,10 @@ Here&rsquo;s the reason &hellip;.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/11/25/kubernetes-management-dashboards/">Kubernetes Management Dashboard</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/11/23/getting-started-with-kubernetes/">Getting Started With Kubernetes</a>
       </li>
     
@@ -400,10 +493,6 @@ Here&rsquo;s the reason &hellip;.</p>
     
       <li class="post">
         <a href="/blog/2015/11/16/bigdata-as-a-service/">BigData as a Service</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/05/14/the-modern-cloud/">The Modern Cloud</a>
       </li>
     
   </ul>

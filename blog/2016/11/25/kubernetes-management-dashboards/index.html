@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Xacxamayo - Life of a Sysadmin</title>
+  <title>Kubernetes management dashboard - Life of a Sysadmin</title>
   <meta name="author" content="Francisco Moctezuma">
 
   
-  <meta name="description" content="Xacxamayo Episode 2 I recently posted on my fb page about a visit to an small-remote town called Xacxamayo near to Puebla city,
-Basically I was a &hellip;">
+  <meta name="description" content="Yes there is a kubernetes dashboard. As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ Basically I was a &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yazpik.github.io/blog/2014/12/07/xacxamayo">
+  <link rel="canonical" href="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life of a Sysadmin" type="application/atom+xml">
@@ -82,7 +81,7 @@ Basically I was a &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Xacxamayo</h1>
+      <h1 class="entry-title">Kubernetes Management Dashboard</h1>
     
     
       <p class="meta">
@@ -98,7 +97,7 @@ Basically I was a &hellip;">
   
 
 
-<time datetime="2014-12-07T18:42:00-06:00" pubdate data-updated="true">Dec 7<span>th</span>, 2014</time>
+<time datetime="2016-11-25T19:50:00-06:00" pubdate data-updated="true">Nov 25<span>th</span>, 2016</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -107,63 +106,43 @@ Basically I was a &hellip;">
   </header>
 
 
-<div class="entry-content"><h4>Xacxamayo Episode 2</h4>
+<div class="entry-content"><h4>Yes there is a kubernetes dashboard.</h4>
 
-<p>I recently posted on my fb page about a visit to an small-remote town called Xacxamayo near to Puebla city,
-Basically I was a volunteer for 3 saturdays,
-I wanted to teach about other existing options on compute software, and also wanted to show them there is a world outside commercial and common programs, One of this options called Linux is currently helping in science, medicine, education and even in movies and games to not mention alot of different daylife stuff, I believe all of the kids were excited about the way I made my point.  :)</p>
+<p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
 
-<p>While driving with the guy in charge to coordinate efforts and make things happen <a href="https://twitter.com/Junkiezap" title="Azael Soriano">BalamEk</a> an interesting idea came up &hellip;..</p>
+<p>There is a lot of documentation out there on how to reach the dashboard but actually didn&rsquo;t work for me, so I find this solution by myself, and I&rsquo;m not really sure if that is the right way, but it works.
+Just need to find your kubernetes-dashboard pod on the kube-system namespace and do a port forwarding to 9090 port.</p>
 
-<h5>&ldquo;We are going to spend 3 weekends with this kids, why we do not try something different?&rdquo;</h5>
+<p>Get the kubernetes-dashboard pod name.
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl get pods -l k8s-app<span class="o">=</span>kubernetes-dashboard &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
 
-<p>The main idea was to get the attention of this kids at the same time participate as a team in off-school hours, and also &ldquo;we&rdquo; as volunteers will be able to understand more about their community.</p>
+<p>Having a closer look to the kubernetes-dashboard pod to verify what port is actually listening, I use &ldquo;describe&rdquo; command which is always helpful
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl get describe pods  <span class="o">{</span>kube-dashboard-podname<span class="o">}</span>  &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
 
-<h3>The brillant idea&hellip;..</h3>
+<p>Put attention to line #18 the Pod is using/listening on port 9090</p>
 
-<p>We bought four disposable cameras (we were a bit reduced on budget) the ones you can get on a convenience store, not really high end cameras, but it will help us to spread the kids in different teams, they will be able to work together and show their community to the world.  :)</p>
-
-<p><a href="https://twitter.com/Rogfloyd" title="Roger Romero">Roger</a> gave them a 7 minute course introduction to the whole new world of photography, showing them how to use the cameras, they were pretty excited to play for a week with the &ldquo;new toys&rdquo;.</p>
-
-<p><img src="/images/camaras.jpg" width="440" height="280" title="'Disposable cameras'" ></p>
-
-<!-- more -->
+<script src="https://gist.github.com/yazpik/b00ffa49dbbb52c29b2976307ac3b870.js"></script>
 
 
-<p>We also setup right away a photo contest, so the team with the best picture will be a winner of &ldquo;&mdash;&rdquo; &hellip; we actually didn&rsquo;t mention the real &ldquo;prize&rdquo; we just leaved it like that.</p>
+<p>When you get the pod name just do port-fwd</p>
 
-<p>During the second basic Linux class we taught them how to create a blog with Wordpress,
-and voila! they can speak up to the world!</p>
+<p><figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl port-fwd <span class="o">{</span>kube-dashboard-podname<span class="o">}</span> 9090:9090 &mdash;namespace<span class="o">=</span>kube-system
+</div></pre></td></tr></table></div></figure></p>
 
-<p>I believe it was also a good idea show them that there is no frontiers on the net, with this new tools learned they will have other options to be listen outside their community, Mexico mommentum is pretty bad, too many government crap, represion, and so on, at least they will have an &ldquo;option&rdquo; to fight back if things suddendly changes, maybe radical ideas&hellip;..</p>
+<p>Here is an small asccinema recording on how I launch the dashboard.</p>
 
-<p>They actually have internet access on the school and the access is open during the day and afternoon, the wifi is always on, and a couple of them have laptops given by the government.</p>
+<script type="text/javascript" src="https://asciinema.org/a/94128.js" id="asciicast-94128" async></script>
 
-<p>Anyway the main idea was based on start posting their own photos, on their own blog,</p>
 
-<p>Let me share the stunning results, (just few of them)</p>
+<p>And then you will have a clean and descriptive kubernetes dashboard</p>
 
-<p><img src="/images/foto1.jpg" width="490" height="330" title="'Foto1'" ></p>
+<p><img src="https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png" width="750" height="750" title="'kube-dashboard01'" ></p>
 
-<p><img src="/images/foto3.jpg" width="490" height="330" title="'Foto3'" ></p>
+<p><img src="https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png" width="750" height="750" title="'kube-dashboard02'" ></p>
 
-<p><img src="/images/foto4.jpg" width="490" height="330" title="'Foto4'" ></p>
-
-<p><img src="/images/foto5.jpg" width="490" height="330" title="'Foto5'" ></p>
-
-<p><img src="/images/foto6.jpg" width="490" height="330" title="'Foto6'" ></p>
-
-<p><img src="/images/foto2.jpg" width="490" height="330" title="'Foto2'" ></p>
-
-<p>Beautiful, isn&rsquo;t ?</p>
-
-<p>Unfortunately here is when the Mexican movie starts&hellip;.
-Couple of days after the second course, the community school financed by institutions (private and charity institutions) was taken over by SEP (Government institution for public education), and suddenly we were not able/allowed to go over again and finish with the third class, there is a lot of politics and crap that I do not understand, hopefully BalamEk get that sorted out soon.</p>
-
-<p>At the end is amazing how the kids see the world, and for two weekends I felt I was doing something right,
-Spread the word about Opensource, Linux and technology, it was a great personal experience to me.</p>
-
-<p>BTW, If you are interested to help us in a volunteer journey, please do not hesitate and mail me, is a great way to give back something to the community.</p>
+<p>Have fun out there.</p>
 </div>
 
 
@@ -186,21 +165,15 @@ Spread the word about Opensource, Linux and technology, it was a great personal 
   
 
 
-<time datetime="2014-12-07T18:42:00-06:00" pubdate data-updated="true">Dec 7<span>th</span>, 2014</time>
+<time datetime="2016-11-25T19:50:00-06:00" pubdate data-updated="true">Nov 25<span>th</span>, 2016</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/photography/'>photography</a>, <a class='category' href='/blog/categories/xacxamayo/'>xacxamayo</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yazpik.github.io/blog/2014/12/07/xacxamayo/" data-via="yazpik" data-counturl="http://yazpik.github.io/blog/2014/12/07/xacxamayo/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/" data-via="yazpik" data-counturl="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -213,10 +186,8 @@ Spread the word about Opensource, Linux and technology, it was a great personal 
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/11/27/san-troubleshooting/" title="Previous Post: How to Troubleshoot a SAN environment">&laquo; How to Troubleshoot a SAN environment</a>
+        <a class="basic-alignment left" href="/blog/2016/11/23/getting-started-with-kubernetes/" title="Previous Post: Getting started with Kubernetes">&laquo; Getting started with Kubernetes</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/" title="Next Post: Virtual Machine migration from VMware to OpenStack/KVM">Virtual Machine migration from VMware to OpenStack/KVM &raquo;</a>
       
     </p>
   </footer>
@@ -320,8 +291,8 @@ Spread the word about Opensource, Linux and technology, it was a great personal 
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://yazpik.github.io/blog/2014/12/07/xacxamayo/';
-        var disqus_url = 'http://yazpik.github.io/blog/2014/12/07/xacxamayo/';
+        var disqus_identifier = 'http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/';
+        var disqus_url = 'http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/';
         var disqus_script = 'embed.js';
       
     (function () {
