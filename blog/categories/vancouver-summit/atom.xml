@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vancouver_summit_ | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/vancouver-summit/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T11:09:25-06:00</updated>
+  <updated>2016-11-26T12:58:08-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -28,6 +28,9 @@ Those two technologies are a powerful combination bringing the best of &ldquo;tw
 <p>Combining Openstack + Heat + Murano + Kubernetes it does sounds really complex but actually is becoming the opossite
 I want to share with you an interesting article from OpenStack SuperUser website, during the kubernetes meetup in San Francisco, there was a live demo where it was demostrated how to deploy a <a href="http://kubernetes.io/">kubernetes</a> cluster in minutes with OpenStack and Murano.
 <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
+
+<!-- more -->
+
 
 <p>Also <a href="https://www.mirantis.com/">Mirantis</a> is collaborating with Google to have a better integration of Kubernetes with OpenStack.
 <a href="https://www.mirantis.com/company/press-center/company-news/mirantis-collaborates-google-kubernetes-openstack-integration/">https://www.mirantis.com/company/press-center/company-news/mirantis-collaborates-google-kubernetes-openstack-integration/</a></p>

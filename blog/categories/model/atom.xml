@@ -4,7 +4,7 @@
   <title><![CDATA[Category: model, | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/model/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T11:09:25-06:00</updated>
+  <updated>2016-11-26T12:58:08-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -32,6 +32,9 @@ I&rsquo;d say this is like an OpenSource project applied in hardware and is goin
 
 <p><img src="/images/opencomputeserver-750.jpg" width="360" height="140" title="&lsquo;OpenCompute Servers&rsquo;" >
 <img src="/images/IODatacenter.jpg" width="360" height="140" title="&lsquo;IO Datacenter in Scottsdale&rsquo;" ></p>
+
+<!-- more -->
+
 
 <p>Big names just joined to the OpenCompute project such as Apple and HP, So I believe in the next two years or so we will see a drastical change on Datacenter deployments as well as compute architecture, and we have to be ready to be competitive or much better be part of it, this is a good opportunity to join as one of the early adopters.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: kubernetes | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/kubernetes/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T11:09:25-06:00</updated>
+  <updated>2016-11-26T12:58:08-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -28,6 +28,9 @@ Those two technologies are a powerful combination bringing the best of &ldquo;tw
 <p>Combining Openstack + Heat + Murano + Kubernetes it does sounds really complex but actually is becoming the opossite
 I want to share with you an interesting article from OpenStack SuperUser website, during the kubernetes meetup in San Francisco, there was a live demo where it was demostrated how to deploy a <a href="http://kubernetes.io/">kubernetes</a> cluster in minutes with OpenStack and Murano.
 <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
+
+<!-- more -->
+
 
 <p>Also <a href="https://www.mirantis.com/">Mirantis</a> is collaborating with Google to have a better integration of Kubernetes with OpenStack.
 <a href="https://www.mirantis.com/company/press-center/company-news/mirantis-collaborates-google-kubernetes-openstack-integration/">https://www.mirantis.com/company/press-center/company-news/mirantis-collaborates-google-kubernetes-openstack-integration/</a></p>
@@ -69,6 +72,9 @@ I&rsquo;d say this is like an OpenSource project applied in hardware and is goin
 
 <p><img src="/images/opencomputeserver-750.jpg" width="360" height="140" title="&lsquo;OpenCompute Servers&rsquo;" >
 <img src="/images/IODatacenter.jpg" width="360" height="140" title="&lsquo;IO Datacenter in Scottsdale&rsquo;" ></p>
+
+<!-- more -->
+
 
 <p>Big names just joined to the OpenCompute project such as Apple and HP, So I believe in the next two years or so we will see a drastical change on Datacenter deployments as well as compute architecture, and we have to be ready to be competitive or much better be part of it, this is a good opportunity to join as one of the early adopters.</p>
 

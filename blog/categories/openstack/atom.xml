@@ -4,7 +4,7 @@
   <title><![CDATA[Category: openstack | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T11:09:25-06:00</updated>
+  <updated>2016-11-26T12:58:08-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -30,6 +30,9 @@ but anyway let&rsquo;s jump on the BigData stuff.</p>
 So I was on an interesting situation, reading in deep I found a pararell world about DataProcessing and BigData, and then project <a href="https://wiki.openstack.org/wiki/Sahara/">Sahara</a> formerly known as Savanna, immediatly I get caught on it.</p>
 
 <p>But WHAT IS SAHARA?</p>
+
+<!-- more -->
+
 
 <p>Sahara began life as an Apache 2.0 project and is now an OpenStack integrated project, Sahara enables the fast provisioning and easy management of Hadoop clusters on Openstack, mainstream Hadoop distributions and elastic data processing (EDP) capability similar to Amazon Elastic MapReduce (EMR).</p>
 
@@ -62,7 +65,7 @@ $ sudo tox -e genconfig
 <p>Then a Database Schema for Shara is needed, you can create it as follows (on an existing empty database)</p>
 
 <pre>
-$ sudo sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head  
+$ sudo sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head
 </pre>
 
 

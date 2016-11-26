@@ -129,11 +129,71 @@
 
 <aside class="sidebar">
   
-    <section>
-  <h1>Francisco Moctezuma</h1>
-  <p>Just another computer freaky who loves coffe</p>
+    
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/11/25/kubernetes-management-dashboards/">Kubernetes Management Dashboard</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/11/23/getting-started-with-kubernetes/">Getting Started With Kubernetes</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learned OpenStack by Failing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/22/its-hard-to-say-goodbye/">It's Hard to Say Goodbye...</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/16/bigdata-as-a-service/">BigData as a Service</a>
+      </li>
+    
+  </ul>
 </section>
-Include file 'OTHER STUFF' contains invalid characters or sequencesIncluded file 'OTHER STUFF' not found in _includes directory
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/yazpik">@yazpik</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yazpik',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<a class="twitter-timeline" data-width="250" data-height="600" data-theme="dark" data-link-color="#9266CC" href="https://twitter.com/yazpik">Tweets by yazpik</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
+
+
+
   
 </aside>
 
