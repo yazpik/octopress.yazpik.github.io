@@ -4,7 +4,7 @@
   <title><![CDATA[Category: docker | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/docker/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:51:32-06:00</updated>
+  <updated>2016-11-27T11:56:28-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -77,6 +77,9 @@ I had a OpenStack cluster ready so started playing with <a href="https://wiki.op
 
 <p>Found this guide from <a href="https://twitter.com/kelseyhightower">Kelsey Hightower</a>, <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;kubernetes the hardway&rdquo;</a> this helped me a lot to understand more what is all about all the
 kubernetes components, the guide is based on GCE (Google Compute Engine), I did the installation on a different cloud provider, it&rsquo;s challenging but worked well for me.</p>
+
+<!-- more -->
+
 
 <p>Eventually I had to delete my instances running on the public cloud by obvious reasons, and I found another gnarly way to run kubernetes very easy, using
 <a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-vagrant.html">Vagrant and CoreOS</a>, I have 16GB of RAM so it works great, so far running on a 4 nodes deployment, taking half of my compute power,

@@ -4,7 +4,7 @@
   <title><![CDATA[Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:51:32-06:00</updated>
+  <updated>2016-11-27T11:56:28-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -78,6 +78,9 @@ I had a OpenStack cluster ready so started playing with <a href="https://wiki.op
 <p>Found this guide from <a href="https://twitter.com/kelseyhightower">Kelsey Hightower</a>, <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;kubernetes the hardway&rdquo;</a> this helped me a lot to understand more what is all about all the
 kubernetes components, the guide is based on GCE (Google Compute Engine), I did the installation on a different cloud provider, it&rsquo;s challenging but worked well for me.</p>
 
+<!-- more -->
+
+
 <p>Eventually I had to delete my instances running on the public cloud by obvious reasons, and I found another gnarly way to run kubernetes very easy, using
 <a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-vagrant.html">Vagrant and CoreOS</a>, I have 16GB of RAM so it works great, so far running on a 4 nodes deployment, taking half of my compute power,
 but still great, it already comes with heapster, kubedns, kube-dashboard, so this is a great way to learn how to manage a kubernetes cluster.</p>
@@ -118,7 +121,7 @@ keep an eye here more to come.</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How I Learned OpenStack by failing]]></title>
+    <title type="html"><![CDATA[How I Learnt OpenStack by failing]]></title>
     <link href="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
     <updated>2016-09-09T21:21:00-05:00</updated>
     <id>http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
@@ -131,6 +134,9 @@ We were not sure what is all about,
 but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
 But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
 We tent to underestimate our efforts in a really bad way, and maybe that stop us going to the next level&hellip;</p>
+
+<!-- more -->
+
 
 <p>I&rsquo;d like to share my story, how I learnt by doing and I&rsquo;ll say trying to simplifying things and solving existing problems using OpenStack as a platform.</p>
 
@@ -151,9 +157,6 @@ gave me 3 very old servers and one disk array. Just for the records &ndash; <str
 <p><img src="http://yazpik.github.io/images/lops/lab02.jpg" width="350" height="550" title="'lab'" ></p>
 
 <p><strong>-I felt like I have something here</strong></p>
-
-<!-- more -->
-
 
 <p>-Got access to the electronic Junk and trash, hardware listed to be donated by my previous employer.</p>
 
@@ -278,11 +281,16 @@ We were wrong in so many levels, and failed to explain to the management our vis
     <link href="http://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye/"/>
     <updated>2016-06-22T22:18:00-05:00</updated>
     <id>http://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye</id>
-    <content type="html"><![CDATA[<p><em>When you are thankful that your family is close by</em> ..</p>
+    <content type="html"><![CDATA[<p><img src="http://yazpik.github.io/images/cowsay3.png" width="700" height="700"></p>
+
+<p><em>When you are thankful that your family is close by</em> ..</p>
 
 <p><em>When your real friends are always up for you</em> ..</p>
 
 <p><em>When you have reached your comfort zone and stability</em> &hellip;</p>
+
+<!-- more -->
+
 
 <p>Personal and professional decisions, one of the hardest so far, We as a family decided to take the opportunity
 and move from Puebla, Mexico to San Antonio, Texas.</p>
@@ -297,8 +305,6 @@ I&rsquo;ve broke my comfort zone many times before, But this time is my family w
 <p> <strong>You Only Live Once&hellip;&hellip;.</strong></p>
 
 <p>And also the fortune-cow knows.. and supports me :)</p>
-
-<p><img src="http://yazpik.github.io/images/cowsay3.png"></p>
 
 <p>keep online, more to come :)</p>
 ]]></content>
@@ -317,13 +323,13 @@ I&rsquo;ve broke my comfort zone many times before, But this time is my family w
 the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
 but anyway let&rsquo;s jump on the BigData stuff.</p>
 
+<!-- more -->
+
+
 <p>One of our DBA&rsquo;s ask us for a Linux instance on the OpenStack cloud, first questions from me was, purpose ? , so he wanted to try and learn about Hadoop, so I started to look if there was an image ready for it or start to build one from scratch and meet the Hadoop pre-requisites, at the end the DBA won&rsquo;t install the Hadoop platform, that will be the sysadmins or Devops :)
 So I was on an interesting situation, reading in deep I found a pararell world about DataProcessing and BigData, and then project <a href="https://wiki.openstack.org/wiki/Sahara/">Sahara</a> formerly known as Savanna, immediatly I get caught on it.</p>
 
 <p>But WHAT IS SAHARA?</p>
-
-<!-- more -->
-
 
 <p>Sahara began life as an Apache 2.0 project and is now an OpenStack integrated project, Sahara enables the fast provisioning and easy management of Hadoop clusters on Openstack, mainstream Hadoop distributions and elastic data processing (EDP) capability similar to Amazon Elastic MapReduce (EMR).</p>
 
@@ -513,14 +519,16 @@ For the ones that haven&rsquo;t heard about OpenCompute project, let me explain 
 <blockquote><p>"The Open Compute Project Foundation is a rapidly growing community of engineers around the world whose mission is to design and enable the delivery of the most efficient server, storage and data center hardware designs for scalable computing. We believe that openly sharing ideas, specifications and other intellectual property is the key to maximizing innovation and reducing operational complexity in the scalable computing space."</p></blockquote>
 
 
+
+
+<!-- more -->
+
+
 <p>Believe it or not this is a Facebook initiative to share the design of datacenter architecture with the intention to improve efficiency on servers, storage and also general datacenter overall infrastructure with smart and &ldquo;ecofriendly&rdquo; deployments.
 I&rsquo;d say this is like an OpenSource project applied in hardware and is going to speed up the innovation on new hardware solutions.</p>
 
 <p><img src="http://yazpik.github.io/images/opencomputeserver-750.jpg" width="360" height="140" title="'OpenCompute Servers'" >
 <img src="http://yazpik.github.io/images/IODatacenter.jpg" width="360" height="140" title="'IO Datacenter in Scottsdale'" ></p>
-
-<!-- more -->
-
 
 <p>Big names just joined to the OpenCompute project such as Apple and HP, So I believe in the next two years or so we will see a drastical change on Datacenter deployments as well as compute architecture, and we have to be ready to be competitive or much better be part of it, this is a good opportunity to join as one of the early adopters.</p>
 
@@ -565,6 +573,9 @@ I started looking on internet in too many DIY (Do It Yourself) sites, woodworkin
 <p>Of course I couldn&rsquo;t build it by myself on my little space at home and no skills, So I threw an email to one of the most respectable and creative hacker nowadays, my friend <a href="https://people.gnome.org/~federico/">Federico Mena Quintero</a>, who has a passion for woodworking and a place to do it.
 To people that haven&rsquo;t hear before about Federico, he is one of the most brilliant persons I have met, he has contributed with Opensource in so many levels an he is always trying to help the community, Let&rsquo;s say he should be in the &ldquo;hall of fame&rdquo; of the OpenSource history, besides that he is a young guy with a really lovely family.</p>
 
+<!-- more -->
+
+
 <p>Couple of days later I got Federico response, saying that he will be able to help me out with my &ldquo;little&rdquo; project!!! and we started some day back in Jan 2014, basically reviewing the woodworking plans and the options we had, Federico suggested me to &ldquo;Go big&rdquo; , he is also a father and knows the business of kids growing very fast, so we decided to build an actual crib that Naia can use at least until she turns six, and maybe can be passed on subsequent children, and then on and on throughout the family.</p>
 
 <p>So we went out to the local wood place and got all we needed.</p>
@@ -573,9 +584,6 @@ To people that haven&rsquo;t hear before about Federico, he is one of the most b
 
 <p>We started sanding pretty much everything by hand, no electric weapons were used to sand the wood.
 Then we continue with front and end panels assembled</p>
-
-<!-- more -->
-
 
 <p><img src="http://yazpik.github.io/images/cuna/panel1.JPG" width="320" height="470">  <img src="http://yazpik.github.io/images/cuna/panel2.JPG" width="320" height="370" title="" ></p>
 
@@ -640,7 +648,7 @@ I&rsquo;m deeply thankful to had the oportunity to work on this and build someth
 <p>What can I say ? , it really feels great.</p>
 
 <p>If you want to check out the Woodworkings plans and/or the cutting list used, please feel free to shoot me an email
-<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x79;&#x61;&#122;&#112;&#105;&#107;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#x6d;">&#x79;&#x61;&#x7a;&#112;&#x69;&#x6b;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a></p>
+<a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#121;&#97;&#122;&#x70;&#x69;&#x6b;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#121;&#x61;&#x7a;&#112;&#x69;&#x6b;&#x40;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a></p>
 ]]></content>
   </entry>
   
@@ -656,6 +664,9 @@ I&rsquo;m deeply thankful to had the oportunity to work on this and build someth
 <p>Going back to my journey on storage, I learnt a lot, and I was able to manage the &ldquo;black box&rdquo; for the sysadmins,
 with more experience gained I faced ugly problems that cost me valuable time with family, celebrations, weekends, hollydays, and nights a lot of nights, but finally I got the point when I can do things easily, and my level of understanding how things works no matter the infraestructure was getting better.</p>
 
+<!-- more -->
+
+
 <p>But this is the point when you are a curious guy and you like to know what else is out there, well, I&rsquo;m surprised how technology advance minute to minute , it&rsquo;s a progressive and infinite science, &hellip;. I took a deep dive on SAN and Netapp Storage systems and when I looked back, the technology world surprisly changed, to be more specific on OpenSource Projects and Cloud.</p>
 
 <p>Doing a bit of research I found a pretty darn interesting project called &ldquo;CEPH&rdquo; , it really blew my mind.
@@ -663,9 +674,6 @@ I was looking for an inexpensive storage solution for an &ldquo;small&rdquo; pri
 Ceph supports Object and Block storage, is integrated now on the Linux kernel, and the best thing, OpenStack included Ceph as well, Ceph also has its own filesystem (no yet ready for prod environments).</p>
 
 <p><img src="http://yazpik.github.io/images/ceph+openstack.png" width="350" height="350" title="'Ceph and Openstack'" ></p>
-
-<!-- more -->
-
 
 <p>We just deployed Ceph on a test environment and things seems to be really interesting, and functional, Still working on getting more experience with that, and I&rsquo;ll start posting some more specific facts about it.</p>
 
@@ -734,12 +742,17 @@ That&rsquo;s why Redhat stepped out first and buy Inktank, (the company who lead
 
 <p>List the storage pool, &ldquo;virtimages&rdquo; pool is refering to the path given on the xml file which is /home/images</p>
 
+<!-- more -->
+
+
+
+
 <pre>
 # virsh pool-list
 </pre>
 
 
-<p><figure class='code'><figcaption>virsh output </figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  vim'><pre><div class='line'>Name                 State      Autostart
+<p><figure class='code'><figcaption>virsh output</figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  vim'><pre><div class='line'>Name                 State       Autostart
 </div><div class='line'><span class="p">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</span>
 </div><div class='line'>virtimages           active       no
 </div></pre></td></tr></table></div></figure></p>
@@ -753,11 +766,6 @@ machine ESXi login root password s3cretitos
 
 <p>Convert the VMware VM to KVM, the virtual machine has to be stopped before to proceed with this, go to Virtual center and turn the VM off.</p>
 
-<!-- more -->
-
-
-
-
 <pre>
 # virt-v2v -ic esx://(ESX IP address or name) -o libvirt -os (Storagepool) (VMname)
 </pre>
@@ -765,7 +773,7 @@ machine ESXi login root password s3cretitos
 
 
 
-<pre> 
+<pre>
 # virt-v2v -ic esx://ESXi/?no_verify=1 -o libvirt -os virtimages Trusty_test_CLON
 </pre>
 
@@ -887,7 +895,7 @@ This list has truly helped me out asking questions to easily identify what the p
 <li>Do not freak out (very important)</li>
 <li>Calm yourself down (breath)</li>
     </h5>
-    
+
 And we are ready to get the information
 
 <ul>
@@ -904,14 +912,13 @@ And we are ready to get the information
 </ul>
 
 
+<!-- more -->
+
     <h5>
 <li>When you get all the information above, you should have a clear view of what is going on.
 <li>Ask for some minutes to perform the next steps... Take your time and remember to be calm.
     </h5>
 </ol>
-
-
-<!-- more -->
 
 
 <h4>Next Steps</h4>
@@ -924,20 +931,20 @@ And we are ready to get the information
 • Take a look on Fiber channel switch port stats for respective server aliases
 
 • CRC (cyclic redundancy checking) errors: A high number of CRC errors can indicate a problem with GBIC/SFP connectors or problems with the physical cabling for a given port.
- 
+
 • Examining port utilization, can help understand throughput and help identify whether there is a bottleneck here.
- 
+
 • LOGS- check the SAN logs and compare the running configuration to the documentation.
 
-• Is it SAN reporting events or errors that may be related? 
+• Is it SAN reporting events or errors that may be related?
 
-• Have any recent Storage changes occurred? 
+• Have any recent Storage changes occurred?
 
 • Are there any SAN-related messages in the hosts system message logs?
 
-• Can other hosts see the storage controller involved? 
+• Can other hosts see the storage controller involved?
 
-• Is the storage port logged into the FC switch? 
+• Is the storage port logged into the FC switch?
 
 • Create a report and provide your feedback on it
 
@@ -969,17 +976,17 @@ And we are ready to get the information
 <pre>
 • Fiber channel: On case of many CRC errors request review of fiber jumpers, trunks, patch panel.
 
-• SAN/LAN switch: Review logs for failed ports CRC errors, 
-    ISL disconnections, multipathing, disable ports, power and fan redundant, 
+• SAN/LAN switch: Review logs for failed ports CRC errors,
+    ISL disconnections, multipathing, disable ports, power and fan redundant,
     Save statis and reset counters, gbic status, clock on the same time on both switches, zone status.
 
-• Storage Controller: Review redundant power supply, fan, connectivity issues to switch, 
+• Storage Controller: Review redundant power supply, fan, connectivity issues to switch,
     HA enable and working fine.
 
 • Cache: Review failed memory banks, battery modules, disable modules
 
 • Back end: Review failed paths, LUN status
- 
+
 • Disks: Review failed disks, alarm on shelves, connectivity issues, general alarm, firmware problems.
 </pre>
 

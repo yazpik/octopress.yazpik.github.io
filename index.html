@@ -198,44 +198,12 @@ I had a OpenStack cluster ready so started playing with <a href="https://wiki.op
 <p>Found this guide from <a href="https://twitter.com/kelseyhightower">Kelsey Hightower</a>, <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;kubernetes the hardway&rdquo;</a> this helped me a lot to understand more what is all about all the
 kubernetes components, the guide is based on GCE (Google Compute Engine), I did the installation on a different cloud provider, it&rsquo;s challenging but worked well for me.</p>
 
-<p>Eventually I had to delete my instances running on the public cloud by obvious reasons, and I found another gnarly way to run kubernetes very easy, using
-<a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-vagrant.html">Vagrant and CoreOS</a>, I have 16GB of RAM so it works great, so far running on a 4 nodes deployment, taking half of my compute power,
-but still great, it already comes with heapster, kubedns, kube-dashboard, so this is a great way to learn how to manage a kubernetes cluster.</p>
-
-<p>Also there is the option released on kubernetes 1.4 is <a href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>
-I haven&rsquo;t tested it out yet, but I&rsquo;ve heard is a good option to start on this kubernetes world.</p>
-
-<h3>So you have kubernetes up and running.. now what?</h3>
-
-<p>And we are back again with &ldquo;Mr. Burns fly my pretties&rdquo; mood, so just continue the research..</p>
-
-<p>Is a good idea to have a look at this video from <a href="https://twitter.com/brendandburns">Brendan Burns</a> one of the kubernetes creators/founders, he is a former Google employee, now Microsoft owns his soul, he is a brilliant guy and I personal consider this is one of the best kubernetes technical explanations on internet.
-I think is easier to understand the technical concepts having already a kubernetes deploy up and running and play around a bit,
-that is why looks like I&rsquo;m starting backwards, but believe me is better to start in that way.</p>
-
-<div class="embed-video-container"><iframe src="//www.youtube.com/embed/WwBdNXt6wO4" allowfullscreen></iframe></div>
-
-
-<p>I&rsquo;d like to quote/highlight some of his comments that are really valuable on this talk, among others.</p>
-
-<blockquote><p>&ldquo;kubernetes is about decouple, decouple infrastructure&rdquo;</p>
-
-<p>&ldquo;kubernetes is really about trying to provide a cluster a decoupling between you and the hardware ops and the kernel ops below you and the app ops you providing on top.
-This also means is that your app containers view the world essentially as this sea of compute, and kubernetes means it takes any machine that you have available to use
-they&rsquo;re entirely homogeneous every single machine you create in your fleet looks and feel exactly the same and they are indistinguishable so if one of them dies it
-doesn&rsquo;t really matter all your application sees is there slightly less compute power available in the pool, is a really powerful abstraction it means I don&rsquo;t have to
-worry about whats&rsquo;s going on in the OS, I don&rsquo;t have to ask someone to go and install a particular version of an OS, or a particular version of a library , and I do not have
-to worry that somebody else is asking for an upgrade to a library that I also depend on, this decoupling of the application from the lower level compute on which it runs really
-enables both the app developers and the people who run the machines, to live easier happier more decouple lives.&rdquo;</p>
-
-<p>&ldquo;kubernetes is really intended to be an online system a control system that is responsible not just for creating the world but actually maintaining and healing the world,
-so again, if something goes wrong on the middle of the night, kubernetes can come along and actually fix and you never even get paged, that is a really powerful thing for developers
-and sysadmins as well.&rdquo;</p></blockquote>
-
-<p>Have fun playing with kubernetes, I have documented some of my progress but is going to be a separate post&hellip;.
-keep an eye here more to come.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/11/23/getting-started-with-kubernetes/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -246,7 +214,7 @@ keep an eye here more to come.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learned OpenStack by Failing</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learnt OpenStack by Failing</a></h1>
     
     
       <p class="meta">
@@ -280,26 +248,6 @@ We were not sure what is all about,
 but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
 But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
 We tent to underestimate our efforts in a really bad way, and maybe that stop us going to the next level&hellip;</p>
-
-<p>I&rsquo;d like to share my story, how I learnt by doing and I&rsquo;ll say trying to simplifying things and solving existing problems using OpenStack as a platform.</p>
-
-<p>-Back in 2013 on my former employer I had plenty of time due I got some storage skills on my position, as a Sr Storage Engineer at that time being. Not too much automated stuff but enough to give me time to learn something else.
-Bash, Perl, ssh-keys and one big xls file involved here :)</p>
-
-<p>-I started testing Openstack (Grizzly) and Eucaliptus on my own laptop but didn&rsquo;t work at all.</p>
-
-<p>-I heard some guys from the same company but in Slovakia, were trying to connect Netapp as backend storage on an OpenStack test cloud. &ndash; I offered my help but I got rejected.</p>
-
-<p>-So I continued on my self learning pace.</p>
-
-<p>-One of my previous managers wanted a solution to store files on the internal network, I offered him some help and he
-gave me 3 very old servers and one disk array. Just for the records &ndash; <strong><em>never finished what he really wanted.</em></strong></p>
-
-<p>-Managed to build one server from 3 I got, a very old Proliant G4 with 12GB of RAM and 2 CPUs at 2.4GHz, and a Disk array with 5 failed disks of 12, and suddenly <strong>Nazgul01</strong> was born.</p>
-
-<p><img src="/images/lops/lab02.jpg" width="350" height="550" title="'lab'" ></p>
-
-<p><strong>-I felt like I have something here</strong></p>
 
 </div>
   
@@ -342,31 +290,20 @@ gave me 3 very old servers and one disk array. Just for the records &ndash; <str
   </header>
 
 
-  <div class="entry-content"><p><em>When you are thankful that your family is close by</em> ..</p>
+  <div class="entry-content"><p><img src="/images/cowsay3.png" width="700" height="700"></p>
+
+<p><em>When you are thankful that your family is close by</em> ..</p>
 
 <p><em>When your real friends are always up for you</em> ..</p>
 
 <p><em>When you have reached your comfort zone and stability</em> &hellip;</p>
 
-<p>Personal and professional decisions, one of the hardest so far, We as a family decided to take the opportunity
-and move from Puebla, Mexico to San Antonio, Texas.</p>
-
-<p>Yeah different country, different company, and a new  emerging technology, in which I&rsquo;ve been working very hard for the last two years.</p>
-
-<p>It&rsquo;s been so far a cultural shock even though we are very close to Mexico.
-I&rsquo;ve broke my comfort zone many times before, But this time is my family with me.</p>
-
-<p>This is a family experience and we will learn together, and support each other on this transition, I know is not going to be easy&hellip; But as people say here:</p>
-
-<p> <strong>You Only Live Once&hellip;&hellip;.</strong></p>
-
-<p>And also the fortune-cow knows.. and supports me :)</p>
-
-<p><img src="/images/cowsay3.png"></p>
-
-<p>keep online, more to come :)</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/06/22/its-hard-to-say-goodbye/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -409,11 +346,6 @@ I&rsquo;ve broke my comfort zone many times before, But this time is my family w
 <p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="http://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
 the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
 but anyway let&rsquo;s jump on the BigData stuff.</p>
-
-<p>One of our DBA&rsquo;s ask us for a Linux instance on the OpenStack cloud, first questions from me was, purpose ? , so he wanted to try and learn about Hadoop, so I started to look if there was an image ready for it or start to build one from scratch and meet the Hadoop pre-requisites, at the end the DBA won&rsquo;t install the Hadoop platform, that will be the sysadmins or Devops :)
-So I was on an interesting situation, reading in deep I found a pararell world about DataProcessing and BigData, and then project <a href="https://wiki.openstack.org/wiki/Sahara/">Sahara</a> formerly known as Savanna, immediatly I get caught on it.</p>
-
-<p>But WHAT IS SAHARA?</p>
 
 </div>
   
@@ -518,11 +450,7 @@ For the ones that haven&rsquo;t heard about OpenCompute project, let me explain 
 <blockquote><p>"The Open Compute Project Foundation is a rapidly growing community of engineers around the world whose mission is to design and enable the delivery of the most efficient server, storage and data center hardware designs for scalable computing. We believe that openly sharing ideas, specifications and other intellectual property is the key to maximizing innovation and reducing operational complexity in the scalable computing space."</p></blockquote>
 
 
-<p>Believe it or not this is a Facebook initiative to share the design of datacenter architecture with the intention to improve efficiency on servers, storage and also general datacenter overall infrastructure with smart and &ldquo;ecofriendly&rdquo; deployments.
-I&rsquo;d say this is like an OpenSource project applied in hardware and is going to speed up the innovation on new hardware solutions.</p>
 
-<p><img src="/images/opencomputeserver-750.jpg" width="360" height="140" title="'OpenCompute Servers'" >
-<img src="/images/IODatacenter.jpg" width="360" height="140" title="'IO Datacenter in Scottsdale'" ></p>
 
 </div>
   
@@ -575,15 +503,6 @@ I started looking on internet in too many DIY (Do It Yourself) sites, woodworkin
 <p>Of course I couldn&rsquo;t build it by myself on my little space at home and no skills, So I threw an email to one of the most respectable and creative hacker nowadays, my friend <a href="https://people.gnome.org/~federico/">Federico Mena Quintero</a>, who has a passion for woodworking and a place to do it.
 To people that haven&rsquo;t hear before about Federico, he is one of the most brilliant persons I have met, he has contributed with Opensource in so many levels an he is always trying to help the community, Let&rsquo;s say he should be in the &ldquo;hall of fame&rdquo; of the OpenSource history, besides that he is a young guy with a really lovely family.</p>
 
-<p>Couple of days later I got Federico response, saying that he will be able to help me out with my &ldquo;little&rdquo; project!!! and we started some day back in Jan 2014, basically reviewing the woodworking plans and the options we had, Federico suggested me to &ldquo;Go big&rdquo; , he is also a father and knows the business of kids growing very fast, so we decided to build an actual crib that Naia can use at least until she turns six, and maybe can be passed on subsequent children, and then on and on throughout the family.</p>
-
-<p>So we went out to the local wood place and got all we needed.</p>
-
-<p><img src="/images/cuna/IMG_0098.JPG" width="320" height="370" title="'Federico Mena'" >  <img src="/images/cuna/IMG_0102.JPG" width="400" height="300" title="'Truck loaded'" ></p>
-
-<p>We started sanding pretty much everything by hand, no electric weapons were used to sand the wood.
-Then we continue with front and end panels assembled</p>
-
 </div>
   
   
@@ -631,14 +550,6 @@ Then we continue with front and end panels assembled</p>
 
 <p>Going back to my journey on storage, I learnt a lot, and I was able to manage the &ldquo;black box&rdquo; for the sysadmins,
 with more experience gained I faced ugly problems that cost me valuable time with family, celebrations, weekends, hollydays, and nights a lot of nights, but finally I got the point when I can do things easily, and my level of understanding how things works no matter the infraestructure was getting better.</p>
-
-<p>But this is the point when you are a curious guy and you like to know what else is out there, well, I&rsquo;m surprised how technology advance minute to minute , it&rsquo;s a progressive and infinite science, &hellip;. I took a deep dive on SAN and Netapp Storage systems and when I looked back, the technology world surprisly changed, to be more specific on OpenSource Projects and Cloud.</p>
-
-<p>Doing a bit of research I found a pretty darn interesting project called &ldquo;CEPH&rdquo; , it really blew my mind.
-I was looking for an inexpensive storage solution for an &ldquo;small&rdquo; private cloud, and basically we found in Ceph everything that we needed, it&rsquo;s a distributed storage system, and it&rsquo;s OpenSource!, they claim to have a really good performance, reliability and scalability and indeed they have it all.
-Ceph supports Object and Block storage, is integrated now on the Linux kernel, and the best thing, OpenStack included Ceph as well, Ceph also has its own filesystem (no yet ready for prod environments).</p>
-
-<p><img src="/images/ceph+openstack.png" width="350" height="350" title="'Ceph and Openstack'" ></p>
 
 </div>
   
@@ -721,7 +632,7 @@ Ceph supports Object and Block storage, is integrated now on the Linux kernel, a
       </li>
     
       <li class="post">
-        <a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learned OpenStack by Failing</a>
+        <a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learnt OpenStack by Failing</a>
       </li>
     
       <li class="post">

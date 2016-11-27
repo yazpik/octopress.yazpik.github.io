@@ -136,12 +136,17 @@
 
 <p>List the storage pool, &ldquo;virtimages&rdquo; pool is refering to the path given on the xml file which is /home/images</p>
 
+<!-- more -->
+
+
+
+
 <pre>
 # virsh pool-list
 </pre>
 
 
-<p><figure class='code'><figcaption>virsh output </figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  vim'><pre><div class='line'>Name                 State      Autostart
+<p><figure class='code'><figcaption>virsh output</figcaption><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  vim'><pre><div class='line'>Name                 State       Autostart
 </div><div class='line'><span class="p">&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</span>
 </div><div class='line'>virtimages           active       no
 </div></pre></td></tr></table></div></figure></p>
@@ -155,11 +160,6 @@ machine ESXi login root password s3cretitos
 
 <p>Convert the VMware VM to KVM, the virtual machine has to be stopped before to proceed with this, go to Virtual center and turn the VM off.</p>
 
-<!-- more -->
-
-
-
-
 <pre>
 # virt-v2v -ic esx://(ESX IP address or name) -o libvirt -os (Storagepool) (VMname)
 </pre>
@@ -167,7 +167,7 @@ machine ESXi login root password s3cretitos
 
 
 
-<pre> 
+<pre>
 # virt-v2v -ic esx://ESXi/?no_verify=1 -o libvirt -os virtimages Trusty_test_CLON
 </pre>
 
@@ -282,7 +282,7 @@ So you will be able to test the Exported/Imported VM from VMWare to Openstack/KV
       </li>
     
       <li class="post">
-        <a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learned OpenStack by Failing</a>
+        <a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learnt OpenStack by Failing</a>
       </li>
     
       <li class="post">

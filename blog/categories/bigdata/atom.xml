@@ -4,7 +4,7 @@
   <title><![CDATA[Category: bigdata | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/bigdata/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:51:32-06:00</updated>
+  <updated>2016-11-27T11:56:28-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -26,13 +26,13 @@
 the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
 but anyway let&rsquo;s jump on the BigData stuff.</p>
 
+<!-- more -->
+
+
 <p>One of our DBA&rsquo;s ask us for a Linux instance on the OpenStack cloud, first questions from me was, purpose ? , so he wanted to try and learn about Hadoop, so I started to look if there was an image ready for it or start to build one from scratch and meet the Hadoop pre-requisites, at the end the DBA won&rsquo;t install the Hadoop platform, that will be the sysadmins or Devops :)
 So I was on an interesting situation, reading in deep I found a pararell world about DataProcessing and BigData, and then project <a href="https://wiki.openstack.org/wiki/Sahara/">Sahara</a> formerly known as Savanna, immediatly I get caught on it.</p>
 
 <p>But WHAT IS SAHARA?</p>
-
-<!-- more -->
-
 
 <p>Sahara began life as an Apache 2.0 project and is now an OpenStack integrated project, Sahara enables the fast provisioning and easy management of Hadoop clusters on Openstack, mainstream Hadoop distributions and elastic data processing (EDP) capability similar to Amazon Elastic MapReduce (EMR).</p>
 

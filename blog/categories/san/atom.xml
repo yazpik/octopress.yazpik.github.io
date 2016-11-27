@@ -4,7 +4,7 @@
   <title><![CDATA[Category: san | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/san/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:51:32-06:00</updated>
+  <updated>2016-11-27T11:56:28-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -18,11 +18,16 @@
     <link href="http://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye/"/>
     <updated>2016-06-22T22:18:00-05:00</updated>
     <id>http://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye</id>
-    <content type="html"><![CDATA[<p><em>When you are thankful that your family is close by</em> ..</p>
+    <content type="html"><![CDATA[<p><img src="/images/cowsay3.png" width="700" height="700"></p>
+
+<p><em>When you are thankful that your family is close by</em> ..</p>
 
 <p><em>When your real friends are always up for you</em> ..</p>
 
 <p><em>When you have reached your comfort zone and stability</em> &hellip;</p>
+
+<!-- more -->
+
 
 <p>Personal and professional decisions, one of the hardest so far, We as a family decided to take the opportunity
 and move from Puebla, Mexico to San Antonio, Texas.</p>
@@ -37,8 +42,6 @@ I&rsquo;ve broke my comfort zone many times before, But this time is my family w
 <p> <strong>You Only Live Once&hellip;&hellip;.</strong></p>
 
 <p>And also the fortune-cow knows.. and supports me :)</p>
-
-<p><img src="/images/cowsay3.png"></p>
 
 <p>keep online, more to come :)</p>
 ]]></content>
@@ -65,7 +68,7 @@ This list has truly helped me out asking questions to easily identify what the p
 <li>Do not freak out (very important)</li>
 <li>Calm yourself down (breath)</li>
     </h5>
-    
+
 And we are ready to get the information
 
 <ul>
@@ -82,14 +85,13 @@ And we are ready to get the information
 </ul>
 
 
+<!-- more -->
+
     <h5>
 <li>When you get all the information above, you should have a clear view of what is going on.
 <li>Ask for some minutes to perform the next steps... Take your time and remember to be calm.
     </h5>
 </ol>
-
-
-<!-- more -->
 
 
 <h4>Next Steps</h4>
@@ -102,20 +104,20 @@ And we are ready to get the information
 • Take a look on Fiber channel switch port stats for respective server aliases
 
 • CRC (cyclic redundancy checking) errors: A high number of CRC errors can indicate a problem with GBIC/SFP connectors or problems with the physical cabling for a given port.
- 
+
 • Examining port utilization, can help understand throughput and help identify whether there is a bottleneck here.
- 
+
 • LOGS- check the SAN logs and compare the running configuration to the documentation.
 
-• Is it SAN reporting events or errors that may be related? 
+• Is it SAN reporting events or errors that may be related?
 
-• Have any recent Storage changes occurred? 
+• Have any recent Storage changes occurred?
 
 • Are there any SAN-related messages in the hosts system message logs?
 
-• Can other hosts see the storage controller involved? 
+• Can other hosts see the storage controller involved?
 
-• Is the storage port logged into the FC switch? 
+• Is the storage port logged into the FC switch?
 
 • Create a report and provide your feedback on it
 
@@ -147,17 +149,17 @@ And we are ready to get the information
 <pre>
 • Fiber channel: On case of many CRC errors request review of fiber jumpers, trunks, patch panel.
 
-• SAN/LAN switch: Review logs for failed ports CRC errors, 
-    ISL disconnections, multipathing, disable ports, power and fan redundant, 
+• SAN/LAN switch: Review logs for failed ports CRC errors,
+    ISL disconnections, multipathing, disable ports, power and fan redundant,
     Save statis and reset counters, gbic status, clock on the same time on both switches, zone status.
 
-• Storage Controller: Review redundant power supply, fan, connectivity issues to switch, 
+• Storage Controller: Review redundant power supply, fan, connectivity issues to switch,
     HA enable and working fine.
 
 • Cache: Review failed memory banks, battery modules, disable modules
 
 • Back end: Review failed paths, LUN status
- 
+
 • Disks: Review failed disks, alarm on shelves, connectivity issues, general alarm, firmware problems.
 </pre>
 

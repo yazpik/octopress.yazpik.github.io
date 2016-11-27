@@ -4,7 +4,7 @@
   <title><![CDATA[Category: openstack | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:51:32-06:00</updated>
+  <updated>2016-11-27T11:56:28-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How I Learned OpenStack by failing]]></title>
+    <title type="html"><![CDATA[How I Learnt OpenStack by failing]]></title>
     <link href="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
     <updated>2016-09-09T21:21:00-05:00</updated>
     <id>http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
@@ -27,6 +27,9 @@ We were not sure what is all about,
 but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
 But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
 We tent to underestimate our efforts in a really bad way, and maybe that stop us going to the next level&hellip;</p>
+
+<!-- more -->
+
 
 <p>I&rsquo;d like to share my story, how I learnt by doing and I&rsquo;ll say trying to simplifying things and solving existing problems using OpenStack as a platform.</p>
 
@@ -47,9 +50,6 @@ gave me 3 very old servers and one disk array. Just for the records &ndash; <str
 <p><img src="/images/lops/lab02.jpg" width="350" height="550" title="&lsquo;lab&rsquo;" ></p>
 
 <p><strong>-I felt like I have something here</strong></p>
-
-<!-- more -->
-
 
 <p>-Got access to the electronic Junk and trash, hardware listed to be donated by my previous employer.</p>
 
@@ -181,13 +181,13 @@ We were wrong in so many levels, and failed to explain to the management our vis
 the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
 but anyway let&rsquo;s jump on the BigData stuff.</p>
 
+<!-- more -->
+
+
 <p>One of our DBA&rsquo;s ask us for a Linux instance on the OpenStack cloud, first questions from me was, purpose ? , so he wanted to try and learn about Hadoop, so I started to look if there was an image ready for it or start to build one from scratch and meet the Hadoop pre-requisites, at the end the DBA won&rsquo;t install the Hadoop platform, that will be the sysadmins or Devops :)
 So I was on an interesting situation, reading in deep I found a pararell world about DataProcessing and BigData, and then project <a href="https://wiki.openstack.org/wiki/Sahara/">Sahara</a> formerly known as Savanna, immediatly I get caught on it.</p>
 
 <p>But WHAT IS SAHARA?</p>
-
-<!-- more -->
-
 
 <p>Sahara began life as an Apache 2.0 project and is now an OpenStack integrated project, Sahara enables the fast provisioning and easy management of Hadoop clusters on Openstack, mainstream Hadoop distributions and elastic data processing (EDP) capability similar to Amazon Elastic MapReduce (EMR).</p>
 
@@ -348,7 +348,7 @@ Next post We&rsquo;ll run a job on the cluster, stay tunned :)</p>
 
 <pre><code>    &lt;name&gt;virtimages&lt;/name&gt;
     &lt;target&gt;
-      &lt;path&gt;/home/images&lt;/path&gt; 
+      &lt;path&gt;/home/images&lt;/path&gt;
     &lt;/target&gt;
 </code></pre>
 
@@ -364,6 +364,11 @@ Next post We&rsquo;ll run a job on the cluster, stay tunned :)</p>
 
 
 <p>List the storage pool, &ldquo;virtimages&rdquo; pool is refering to the path given on the xml file which is /home/images</p>
+
+<!-- more -->
+
+
+
 
 <pre>
 # virsh pool-list
@@ -386,11 +391,6 @@ machine ESXi login root password s3cretitos
 
 <p>Convert the VMware VM to KVM, the virtual machine has to be stopped before to proceed with this, go to Virtual center and turn the VM off.</p>
 
-<!-- more -->
-
-
-
-
 <pre>
 # virt-v2v -ic esx://(ESX IP address or name) -o libvirt -os (Storagepool) (VMname)
 </pre>
@@ -398,7 +398,7 @@ machine ESXi login root password s3cretitos
 
 
 
-<pre> 
+<pre>
 # virt-v2v -ic esx://ESXi/?no_verify=1 -o libvirt -os virtimages Trusty_test_CLON
 </pre>
 

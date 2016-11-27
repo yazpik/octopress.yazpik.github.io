@@ -4,7 +4,7 @@
   <title><![CDATA[Category: kubernetes | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/kubernetes/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:51:32-06:00</updated>
+  <updated>2016-11-27T11:56:28-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -77,6 +77,9 @@ I had a OpenStack cluster ready so started playing with <a href="https://wiki.op
 
 <p>Found this guide from <a href="https://twitter.com/kelseyhightower">Kelsey Hightower</a>, <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;kubernetes the hardway&rdquo;</a> this helped me a lot to understand more what is all about all the
 kubernetes components, the guide is based on GCE (Google Compute Engine), I did the installation on a different cloud provider, it&rsquo;s challenging but worked well for me.</p>
+
+<!-- more -->
+
 
 <p>Eventually I had to delete my instances running on the public cloud by obvious reasons, and I found another gnarly way to run kubernetes very easy, using
 <a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-vagrant.html">Vagrant and CoreOS</a>, I have 16GB of RAM so it works great, so far running on a 4 nodes deployment, taking half of my compute power,
@@ -170,14 +173,14 @@ For the ones that haven&rsquo;t heard about OpenCompute project, let me explain 
 
 <p><blockquote><p></p></p><p><p>&ldquo;The Open Compute Project Foundation is a rapidly growing community of engineers around the world whose mission is to design and enable the delivery of the most efficient server, storage and data center hardware designs for scalable computing. We believe that openly sharing ideas, specifications and other intellectual property is the key to maximizing innovation and reducing operational complexity in the scalable computing space.&rdquo;</p></p><p><p></p></blockquote></p>
 
+<!-- more -->
+
+
 <p>Believe it or not this is a Facebook initiative to share the design of datacenter architecture with the intention to improve efficiency on servers, storage and also general datacenter overall infrastructure with smart and &ldquo;ecofriendly&rdquo; deployments.
 I&rsquo;d say this is like an OpenSource project applied in hardware and is going to speed up the innovation on new hardware solutions.</p>
 
 <p><img src="/images/opencomputeserver-750.jpg" width="360" height="140" title="&lsquo;OpenCompute Servers&rsquo;" >
 <img src="/images/IODatacenter.jpg" width="360" height="140" title="&lsquo;IO Datacenter in Scottsdale&rsquo;" ></p>
-
-<!-- more -->
-
 
 <p>Big names just joined to the OpenCompute project such as Apple and HP, So I believe in the next two years or so we will see a drastical change on Datacenter deployments as well as compute architecture, and we have to be ready to be competitive or much better be part of it, this is a good opportunity to join as one of the early adopters.</p>
 

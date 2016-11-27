@@ -4,7 +4,7 @@
   <title><![CDATA[Category: innovation | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/innovation/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-26T15:51:32-06:00</updated>
+  <updated>2016-11-27T11:56:28-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How I Learned OpenStack by failing]]></title>
+    <title type="html"><![CDATA[How I Learnt OpenStack by failing]]></title>
     <link href="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
     <updated>2016-09-09T21:21:00-05:00</updated>
     <id>http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
@@ -27,6 +27,9 @@ We were not sure what is all about,
 but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
 But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
 We tent to underestimate our efforts in a really bad way, and maybe that stop us going to the next level&hellip;</p>
+
+<!-- more -->
+
 
 <p>I&rsquo;d like to share my story, how I learnt by doing and I&rsquo;ll say trying to simplifying things and solving existing problems using OpenStack as a platform.</p>
 
@@ -47,9 +50,6 @@ gave me 3 very old servers and one disk array. Just for the records &ndash; <str
 <p><img src="/images/lops/lab02.jpg" width="350" height="550" title="&lsquo;lab&rsquo;" ></p>
 
 <p><strong>-I felt like I have something here</strong></p>
-
-<!-- more -->
-
 
 <p>-Got access to the electronic Junk and trash, hardware listed to be donated by my previous employer.</p>
 
