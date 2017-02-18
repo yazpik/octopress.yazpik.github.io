@@ -4,7 +4,7 @@
   <title><![CDATA[Category: docker | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/docker/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-27T11:56:28-06:00</updated>
+  <updated>2017-02-18T17:12:18-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -69,6 +69,9 @@ Here is an small asccinema recording on how I launch the dashboard.</p>
 
 <p>When I recently started to work with Docker and Kubernetes, this <a href="https://www.youtube.com/watch?v=m-H8PuweRVA">Simpson&rsquo;s Episode</a>   came to my mind,
 Is very similar to me in the very beginning trying to deploy kubernetes.</p>
+
+<p>I have spent my entire career as a Sysadmin and never wrote serious code,
+you know as a Sysadmin we need to write some bash/ansible/perl scripts to help our-selfs and automate stuff, but things are changing now.</p>
 
 <p>I have tried different ways to use it and test it out,
 I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>

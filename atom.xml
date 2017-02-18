@@ -4,7 +4,7 @@
   <title><![CDATA[Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2016-11-27T11:56:28-06:00</updated>
+  <updated>2017-02-18T17:12:18-06:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kubernetes and Nginxplus demo]]></title>
+    <link href="http://yazpik.github.io/blog/2016/11/27/kubernetes-and-nginxplus-demo/"/>
+    <updated>2016-11-27T12:00:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2016/11/27/kubernetes-and-nginxplus-demo</id>
+    <content type="html"><![CDATA[<h3>Load balancing a basic webbapp with nginxplus and kubernetes</h3>
+
+<p>I think the best way to learn something new is doing in practice, theory is always good
+but I&rsquo;m the kind of person who likes to do/try/test/ stuff and learn by doing/failing/changing.</p>
+
+<p>I&rsquo;m also kind of new on kubernetes, and watching live-demos out-there is like I don&rsquo;t know nothing about cloud.
+It seems everyday is a new tool that is better that the one created the day before to solve a problem.</p>
+
+<p>It&rsquo;s really crazy how the cloud technology is in the pace right now, and sometimes I feel overwhelmed, but I&rsquo;m pretty sure I&rsquo;m not the only one with that feeling.
+I decided get hands on, follow some demos out-there and add something else, so I started with this demo
+, having kubernetes creating pods and loadbalancing them using nginxplus,</p>
+
+<h4>The flow is the following</h4>
+
+<ul>
+<li>1.&ndash; NGINXplus load balancing a very simple webapp (configured on <a href="https://github.com/yazpik/lb-nginxplus/blob/master/backend.conf#L7-L13">backend.conf</a>)</li>
+<li>2.&ndash; Console on top right is sending http load to the loadbalancer IP</li>
+<li>3.&ndash; At the same time kubectl is talking with kubernetes API, changing replicas sets and deployments tags between containers</li>
+<li>4.&ndash; Watch command of &ldquo;kubectl get pods&rdquo; to see how pods are being created and destroyed</li>
+</ul>
+
+
+<div class="embed-video-container"><iframe src="http://yazpik.github.io//www.youtube.com/embed/51XjbuS38ik" allowfullscreen></iframe></div>
+
+
+<p>Ignore the broken english, I&rsquo;m still improving :)</p>
+
+<p>I pretty much followed this guide from Kelsey Hightower</p>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=_nPKCxtr7g4">Bringing Kubernetes to the Edge with NGINX Plus</a></li>
+</ul>
+
+
+<p>And official guides from Nginxplus</p>
+
+<ul>
+<li><a href="https://www.nginx.com/products/application-load-balancing/">NGINX Plus as an Application Load Balancer</a></li>
+<li><a href="https://www.nginx.com/resources/admin-guide/load-balancer/">Admin Guide</a></li>
+</ul>
+
+
+<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="http://quay.io">Quay.io</a> a phenomenal ally,
+<a href="https://quay.io/repository/yazpik/spacemonkey">Spacemonkey container</a> was built to test kubernetes, changes between tags, releases, etc
+So I can test rollout/rollback updates in kubernetes very easily,
+ Another good thing is that the container is automatically created when I trigger a commit on Github due a Webhook configured on quay that is a really powerfull tool. <a href="https://docs.quay.io/guides/custom-trigger.html">(see Quay.io Webhooks)</a></p>
+
+<p>To be more specific see this example of the Docker file being change between alpine and nginx versions <a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf">Hash </a></p>
+
+<p><a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf"><img src="http://yazpik.github.io/images/dockerfie_ver1.jpg" title="'DockerFile versioning'" ></a></p>
+
+<p>To finish this post I&rsquo;d like to bold this really cool feature on Quay, is called &ldquo;Quay Security Scanner&rdquo;, it&rsquo;s based on <a href="https://github.com/coreos/clair">Clair</a> Which is OpenSource.</p>
+
+<p>It help you out to see what could be wrong with the packages you are using to built your container, so you will be aware if you are hitting a critical vulnerability or not.</p>
+
+<p><a href="https://quay.io/repository/yazpik/spacemonkey/image/9be26d688d274b7ccaded0f5e12aba7f030a4949598faee05f85fa2b2800b6b5?tab=packages"><img src="http://yazpik.github.io/images/sec_scanner.jpg"></a></p>
+
+<p>I have too much ideas to do with Kubernetes, I&rsquo;m still learning a lot, but I&rsquo;ll try to document my progress.</p>
+
+<p>Stay tunned.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Kubernetes management dashboard]]></title>
@@ -69,6 +137,9 @@ Just need to find your kubernetes-dashboard pod on the kube-system namespace and
 
 <p>When I recently started to work with Docker and Kubernetes, this <a href="https://www.youtube.com/watch?v=m-H8PuweRVA">Simpson&rsquo;s Episode</a>   came to my mind,
 Is very similar to me in the very beginning trying to deploy kubernetes.</p>
+
+<p>I have spent my entire career as a Sysadmin and never wrote serious code,
+you know as a Sysadmin we need to write some bash/ansible/perl scripts to help our-selfs and automate stuff, but things are changing now.</p>
 
 <p>I have tried different ways to use it and test it out,
 I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>
@@ -648,7 +719,7 @@ I&rsquo;m deeply thankful to had the oportunity to work on this and build someth
 <p>What can I say ? , it really feels great.</p>
 
 <p>If you want to check out the Woodworkings plans and/or the cutting list used, please feel free to shoot me an email
-<a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#121;&#97;&#122;&#x70;&#x69;&#x6b;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#121;&#x61;&#x7a;&#112;&#x69;&#x6b;&#x40;&#103;&#109;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#109;</a></p>
+<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x79;&#97;&#x7a;&#x70;&#105;&#107;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x79;&#x61;&#x7a;&#x70;&#105;&#107;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
 ]]></content>
   </entry>
   

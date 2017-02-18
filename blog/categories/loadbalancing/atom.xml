@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: loadbalancing | Life of a Sysadmin]]></title>
+  <link href="http://yazpik.github.io/blog/categories/loadbalancing/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2017-02-18T17:12:18-06:00</updated>
+  <id>http://yazpik.github.io/</id>
+  <author>
+    <name><![CDATA[Francisco Moctezuma]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Kubernetes and Nginxplus demo]]></title>
+    <link href="http://yazpik.github.io/blog/2016/11/27/kubernetes-and-nginxplus-demo/"/>
+    <updated>2016-11-27T12:00:00-06:00</updated>
+    <id>http://yazpik.github.io/blog/2016/11/27/kubernetes-and-nginxplus-demo</id>
+    <content type="html"><![CDATA[<h3>Load balancing a basic webbapp with nginxplus and kubernetes</h3>
+
+<p>I think the best way to learn something new is doing in practice, theory is always good
+but I&rsquo;m the kind of person who likes to do/try/test/ stuff and learn by doing/failing/changing.</p>
+
+<p>I&rsquo;m also kind of new on kubernetes, and watching live-demos out-there is like I don&rsquo;t know nothing about cloud.
+It seems everyday is a new tool that is better that the one created the day before to solve a problem.</p>
+
+<p>It&rsquo;s really crazy how the cloud technology is in the pace right now, and sometimes I feel overwhelmed, but I&rsquo;m pretty sure I&rsquo;m not the only one with that feeling.
+I decided get hands on, follow some demos out-there and add something else, so I started with this demo
+, having kubernetes creating pods and loadbalancing them using nginxplus,</p>
+
+<h4>The flow is the following</h4>
+
+<ul>
+<li>1.&ndash; NGINXplus load balancing a very simple webapp (configured on <a href="https://github.com/yazpik/lb-nginxplus/blob/master/backend.conf#L7-L13">backend.conf</a>)</li>
+<li>2.&ndash; Console on top right is sending http load to the loadbalancer IP</li>
+<li>3.&ndash; At the same time kubectl is talking with kubernetes API, changing replicas sets and deployments tags between containers</li>
+<li>4.&ndash; Watch command of &ldquo;kubectl get pods&rdquo; to see how pods are being created and destroyed</li>
+</ul>
+
+
+<p><div class="embed-video-container"><iframe src="//www.youtube.com/embed/51XjbuS38ik" allowfullscreen></iframe></div></p>
+
+<p>Ignore the broken english, I&rsquo;m still improving :)</p>
+
+<p>I pretty much followed this guide from Kelsey Hightower</p>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=_nPKCxtr7g4">Bringing Kubernetes to the Edge with NGINX Plus</a></li>
+</ul>
+
+
+<p>And official guides from Nginxplus</p>
+
+<ul>
+<li><a href="https://www.nginx.com/products/application-load-balancing/">NGINX Plus as an Application Load Balancer</a></li>
+<li><a href="https://www.nginx.com/resources/admin-guide/load-balancer/">Admin Guide</a></li>
+</ul>
+
+
+<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="http://quay.io">Quay.io</a> a phenomenal ally,
+<a href="https://quay.io/repository/yazpik/spacemonkey">Spacemonkey container</a> was built to test kubernetes, changes between tags, releases, etc
+So I can test rollout/rollback updates in kubernetes very easily,
+ Another good thing is that the container is automatically created when I trigger a commit on Github due a Webhook configured on quay that is a really powerfull tool. <a href="https://docs.quay.io/guides/custom-trigger.html">(see Quay.io Webhooks)</a></p>
+
+<p>To be more specific see this example of the Docker file being change between alpine and nginx versions <a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf">Hash </a></p>
+
+<p><a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf"><img src="/images/dockerfie_ver1.jpg" title="&lsquo;DockerFile versioning&rsquo;" ></a></p>
+
+<p>To finish this post I&rsquo;d like to bold this really cool feature on Quay, is called &ldquo;Quay Security Scanner&rdquo;, it&rsquo;s based on <a href="https://github.com/coreos/clair">Clair</a> Which is OpenSource.</p>
+
+<p>It help you out to see what could be wrong with the packages you are using to built your container, so you will be aware if you are hitting a critical vulnerability or not.</p>
+
+<p><a href="https://quay.io/repository/yazpik/spacemonkey/image/9be26d688d274b7ccaded0f5e12aba7f030a4949598faee05f85fa2b2800b6b5?tab=packages"><img src="/images/sec_scanner.jpg"></a></p>
+
+<p>I have too much ideas to do with Kubernetes, I&rsquo;m still learning a lot, but I&rsquo;ll try to document my progress.</p>
+
+<p>Stay tunned.</p>
+]]></content>
+  </entry>
+  
+</feed>
