@@ -4,7 +4,7 @@
   <title><![CDATA[Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2017-02-18T17:17:43-06:00</updated>
+  <updated>2017-04-15T07:52:40-05:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -12,6 +12,264 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Upgrading a SelfHosted Kubernetes Cluster]]></title>
+    <link href="http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/"/>
+    <updated>2017-04-15T07:14:00-05:00</updated>
+    <id>http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster</id>
+    <content type="html"><![CDATA[<p><img center src="http://www.andrewlipson.com/escher/relativity-1600.jpg" width="500" height="400"></p>
+
+<p>From <a href="https://en.wikipedia.org/wiki/History_of_compiler_construction">Wikipedia</a></p>
+
+<blockquote><p>&ldquo;Self-hosting is the use of a computer program as part of the toolchain or operating system that produces new versions of that same program—for example, a compiler that can compile its own source code.&rdquo;</p></blockquote>
+
+<p>Thinking about the foundation of a Kubernetes production ready cluster, I decided
+to have a look at this, and is something will break your brain a bit, or at least did it
+for me because I wasn&rsquo;t familiar with <em>Self-Hosted</em> term.</p>
+
+<p>At the end kubernetes is really good to simplify software lifecycle management
+why not to do it by managing it&rsquo;s own core components?.</p>
+
+<p>So I found CoreOS have made a significative progress with bootkube and matchbox</p>
+
+<h4>Bootkube and Matchbox (formerly known as CoreOS BareMetal)</h4>
+
+<p>To run this I wrote a howto based on official docs from CoreOS,
+Running matchbox on a physical Linux machine with rkt/docker and CNI to network boot and provision a cluster of QEMU/KVM CoreOS machines locally using libvirtd.</p>
+
+<p>You can follow the instructions to boot a selfhosted Kubernetes cluster on my github repo.
+<a href="https://github.com/yazpik/SelfHosted-K8s-Lab/blob/master/README.md">https://github.com/yazpik/SelfHosted-K8s-Lab/blob/master/README.md</a></p>
+
+<p>Also one of my co-workers <a href="https://github.com/shane-c">Shane Cunningham</a>  <a href="https://cunninghamshane.com/bare-metal-self-hosted-kubernetes/">posted</a> a pretty good example using matchbox and ignition booting baremetal servers.</p>
+
+<p>And of course official documentation from CoreOS
+<a href="https://github.com/coreos/matchbox">https://github.com/coreos/matchbox</a></p>
+
+<p>So from here I&rsquo;m assuming you already have a cluster running :)</p>
+
+<h3>Upgrading the Kubernetes Cluster</h3>
+
+<p>Using bootkube 0.3.7 deploys a v1.5.2 kubernetes cluster, let&rsquo;s upgrade to
+v1.5.3, without taking down any application.</p>
+
+<p>Also based this guide on official CoreOS documentation <a href="https://github.com/coreos/matchbox/blob/master/Documentation/bootkube-upgrades.md">here</a></p>
+
+<p>After you see this message with bootkube finishing
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>bootkube[5]: All self-hosted control plane components successfully started  </div></pre></td></tr></table></div></figure></p>
+
+<p>You should be able to get all the k8s components running as described on <a href="https://github.com/yazpik/SelfHosted-K8s-Lab">part 1</a> of this document</p>
+
+<p>Check current version deployed (server version)
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl version
+</div><div class='line'>Client Version: version.Info{Major:&ldquo;1&rdquo;, Minor:&ldquo;5&rdquo;, GitVersion:&ldquo;v1.5.3&rdquo;, GitCommit:&ldquo;029c3a408176b55c30846f0faedf56aae5992e9b&rdquo;, GitTreeState:&ldquo;clean&rdquo;, BuildDate:&ldquo;2017-02-15T06:40:50Z&rdquo;, GoVersion:&ldquo;go1.7.4&rdquo;, Compiler:&ldquo;gc&rdquo;, Platform:&ldquo;linux/amd64&rdquo;}
+</div><div class='line'>Server Version: version.Info{Major:&ldquo;1&rdquo;, Minor:&ldquo;5&rdquo;, GitVersion:&ldquo;v1.5.2+coreos.1&rdquo;, GitCommit:&ldquo;3ed7d0f453a5517245d32a9c57c39b946e578821&rdquo;, GitTreeState:&ldquo;clean&rdquo;, BuildDate:&ldquo;2017-01-18T01:43:45Z&rdquo;, GoVersion:&ldquo;go1.7.4&rdquo;, Compiler:&ldquo;gc&rdquo;, Platform:&ldquo;linux/amd64&rdquo;}</div></pre></td></tr></table></div></figure></p>
+
+<p>Let&rsquo;s create a deployment first to test the upgrade running an actual &ldquo;aplication&rdquo;</p>
+
+<p>For this I&rsquo;m going to use one of my public containers, running Nginx 1.11.5 on Alpine and create a 50 pods deployment
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl run &mdash;image quay.io/yazpik/spacemonkey:v4.0 &mdash;replicas 50 spacemonkey
+</div><div class='line'>deployment &ldquo;spacemonkey&rdquo; created</div></pre></td></tr></table></div></figure></p>
+
+<p>Now expose the &ldquo;spacemonkey&rdquo; deployment to a service basically as a simple LB
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl expose deployment spacemonkey &mdash;port 80 &mdash;external-ip 172.18.0.21 &mdash;name spacemonkey-svc
+</div><div class='line'>service &ldquo;spacemonkey-svc&rdquo; exposed</div></pre></td></tr></table></div></figure></p>
+
+<p>Service (spacemonkey-svc) exposed and working as a loadbalancer with 50 replicas
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>selfhosted-k8s-lab:~/matchbox# kubectl get ep
+</div><div class='line'>NAME              ENDPOINTS                                             AGE
+</div><div class='line'>kubernetes        172.18.0.21:443                                       8m
+</div><div class='line'>spacemonkey-svc   10.2.0.10:80,10.2.0.11:80,10.2.0.12:80 + 47 more&hellip;   3m</div></pre></td></tr></table></div></figure></p>
+
+<p>Show the control plane daemonsets and deployments which will need to be updated.
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div><div data-line='6' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl get daemonsets -n kube-system
+</div><div class='line'>NAME                   DESIRED   CURRENT   READY     NODE-SELECTOR   AGE
+</div><div class='line'>checkpoint-installer   1         1         1         master=true     37m
+</div><div class='line'>kube-apiserver         1         1         1         master=true     37m
+</div><div class='line'>kube-flannel           3         3         3         &lt;none>          37m
+</div><div class='line'>kube-proxy             3         3         3         &lt;none>          37m</div></pre></td></tr></table></div></figure></p>
+
+<p>And deployments
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl get deployments -n kube-system
+</div><div class='line'>NAME                      DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+</div><div class='line'>kube-controller-manager   2         2         2            2           40m
+</div><div class='line'>kube-dns                  1         1         1            1           40m
+</div><div class='line'>kube-scheduler            2         2         2            2           40m</div></pre></td></tr></table></div></figure></p>
+
+<p>Label a new node as master, so we will have an HA kubernetes cluster
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl label node node2.example.com master=true
+</div><div class='line'>node &ldquo;node2.example.com&rdquo; labeled</div></pre></td></tr></table></div></figure></p>
+
+<p>After this step, another api-server container will be deployed on the new node labeled as master
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl get pods -n kube-system -o wide | grep apiserver
+</div><div class='line'>kube-apiserver-1k9pc                       1/1       Running   2          1h        172.18.0.21   node1.example.com
+</div><div class='line'>kube-apiserver-p4w88                       1/1       Running   0          13m       172.18.0.22   node2.example.com</div></pre></td></tr></table></div></figure></p>
+
+<h3>kube-apiserver</h3>
+
+<p>As a best practice and avoid any error during images download, I think is a good idea
+to fetch the required image version to all nodes before to attempt the upgrade</p>
+
+<p>We are running here v1.5.2 and we are targeting 1.5.3,</p>
+
+<h4>You can use your prefered method here, Ansible, SSH loop, or manual update</h4>
+
+<p>Basically what is required :
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div><div data-line='6' class='line-number'></div><div data-line='7' class='line-number'></div><div data-line='8' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>#Docker image for control plane components
+</div><div class='line'>sudo docker pull quay.io/coreos/hyperkube:v1.5.3_coreos.0  &lt;&mdash;new image tag
+</div><div class='line'> </div><div class='line'>#rkt image for kubelet and kubeproxy
+</div><div class='line'>#Trust the rkt hyperkube repo
+</div><div class='line'>sudo rkt trust &mdash;skip-fingerprint-review &mdash;prefix quay.io/coreos/hyperkube
+</div><div class='line'> </div><div class='line'>sudo rkt fetch quay.io/coreos/hyperkube:v1.5.3_coreos.0</div></pre></td></tr></table></div></figure></p>
+
+<p>After this all the nodes should have the new image required to the upgrade (v1.5.3) for this case.</p>
+
+<h3>So let&rsquo;s upgrade the cluster while we are running some workload to the service external IP</h3>
+
+<p>For this I&rsquo;m going to use <a href="https://pypi.python.org/pypi/boom/1.0">boom</a></p>
+
+<p>Running 300 seconds with concurrency 111 users to the external service IP
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# boom <a href="http://172.18.0.21">http://172.18.0.21</a> -d 300 -c 111
+</div></pre></td></tr></table></div></figure></p>
+
+<h4>IMPORTANT NOTE</h4>
+
+<p>Daemonsets do not support rolling updates yet
+It seems is going to be a feature of kubernetes 1.6
+&ndash; <a href="https://github.com/kubernetes/features/issues?q=is%3Aopen+is%3Aissue+milestone%3Av1.6">https://github.com/kubernetes/features/issues?q=is%3Aopen+is%3Aissue+milestone%3Av1.6</a></p>
+
+<p>Also see this proposal
+&ndash; <a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/daemonset-update.md">https://github.com/kubernetes/community/blob/master/contributors/design-proposals/daemonset-update.md</a></p>
+
+<h4>Lets edit the daemonset kube-apiserver manifest</h4>
+
+<p><figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>$ kubectl edit daemonset kube-apiserver -n=kube-system</div></pre></td></tr></table></div></figure></p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7389339/23628820/3d4bd720-027b-11e7-8685-9af01b2b8f45.jpg" alt="edit-api-server-daemonset" /></p>
+
+<p>Since daemonsets don&rsquo;t yet support rolling updates, we have to manually delete each apiserver pod for each to be re-scheduled.
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl delete pod kube-apiserver-p4w88 -n kube-system
+</div><div class='line'>pod &ldquo;kube-apiserver-p4w88&rdquo; deleted</div></pre></td></tr></table></div></figure></p>
+
+<p>As we have already the new image on the new, it was just a matter of seconds to create a new one
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl get pods -n kube-system
+</div><div class='line'>kube-apiserver-pjvl9                       0/1       ContainerCreating   0          0s
+</div><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl get pods -n kube-system
+</div><div class='line'>kube-apiserver-pjvl9                       1/1       Running   0          16s</div></pre></td></tr></table></div></figure></p>
+
+<p>We have to do the same for the rest of the kube-apiserver pods running (for this example are just two)
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl delete pod kube-apiserver-1k9pc -n kube-system</div></pre></td></tr></table></div></figure></p>
+
+<p>Both apiservers are running with the new version
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl get pods -n kube-system -o wide | grep api
+</div><div class='line'>kube-apiserver-ntggg                       1/1       Running   0          3m        172.18.0.21   node1.example.com
+</div><div class='line'>kube-apiserver-pjvl9                       1/1       Running   0          7m        172.18.0.22   node2.example.com</div></pre></td></tr></table></div></figure></p>
+
+<h3>Time to work on the kube-scheduler and kube-controller-manager</h3>
+
+<h3>kube-scheduler</h3>
+
+<p>Edit the scheduler deployment to rolling update the scheduler. Change the container image name for the new hyperkube version
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>$ kubectl edit deployments kube-scheduler -n=kube-system</div></pre></td></tr></table></div></figure></p>
+
+<p>Wait for the schduler to be deployed.</p>
+
+<h3>kube-controller-manager</h3>
+
+<p>Edit the controller-manager deployment to rolling update the controller manager.
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>$ kubectl edit deployments kube-controller-manager -n=kube-system</div></pre></td></tr></table></div></figure></p>
+
+<p>Wait for the controller manager to be deployed.</p>
+
+<h3>Verify</h3>
+
+<p>At this point control plane was upgraded from v1.5.2 to v1.5.3
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl version
+</div><div class='line'>Client Version: version.Info{Major:&ldquo;1&rdquo;, Minor:&ldquo;5&rdquo;, GitVersion:&ldquo;v1.5.3&rdquo;, GitCommit:&ldquo;029c3a408176b55c30846f0faedf56aae5992e9b&rdquo;, GitTreeState:&ldquo;clean&rdquo;, BuildDate:&ldquo;2017-02-15T06:40:50Z&rdquo;, GoVersion:&ldquo;go1.7.4&rdquo;, Compiler:&ldquo;gc&rdquo;, Platform:&ldquo;linux/amd64&rdquo;}
+</div><div class='line'>Server Version: version.Info{Major:&ldquo;1&rdquo;, Minor:&ldquo;5&rdquo;, GitVersion:&ldquo;v1.5.3+coreos.0&rdquo;, GitCommit:&ldquo;8fc95b64d0fe1608d0f6c788eaad2c004f31e7b7&rdquo;, GitTreeState:&ldquo;clean&rdquo;, BuildDate:&ldquo;2017-02-15T19:52:15Z&rdquo;, GoVersion:&ldquo;go1.7.4&rdquo;, Compiler:&ldquo;gc&rdquo;, Platform:&ldquo;linux/amd64&rdquo;}</div></pre></td></tr></table></div></figure></p>
+
+<h3>Kubelet and Kubeproxy</h3>
+
+<h4>Another important note here</h4>
+
+<p>Official CoreOS documentation, consider the kubelet as a daemonset, but is no longer deployed that way.
+Is needed to edit the kubelet systemd unit to use the next version in the envrionment file, it&rsquo;s a manual process and need to be done on all the nodes that runs the kubelet, see issue <a href="https://github.com/coreos/matchbox/issues/448">#448</a></p>
+
+<p>Check kubelet and kubeproxy running on hosts
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div><div data-line='6' class='line-number'></div><div data-line='7' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox# kubectl get nodes -o yaml | grep &lsquo;kubeletVersion\|kubeProxyVersion&rsquo;
+</div><div class='line'>      kubeProxyVersion: v1.5.2+coreos.0
+</div><div class='line'>      kubeletVersion: v1.5.2+coreos.0
+</div><div class='line'>      kubeProxyVersion: v1.5.2+coreos.0
+</div><div class='line'>      kubeletVersion: v1.5.2+coreos.0
+</div><div class='line'>      kubeProxyVersion: v1.5.2+coreos.0
+</div><div class='line'>      kubeletVersion: v1.5.2+coreos.0</div></pre></td></tr></table></div></figure></p>
+
+<p>First edit the kubeproxy daemonset
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>kubectl edit daemonset kube-proxy -n=kube-system</div></pre></td></tr></table></div></figure></p>
+
+<p>And same process deleting running pods for this daemonset (kubeproxy)</p>
+
+<h3>Update kubelet on nodes</h3>
+
+<p>On each node change this environment file
+e.g for node3
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>core@node3 ~ $ sudo vim /etc/kubernetes/kubelet.env
+</div><div class='line'>#
+</div><div class='line'>KUBELET_ACI=quay.io/coreos/hyperkube
+</div><div class='line'>KUBELET_VERSION=v1.5.3_coreos.0
+</div><div class='line'># change the kubelet version to the new one</div></pre></td></tr></table></div></figure></p>
+
+<p>Restart the kubelet (since we already fetched the image required, kubelet creation with the new image should be fairly quick)
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>core@node3 ~ $ sudo systemctl restart kubelet</div></pre></td></tr></table></div></figure></p>
+
+<p>Images available on node
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>core@node3 ~ $ rkt image list
+</div><div class='line'>ID                      NAME                                            SIZE    IMPORT TIME     LAST USED
+</div><div class='line'>sha512-4b541439adba     quay.io/coreos/hyperkube:v1.5.2_coreos.0        1.2GiB  2 hours ago     2 hours ago
+</div><div class='line'>sha512-c4c0341425c8     coreos.com/rkt/stage1-fly:1.18.0                17MiB   56 seconds ago  56 seconds ago
+</div><div class='line'>sha512-d17ee4d00002     quay.io/coreos/hyperkube:v1.5.3_coreos.0        1.2GiB  34 seconds ago  1 hour ago</div></pre></td></tr></table></div></figure></p>
+
+<p>After the kubelet restart, kubelet container was launched with the new image
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>core@node3 ~ $ rkt list
+</div><div class='line'>UUID            APP             IMAGE NAME                                      STATE   CREATED         STARTED         NETWORKS
+</div><div class='line'>8f05fe9b        hyperkube       quay.io/coreos/hyperkube:v1.5.3_coreos.0        running 1 minute ago    1 minute ago</div></pre></td></tr></table></div></figure></p>
+
+<p>Repeat the same on the rest of the nodes.</p>
+
+<p>When it&rsquo;s done, verify with
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div><div data-line='6' class='line-number'></div><div data-line='7' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~/matchbox#  kubectl get nodes -o yaml | grep &lsquo;kubeletVersion\|kubeProxyVersion&rsquo;
+</div><div class='line'>      kubeProxyVersion: v1.5.3+coreos.0
+</div><div class='line'>      kubeletVersion: v1.5.3+coreos.0
+</div><div class='line'>      kubeProxyVersion: v1.5.3+coreos.0
+</div><div class='line'>      kubeletVersion: v1.5.3+coreos.0
+</div><div class='line'>      kubeProxyVersion: v1.5.3+coreos.0
+</div><div class='line'>      kubeletVersion: v1.5.3+coreos.0</div></pre></td></tr></table></div></figure></p>
+
+<p>Do not forget of the http load we sent earlier for 5 minutes, with 111 concurrent users on 50 pods.</p>
+
+<p>Not bad :D
+<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div><div data-line='2' class='line-number'></div><div data-line='3' class='line-number'></div><div data-line='4' class='line-number'></div><div data-line='5' class='line-number'></div><div data-line='6' class='line-number'></div><div data-line='7' class='line-number'></div><div data-line='8' class='line-number'></div><div data-line='9' class='line-number'></div><div data-line='10' class='line-number'></div><div data-line='11' class='line-number'></div><div data-line='12' class='line-number'></div><div data-line='13' class='line-number'></div><div data-line='14' class='line-number'></div><div data-line='15' class='line-number'></div><div data-line='16' class='line-number'></div><div data-line='17' class='line-number'></div><div data-line='18' class='line-number'></div><div data-line='19' class='line-number'></div><div data-line='20' class='line-number'></div><div data-line='21' class='line-number'></div><div data-line='22' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>root@selfhosted-k8s-lab:~# boom <a href="http://172.18.0.21">http://172.18.0.21</a> -d 300 -c 111
+</div><div class='line'>Server Software: nginx/1.11.5
+</div><div class='line'>Running GET <a href="http://172.18.0.21:80">http://172.18.0.21:80</a>
+</div><div class='line'>Running for 300 seconds &ndash; concurrency 111.
+</div><div class='line'>Starting the load&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+</div><div class='line'>&mdash;&mdash;&mdash;&mdash; Results &mdash;&mdash;&mdash;&mdash;
+</div><div class='line'>Successful calls        91591
+</div><div class='line'>Total time              300.0118 s
+</div><div class='line'>Average                 0.2366 s
+</div><div class='line'>Fastest                 0.1170 s
+</div><div class='line'>Slowest                 1.2103 s
+</div><div class='line'>Amplitude               1.0933 s
+</div><div class='line'>Standard deviation      0.144113
+</div><div class='line'>RPS                     305
+</div><div class='line'>BSI                     Pretty good
+</div><div class='line'> </div><div class='line'>&mdash;&mdash;&mdash;&mdash; Status codes &mdash;&mdash;&mdash;&mdash;
+</div><div class='line'>Code 200                91591 times.
+</div><div class='line'> </div><div class='line'>&mdash;&mdash;&mdash;&mdash; Legend &mdash;&mdash;&mdash;&mdash;
+</div><div class='line'>RPS: Request Per Second
+</div><div class='line'>BSI: Boom Speed Index</div></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Kubernetes and Nginxplus demo]]></title>
@@ -719,7 +977,7 @@ I&rsquo;m deeply thankful to had the oportunity to work on this and build someth
 <p>What can I say ? , it really feels great.</p>
 
 <p>If you want to check out the Woodworkings plans and/or the cutting list used, please feel free to shoot me an email
-<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#121;&#97;&#x7a;&#112;&#105;&#x6b;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#121;&#97;&#122;&#x70;&#105;&#107;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a></p>
+<a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#121;&#x61;&#x7a;&#112;&#x69;&#x6b;&#64;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x79;&#x61;&#122;&#x70;&#105;&#x6b;&#x40;&#x67;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></p>
 ]]></content>
   </entry>
   

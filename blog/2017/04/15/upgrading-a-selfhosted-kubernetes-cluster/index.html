@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Life of a Sysadmin</title>
+  <title>Upgrading a SelfHosted Kubernetes Cluster - Life of a Sysadmin</title>
   <meta name="author" content="Francisco Moctezuma">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yazpik.github.io">
+  <link rel="canonical" href="http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Life of a Sysadmin" type="application/atom+xml">
@@ -76,15 +76,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/">Upgrading a SelfHosted Kubernetes Cluster</a></h1>
+      <h1 class="entry-title">Upgrading a SelfHosted Kubernetes Cluster</h1>
     
     
       <p class="meta">
@@ -102,14 +99,14 @@
 
 <time datetime="2017-04-15T07:14:00-05:00" pubdate data-updated="true">Apr 15<span>th</span>, 2017</time>
         
-         | <a href="/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><img center src="http://www.andrewlipson.com/escher/relativity-1600.jpg" width="500" height="400"></p>
+<div class="entry-content"><p><img center src="http://www.andrewlipson.com/escher/relativity-1600.jpg" width="500" height="400"></p>
 
 <p>From <a href="https://en.wikipedia.org/wiki/History_of_compiler_construction">Wikipedia</a></p>
 
@@ -360,119 +357,16 @@ e.g for node3
 </div><div class='line'>RPS: Request Per Second
 </div><div class='line'>BSI: Boom Speed Index</div></pre></td></tr></table></div></figure></p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/11/27/kubernetes-and-nginxplus-demo/">Kubernetes and Nginxplus Demo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">Francisco Moctezuma</span></span>
 
-<time datetime="2016-11-27T12:00:00-06:00" pubdate data-updated="true">Nov 27<span>th</span>, 2016</time>
-        
-         | <a href="/blog/2016/11/27/kubernetes-and-nginxplus-demo/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Load balancing a basic webbapp with nginxplus and kubernetes</h3>
-
-<p>I think the best way to learn something new is doing in practice, theory is always good
-but I&rsquo;m the kind of person who likes to do/try/test/ stuff and learn by doing/failing/changing.</p>
-
-<p>I&rsquo;m also kind of new on kubernetes, and watching live-demos out-there is like I don&rsquo;t know nothing about cloud.
-It seems everyday is a new tool that is better that the one created the day before to solve a problem.</p>
-
-<p>It&rsquo;s really crazy how the cloud technology is in the pace right now, and sometimes I feel overwhelmed, but I&rsquo;m pretty sure I&rsquo;m not the only one with that feeling.
-I decided get hands on, follow some demos out-there and add something else, so I started with this demo
-, having kubernetes creating pods and loadbalancing them using nginxplus,</p>
-
-<h4>The flow is the following</h4>
-
-<ul>
-<li>1.&ndash; NGINXplus load balancing a very simple webapp (configured on <a href="https://github.com/yazpik/lb-nginxplus/blob/master/backend.conf#L7-L13">backend.conf</a>)</li>
-<li>2.&ndash; Console on top right is sending http load to the loadbalancer IP</li>
-<li>3.&ndash; At the same time kubectl is talking with kubernetes API, changing replicas sets and deployments tags between containers</li>
-<li>4.&ndash; Watch command of &ldquo;kubectl get pods&rdquo; to see how pods are being created and destroyed</li>
-</ul>
-
-
-<div class="embed-video-container"><iframe src="//www.youtube.com/embed/51XjbuS38ik" allowfullscreen></iframe></div>
-
-
-<p>Ignore the broken english, I&rsquo;m still improving :)</p>
-
-<p>I pretty much followed this guide from Kelsey Hightower</p>
-
-<ul>
-<li><a href="https://www.youtube.com/watch?v=_nPKCxtr7g4">Bringing Kubernetes to the Edge with NGINX Plus</a></li>
-</ul>
-
-
-<p>And official guides from Nginxplus</p>
-
-<ul>
-<li><a href="https://www.nginx.com/products/application-load-balancing/">NGINX Plus as an Application Load Balancer</a></li>
-<li><a href="https://www.nginx.com/resources/admin-guide/load-balancer/">Admin Guide</a></li>
-</ul>
-
-
-<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="http://quay.io">Quay.io</a> a phenomenal ally,
-<a href="https://quay.io/repository/yazpik/spacemonkey">Spacemonkey container</a> was built to test kubernetes, changes between tags, releases, etc
-So I can test rollout/rollback updates in kubernetes very easily,
- Another good thing is that the container is automatically created when I trigger a commit on Github due a Webhook configured on quay that is a really powerfull tool. <a href="https://docs.quay.io/guides/custom-trigger.html">(see Quay.io Webhooks)</a></p>
-
-<p>To be more specific see this example of the Docker file being change between alpine and nginx versions <a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf">Hash </a></p>
-
-<p><a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf"><img src="/images/dockerfie_ver1.jpg" title="'DockerFile versioning'" ></a></p>
-
-<p>To finish this post I&rsquo;d like to bold this really cool feature on Quay, is called &ldquo;Quay Security Scanner&rdquo;, it&rsquo;s based on <a href="https://github.com/coreos/clair">Clair</a> Which is OpenSource.</p>
-
-<p>It help you out to see what could be wrong with the packages you are using to built your container, so you will be aware if you are hitting a critical vulnerability or not.</p>
-
-<p><a href="https://quay.io/repository/yazpik/spacemonkey/image/9be26d688d274b7ccaded0f5e12aba7f030a4949598faee05f85fa2b2800b6b5?tab=packages"><img src="/images/sec_scanner.jpg"></a></p>
-
-<p>I have too much ideas to do with Kubernetes, I&rsquo;m still learning a lot, but I&rsquo;ll try to document my progress.</p>
-
-<p>Stay tunned.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/11/25/kubernetes-management-dashboards/">Kubernetes Management Dashboard</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -484,431 +378,42 @@ So I can test rollout/rollback updates in kubernetes very easily,
   
 
 
-<time datetime="2016-11-25T19:50:00-06:00" pubdate data-updated="true">Nov 25<span>th</span>, 2016</time>
-        
-         | <a href="/blog/2016/11/25/kubernetes-management-dashboards/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>Yes there is a kubernetes dashboard.</h4>
-
-<p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
-
-<p>There is a lot of documentation out there on how to reach the dashboard but actually didn&rsquo;t work for me, so I find this solution by myself, and I&rsquo;m not really sure if that is the right way, but it works.
-Just need to find your kubernetes-dashboard pod on the kube-system namespace and do a port forwarding to 9090 port.</p>
-
-<p>Get the kubernetes-dashboard pod name.
-<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl get pods -l k8s-app<span class="o">=</span>kubernetes-dashboard &mdash;namespace<span class="o">=</span>kube-system
-</div></pre></td></tr></table></div></figure></p>
-
-<p>Having a closer look to the kubernetes-dashboard pod to verify what port is actually listening, I use &ldquo;describe&rdquo; command which is always helpful
-<figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl get describe pods  <span class="o">{</span>kube-dashboard-podname<span class="o">}</span>  &mdash;namespace<span class="o">=</span>kube-system
-</div></pre></td></tr></table></div></figure></p>
-
-<p>Put attention to line #18 the Pod is using/listening on port 9090</p>
-
-<script src="https://gist.github.com/yazpik/b00ffa49dbbb52c29b2976307ac3b870.js"></script>
-
-
-<p>When you get the pod name just do port-fwd</p>
-
-<p><figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  bash'><pre><div class='line'><span class="nv">$ </span>kubectl port-fwd <span class="o">{</span>kube-dashboard-podname<span class="o">}</span> 9090:9090 &mdash;namespace<span class="o">=</span>kube-system
-</div></pre></td></tr></table></div></figure></p>
-
-<p>Here is an small asccinema recording on how I launch the dashboard.</p>
-
-<script type="text/javascript" src="https://asciinema.org/a/94128.js" id="asciicast-94128" async></script>
-
-
-<p>And then you will have a clean and descriptive kubernetes dashboard running on <a href="http://localhost:9090">http://localhost:9090</a></p>
-
-<p><img src="https://cloud.githubusercontent.com/assets/7389339/20637323/29410a1e-b34a-11e6-8506-b490d7586e83.png" width="750" height="750" title="'kube-dashboard01'" ></p>
-
-<p><img src="https://cloud.githubusercontent.com/assets/7389339/20637330/47733854-b34a-11e6-814b-a45465747596.png" width="750" height="750" title="'kube-dashboard02'" ></p>
-
-<p>Have fun out there.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time datetime="2017-04-15T07:14:00-05:00" pubdate data-updated="true">Apr 15<span>th</span>, 2017</time>
       
-  <header>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2016/11/23/getting-started-with-kubernetes/">Getting Started With Kubernetes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
+      <div class="sharing">
   
-
-
-<time datetime="2016-11-23T05:15:00-06:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2016</time>
-        
-         | <a href="/blog/2016/11/23/getting-started-with-kubernetes/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3><strong><em> Kubernetes  &ldquo;Fly my Pretties fly! &hellip; continue the research&rdquo;  </em></strong></h3>
-
-<p><img class="center" src="/images/burns01.jpg" width="500" height="500" title="'Fly my pretties'" ></p>
-
-<p>When I recently started to work with Docker and Kubernetes, this <a href="https://www.youtube.com/watch?v=m-H8PuweRVA">Simpson&rsquo;s Episode</a>   came to my mind,
-Is very similar to me in the very beginning trying to deploy kubernetes.</p>
-
-<p>I have spent my entire career as a Sysadmin and never wrote serious code,
-you know as a Sysadmin we need to write some bash/ansible/perl scripts to help our-selfs and automate stuff, but things are changing now.</p>
-
-<p>I have tried different ways to use it and test it out,
-I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>
-
-<p>The problem with this projects is that I don&rsquo;t have the compute resources on my personal laptop to have an Openstack deployment and then kubernetes, so I started dig in a bit further on the way to have a kubernetes cluster up and running.</p>
-
-<p>Found this guide from <a href="https://twitter.com/kelseyhightower">Kelsey Hightower</a>, <a href="https://github.com/kelseyhightower/kubernetes-the-hard-way">&ldquo;kubernetes the hardway&rdquo;</a> this helped me a lot to understand more what is all about all the
-kubernetes components, the guide is based on GCE (Google Compute Engine), I did the installation on a different cloud provider, it&rsquo;s challenging but worked well for me.</p>
-
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/" data-via="yazpik" data-counturl="http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/11/23/getting-started-with-kubernetes/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/09/09/how-i-learn-openstack/">How I Learnt OpenStack by Failing</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2016-09-09T21:21:00-05:00" pubdate data-updated="true">Sep 9<span>th</span>, 2016</time>
-        
-         | <a href="/blog/2016/09/09/how-i-learn-openstack/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3><strong><em> Demotivation of Innovation </em></strong></h3>
-
-<p><img src="/images/lops/cloud-domination.jpg" width="650" height="550" title="'Our idea of Cloud computing back in 2014'" ></p>
-
-<p>Last night having a beer with my friend <a href="http://arturoochoa.wordpress.com">Arturo Ochoa</a> we were talking about what really motivates you to innovate and/or create something that help fixing problems.
-We were not sure what is all about,
-but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
-But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
-We tent to underestimate our efforts in a really bad way, and maybe that stop us going to the next level&hellip;</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/09/09/how-i-learn-openstack/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+        <a class="basic-alignment left" href="/blog/2016/11/27/kubernetes-and-nginxplus-demo/" title="Previous Post: Kubernetes and Nginxplus demo">&laquo; Kubernetes and Nginxplus demo</a>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/22/its-hard-to-say-goodbye/">It's Hard to Say Goodbye...</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2016-06-22T22:18:00-05:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2016</time>
-        
-         | <a href="/blog/2016/06/22/its-hard-to-say-goodbye/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/cowsay3.png" width="700" height="700"></p>
-
-<p><em>When you are thankful that your family is close by</em> ..</p>
-
-<p><em>When your real friends are always up for you</em> ..</p>
-
-<p><em>When you have reached your comfort zone and stability</em> &hellip;</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/06/22/its-hard-to-say-goodbye/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/11/16/bigdata-as-a-service/">BigData as a Service</a></h1>
-    
-    
-      <p class="meta">
-        
+    </p>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-11-16T19:22:00-06:00" pubdate data-updated="true">Nov 16<span>th</span>, 2015</time>
-        
-         | <a href="/blog/2015/11/16/bigdata-as-a-service/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>A complete elastic Hadoop cluster with OpenStack + Sahara in 15 minutes</h3>
-
-<p><img class="center" src="/images/bigdata.gif" width="650" height="650" title="'Dilbert Data Accuracy'" ></p>
-
-<p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="http://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
-the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
-but anyway let&rsquo;s jump on the BigData stuff.</p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/11/16/bigdata-as-a-service/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/05/14/the-modern-cloud/">The Modern Cloud</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-05-14T21:22:00-05:00" pubdate data-updated="true">May 14<span>th</span>, 2015</time>
-        
-         | <a href="/blog/2015/05/14/the-modern-cloud/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>Or the containerization of the cloud</h4>
-
-<p><img class="center" src="/images/kubernetes.jpeg" width="350" height="350" title="'Kubernetes'" ></p>
-
-<p>That&rsquo;s right, Openstack and Containers are no enemies, and they are not fighting at all,
-Those two technologies are a powerful combination bringing the best of &ldquo;two worlds&rdquo; but in different layers of the stack, maybe combining them does not make sense,but actually it really does.</p>
-
-<p>Combining Openstack + Heat + Murano + Kubernetes it does sounds really complex but actually is becoming the opossite
-I want to share with you an interesting article from OpenStack SuperUser website, during the kubernetes meetup in San Francisco, there was a live demo where it was demostrated how to deploy a <a href="http://kubernetes.io/">kubernetes</a> cluster in minutes with OpenStack and Murano.
-<a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/05/14/the-modern-cloud/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/22/opencompute-re-architecting-the-datacenter/">OpenCompute Re-Architecting the DataCenter</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-03-22T19:43:00-06:00" pubdate data-updated="true">Mar 22<span>nd</span>, 2015</time>
-        
-         | <a href="/blog/2015/03/22/opencompute-re-architecting-the-datacenter/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img class="center" src="/images/opencompute.png" width="260" height="80" title="'OpenCompute'" ></p>
-
-<p>The OpenCompute Summit 2015 has just finished and there are some interesting talks from the top companies such Intel, Facebook, Linux, foundation, Microsoft and Rackspace.
-For the ones that haven&rsquo;t heard about OpenCompute project, let me explain you with what is this about.</p>
-
-<h4>From OpenCompute.org</h4>
-
-<blockquote><p>"The Open Compute Project Foundation is a rapidly growing community of engineers around the world whose mission is to design and enable the delivery of the most efficient server, storage and data center hardware designs for scalable computing. We believe that openly sharing ideas, specifications and other intellectual property is the key to maximizing innovation and reducing operational complexity in the scalable computing space."</p></blockquote>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/03/22/opencompute-re-architecting-the-datacenter/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/03/06/how-to-build-a-baby-crib/">How to Build a Baby Crib</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-03-06T22:01:00-06:00" pubdate data-updated="true">Mar 6<span>th</span>, 2015</time>
-        
-         | <a href="/blog/2015/03/06/how-to-build-a-baby-crib/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>&mdash;With the help of a real-life hacker</h3>
-
-<p>A year ago while my wife was pregnant of my very first baby girl, I decided to build something special with my own hands for Naia, so I thought to build an small craddle, it seemed like an small project but I did not have any experience working with wood, I have to admit, it did sound crazy even for me, but possible.. why not?..
-I started looking on internet in too many DIY (Do It Yourself) sites, woodworking for newbies, and also bought a <a href="http://www.amazon.com/Childrens-Furniture-Projects-Step---Step/dp/1561585041/ref=sr_1_1?ie=UTF8&amp;qid=1425750403&amp;sr=8-1&amp;keywords=childrens+furniture+projects">e-book</a> on amazon, finally I ended up with a couple of woodworking plans that seemed reasonable to my poor skills.</p>
-
-<p><img src="/images/cuna/sketchy1.jpg" width="300" height="480" title="'Sketchy1'" >   <img src="/images/cuna/sketchy2.jpg" width="300" height="450" title="'Sketchy2'" ></p>
-
-<p>Of course I couldn&rsquo;t build it by myself on my little space at home and no skills, So I threw an email to one of the most respectable and creative hacker nowadays, my friend <a href="https://people.gnome.org/~federico/">Federico Mena Quintero</a>, who has a passion for woodworking and a place to do it.
-To people that haven&rsquo;t hear before about Federico, he is one of the most brilliant persons I have met, he has contributed with Opensource in so many levels an he is always trying to help the community, Let&rsquo;s say he should be in the &ldquo;hall of fame&rdquo; of the OpenSource history, besides that he is a young guy with a really lovely family.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/03/06/how-to-build-a-baby-crib/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/page/2">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     
@@ -979,6 +484,7 @@ To people that haven&rsquo;t hear before about Federico, he is one of the most b
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -993,7 +499,10 @@ To people that haven&rsquo;t hear before about Federico, he is one of the most b
       var disqus_shortname = 'yazpik';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/';
+        var disqus_url = 'http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
