@@ -4,7 +4,7 @@
   <title><![CDATA[Category: openstack | Life of a Sysadmin]]></title>
   <link href="http://yazpik.github.io/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="http://yazpik.github.io/"/>
-  <updated>2017-04-15T08:01:33-05:00</updated>
+  <updated>2017-04-15T08:27:14-05:00</updated>
   <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -141,7 +141,7 @@ We got a meeting with some of the high level managers, we showed them our monste
 
 <h5>Spread the word!</h5>
 
-<p>We were invited to gave some speeches on universities, ITESM, BUAP, Universidad Veracruzana, and we organized a SysAdminDay in our company.
+<p>We were invited to gave some talks on universities, ITESM, BUAP, Universidad Veracruzana, and we organized a SysAdminDay in our company.
 By the end of 2015 one year later of Catrina creation,
 We were considered by the management to attend the <strong>OPENTELEKOM Cloud</strong> technical talk in Budapest, Hungary. <strong>(we no longer use our own money to pay for beers on that trip)</strong> ,
 OTC is a Deustche Telekom initiative to build a public cloud based on OpenStack to offer in the European Market.</p>
