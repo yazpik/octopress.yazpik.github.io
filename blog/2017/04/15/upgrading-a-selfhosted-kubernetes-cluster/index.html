@@ -113,7 +113,7 @@
 <blockquote><p>&ldquo;Self-hosting is the use of a computer program as part of the toolchain or operating system that produces new versions of that same program—for example, a compiler that can compile its own source code.&rdquo;</p></blockquote>
 
 <p>Thinking about the foundation of a Kubernetes production ready cluster, I decided
-to have a look at this, and is something will break your brain a bit, or at least did it
+to have a look at this, and it&rsquo;s something will break your brain a bit, or at least did it
 for me because I wasn&rsquo;t familiar with <em>Self-Hosted</em> term.</p>
 
 <p>At the end kubernetes is really good to simplify software lifecycle management
@@ -131,9 +131,6 @@ Running matchbox on a physical Linux machine with rkt/docker and CNI to network 
 
 <p>Also one of my co-workers <a href="https://github.com/shane-c">Shane Cunningham</a>  <a href="https://cunninghamshane.com/bare-metal-self-hosted-kubernetes/">posted</a> a pretty good example using matchbox and ignition booting baremetal servers.</p>
 
-<p>And of course official documentation from CoreOS
-<a href="https://github.com/coreos/matchbox">https://github.com/coreos/matchbox</a></p>
-
 <p>So from here I&rsquo;m assuming you already have a cluster running :)</p>
 
 <h3>Upgrading the Kubernetes Cluster</h3>
@@ -145,6 +142,9 @@ v1.5.3, without taking down any application.</p>
 
 <p>After you see this message with bootkube finishing
 <figure class='code'><div class='highlight'><table><tr><td class='line-numbers' aria-hidden='true'><pre><div data-line='1' class='line-number'></div></pre></td><td class='main  plain'><pre><div class='line'>bootkube[5]: All self-hosted control plane components successfully started  </div></pre></td></tr></table></div></figure></p>
+
+<!-- more -->
+
 
 <p>You should be able to get all the k8s components running as described on <a href="https://github.com/yazpik/SelfHosted-K8s-Lab">part 1</a> of this document</p>
 
@@ -223,11 +223,9 @@ to fetch the required image version to all nodes before to attempt the upgrade</
 <h4>IMPORTANT NOTE</h4>
 
 <p>Daemonsets do not support rolling updates yet
-It seems is going to be a feature of kubernetes 1.6
-&ndash; <a href="https://github.com/kubernetes/features/issues?q=is%3Aopen+is%3Aissue+milestone%3Av1.6">https://github.com/kubernetes/features/issues?q=is%3Aopen+is%3Aissue+milestone%3Av1.6</a></p>
+It seems is going to be a feature of kubernetes 1.6 see <a href="https://github.com/kubernetes/features/issues?q=is%3Aopen+is%3Aissue+milestone%3Av1.6">here</a></p>
 
-<p>Also see this proposal
-&ndash; <a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/daemonset-update.md">https://github.com/kubernetes/community/blob/master/contributors/design-proposals/daemonset-update.md</a></p>
+<p>Also this <a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/daemonset-update.md">proposal</a></p>
 
 <h4>Lets edit the daemonset kube-apiserver manifest</h4>
 
