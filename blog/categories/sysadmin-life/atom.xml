@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sysadmin_life | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/sysadmin-life/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-12-21T14:03:22-06:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/sysadmin-life/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T16:09:22-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[A new beginning]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/18/a-new-beginning/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/18/a-new-beginning/"/>
     <updated>2014-11-18T21:07:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/18/a-new-beginning</id>
+    <id>https://yazpik.github.io/blog/2014/11/18/a-new-beginning</id>
     <content type="html"><![CDATA[<p>Hi everyone outta there, Finally I&rsquo;ve decided to start writing again after some major changes on my life, I think it would be a good idea to document my recent work/ activity/ thoughts on a blog, to have access to those memories and do a favor to myself going back in time and resolve recurrent ugly technical issues, or Why not maybe help others to do so, Anyway everything can be found on internet, and this blog is not going to be any different, for sure better and high quality technical information can be found in other sites, but somehow is going to be fun.</p>
 
 <p>As a Sysadmin the best we can save in time the best we balance our personal lifes, And I&rsquo;ll call this part of my life &ldquo;Motivation&rdquo;

@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://yazpik.github.io/sitemap.xml 
+Sitemap: https://yazpik.github.io/sitemap.xml 

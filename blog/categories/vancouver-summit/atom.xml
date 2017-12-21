@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: vancouver_summit_ | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/vancouver-summit/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-12-21T14:03:22-06:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/vancouver-summit/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T16:09:22-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Modern Cloud]]></title>
-    <link href="http://yazpik.github.io/blog/2015/05/14/the-modern-cloud/"/>
+    <link href="https://yazpik.github.io/blog/2015/05/14/the-modern-cloud/"/>
     <updated>2015-05-14T21:22:00-05:00</updated>
-    <id>http://yazpik.github.io/blog/2015/05/14/the-modern-cloud</id>
+    <id>https://yazpik.github.io/blog/2015/05/14/the-modern-cloud</id>
     <content type="html"><![CDATA[<h4>Or the containerization of the cloud</h4>
 
 <p><img class="center" src="/images/kubernetes.jpeg" width="350" height="350" title="&lsquo;Kubernetes&rsquo;" ></p>

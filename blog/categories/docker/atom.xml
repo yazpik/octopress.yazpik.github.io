@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: docker | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/docker/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-12-21T14:03:22-06:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/docker/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T16:09:22-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Kubernetes management dashboard]]></title>
-    <link href="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/"/>
+    <link href="https://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/"/>
     <updated>2016-11-25T19:50:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards</id>
+    <id>https://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards</id>
     <content type="html"><![CDATA[<h4>Yes there is a kubernetes dashboard.</h4>
 
 <p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
@@ -60,9 +60,9 @@ Here is an small asccinema recording on how I launch the dashboard.</p>
   
   <entry>
     <title type="html"><![CDATA[Getting started with Kubernetes]]></title>
-    <link href="http://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes/"/>
+    <link href="https://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes/"/>
     <updated>2016-11-23T05:15:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes</id>
+    <id>https://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes</id>
     <content type="html"><![CDATA[<h3><strong><em> Kubernetes  &ldquo;Fly my Pretties fly! &hellip; continue the research&rdquo;  </em></strong></h3>
 
 <p><img class="center" src="/images/burns01.jpg" width="500" height="500" title="&lsquo;Fly my pretties&rsquo;" ></p>
@@ -124,9 +124,9 @@ keep an eye here more to come.</p>
   
   <entry>
     <title type="html"><![CDATA[Docker]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/25/docker/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/25/docker/"/>
     <updated>2014-11-25T12:46:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/25/docker</id>
+    <id>https://yazpik.github.io/blog/2014/11/25/docker</id>
     <content type="html"><![CDATA[<p>If you think you already know all about virtualization, well you should have a look on this&hellip;
 As you may know, there are virtualization technologies such as VMware, VirtualBox and Openstack, those technologies allow us to create Virtual machines that run on top of physical hardware, So we can create VM&rsquo;s for different purposes, capabilities and functionalities, and that was actually a big step in technology and everyone is happy with it&hellip;.</p>
 

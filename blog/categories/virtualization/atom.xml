@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: virtualization | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/virtualization/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-12-21T14:03:22-06:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/virtualization/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T16:09:22-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Docker]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/25/docker/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/25/docker/"/>
     <updated>2014-11-25T12:46:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/25/docker</id>
+    <id>https://yazpik.github.io/blog/2014/11/25/docker</id>
     <content type="html"><![CDATA[<p>If you think you already know all about virtualization, well you should have a look on this&hellip;
 As you may know, there are virtualization technologies such as VMware, VirtualBox and Openstack, those technologies allow us to create Virtual machines that run on top of physical hardware, So we can create VM&rsquo;s for different purposes, capabilities and functionalities, and that was actually a big step in technology and everyone is happy with it&hellip;.</p>
 

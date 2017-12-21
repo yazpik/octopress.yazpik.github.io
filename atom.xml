@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-12-21T14:03:22-06:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T16:09:22-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Upgrading a SelfHosted Kubernetes Cluster]]></title>
-    <link href="http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/"/>
+    <link href="https://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster/"/>
     <updated>2017-04-15T07:14:00-05:00</updated>
-    <id>http://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster</id>
-    <content type="html"><![CDATA[<p><img src="http://yazpik.github.io/images/relativity-1600.jpg" width="500" height="500" title="'inception'" ></p>
+    <id>https://yazpik.github.io/blog/2017/04/15/upgrading-a-selfhosted-kubernetes-cluster</id>
+    <content type="html"><![CDATA[<p><img src="https://yazpik.github.io/images/relativity-1600.jpg" width="500" height="500" title="'inception'" ></p>
 
 <p>From <a href="https://en.wikipedia.org/wiki/History_of_compiler_construction">Wikipedia</a></p>
 
@@ -271,9 +271,9 @@ e.g for node3
   
   <entry>
     <title type="html"><![CDATA[Kubernetes and Nginxplus demo]]></title>
-    <link href="http://yazpik.github.io/blog/2016/11/27/kubernetes-and-nginxplus-demo/"/>
+    <link href="https://yazpik.github.io/blog/2016/11/27/kubernetes-and-nginxplus-demo/"/>
     <updated>2016-11-27T12:00:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2016/11/27/kubernetes-and-nginxplus-demo</id>
+    <id>https://yazpik.github.io/blog/2016/11/27/kubernetes-and-nginxplus-demo</id>
     <content type="html"><![CDATA[<h3>Load balancing a basic webbapp with nginxplus and kubernetes</h3>
 
 <p>I think the best way to learn something new is doing in practice, theory is always good
@@ -296,7 +296,7 @@ I decided get hands on, follow some demos out-there and add something else, so I
 </ul>
 
 
-<div class="embed-video-container"><iframe src="http://yazpik.github.io//www.youtube.com/embed/51XjbuS38ik" allowfullscreen></iframe></div>
+<div class="embed-video-container"><iframe src="https://yazpik.github.io//www.youtube.com/embed/51XjbuS38ik" allowfullscreen></iframe></div>
 
 
 <p>Ignore the broken english, I&rsquo;m still improving :)</p>
@@ -323,13 +323,13 @@ So I can test rollout/rollback updates in kubernetes very easily,
 
 <p>To be more specific see this example of the Docker file being change between alpine and nginx versions <a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf">Hash </a></p>
 
-<p><a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf"><img src="http://yazpik.github.io/images/dockerfie_ver1.jpg" title="'DockerFile versioning'" ></a></p>
+<p><a href="https://github.com/yazpik/spacemonkey/commit/36f65cab94a0fcef4e629d45701fcc704cce423a#diff-3254677a7917c6c01f55212f86c57fbf"><img src="https://yazpik.github.io/images/dockerfie_ver1.jpg" title="'DockerFile versioning'" ></a></p>
 
 <p>To finish this post I&rsquo;d like to bold this really cool feature on Quay, is called &ldquo;Quay Security Scanner&rdquo;, it&rsquo;s based on <a href="https://github.com/coreos/clair">Clair</a> Which is OpenSource.</p>
 
 <p>It help you out to see what could be wrong with the packages you are using to built your container, so you will be aware if you are hitting a critical vulnerability or not.</p>
 
-<p><a href="https://quay.io/repository/yazpik/spacemonkey/image/9be26d688d274b7ccaded0f5e12aba7f030a4949598faee05f85fa2b2800b6b5?tab=packages"><img src="http://yazpik.github.io/images/sec_scanner.jpg"></a></p>
+<p><a href="https://quay.io/repository/yazpik/spacemonkey/image/9be26d688d274b7ccaded0f5e12aba7f030a4949598faee05f85fa2b2800b6b5?tab=packages"><img src="https://yazpik.github.io/images/sec_scanner.jpg"></a></p>
 
 <p>I have too much ideas to do with Kubernetes, I&rsquo;m still learning a lot, but I&rsquo;ll try to document my progress.</p>
 
@@ -339,9 +339,9 @@ So I can test rollout/rollback updates in kubernetes very easily,
   
   <entry>
     <title type="html"><![CDATA[Kubernetes management dashboard]]></title>
-    <link href="http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/"/>
+    <link href="https://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards/"/>
     <updated>2016-11-25T19:50:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards</id>
+    <id>https://yazpik.github.io/blog/2016/11/25/kubernetes-management-dashboards</id>
     <content type="html"><![CDATA[<h4>Yes there is a kubernetes dashboard.</h4>
 
 <p>As I mentioned on my previous post I&rsquo;m using Vagrant + CoreOS to play with Kubernetes, so watching some demos on youtube always saw the nice dashboard but it took me a while to find out how to launch it and have a look to it.</p>
@@ -384,12 +384,12 @@ Just need to find your kubernetes-dashboard pod on the kube-system namespace and
   
   <entry>
     <title type="html"><![CDATA[Getting started with Kubernetes]]></title>
-    <link href="http://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes/"/>
+    <link href="https://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes/"/>
     <updated>2016-11-23T05:15:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes</id>
+    <id>https://yazpik.github.io/blog/2016/11/23/getting-started-with-kubernetes</id>
     <content type="html"><![CDATA[<h3><strong><em> Kubernetes  &ldquo;Fly my Pretties fly! &hellip; continue the research&rdquo;  </em></strong></h3>
 
-<p><img class="center" src="http://yazpik.github.io/images/burns01.jpg" width="500" height="500" title="'Fly my pretties'" ></p>
+<p><img class="center" src="https://yazpik.github.io/images/burns01.jpg" width="500" height="500" title="'Fly my pretties'" ></p>
 
 <p>When I recently started to work with Docker and Kubernetes, this <a href="https://www.youtube.com/watch?v=m-H8PuweRVA">Simpson&rsquo;s Episode</a>   came to my mind,
 Is very similar to me in the very beginning trying to deploy kubernetes.</p>
@@ -423,7 +423,7 @@ I haven&rsquo;t tested it out yet, but I&rsquo;ve heard is a good option to star
 I think is easier to understand the technical concepts having already a kubernetes deploy up and running and play around a bit,
 that is why looks like I&rsquo;m starting backwards, but believe me is better to start in that way.</p>
 
-<div class="embed-video-container"><iframe src="http://yazpik.github.io//www.youtube.com/embed/WwBdNXt6wO4" allowfullscreen></iframe></div>
+<div class="embed-video-container"><iframe src="https://yazpik.github.io//www.youtube.com/embed/WwBdNXt6wO4" allowfullscreen></iframe></div>
 
 
 <p>I&rsquo;d like to quote/highlight some of his comments that are really valuable on this talk, among others.</p>
@@ -449,12 +449,12 @@ keep an eye here more to come.</p>
   
   <entry>
     <title type="html"><![CDATA[How I Learnt OpenStack by failing]]></title>
-    <link href="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
+    <link href="https://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
     <updated>2016-09-09T21:21:00-05:00</updated>
-    <id>http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
+    <id>https://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
     <content type="html"><![CDATA[<h3><strong><em> Demotivation of Innovation </em></strong></h3>
 
-<p><img src="http://yazpik.github.io/images/lops/cloud-domination.jpg" width="650" height="550" title="'Our idea of Cloud computing back in 2014'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/cloud-domination.jpg" width="650" height="550" title="'Our idea of Cloud computing back in 2014'" ></p>
 
 <p>Last night having a beer with my friend <a href="http://arturoochoa.wordpress.com">Arturo Ochoa</a> we were talking about what really motivates you to innovate and/or create something that help fixing problems.
 We were not sure what is all about,
@@ -481,7 +481,7 @@ gave me 3 very old servers and one disk array. Just for the records &ndash; <str
 
 <p>-Managed to build one server from 3 I got, a very old Proliant G4 with 12GB of RAM and 2 CPUs at 2.4GHz, and a Disk array with 5 failed disks of 12, and suddenly <strong>Nazgul01</strong> was born.</p>
 
-<p><img src="http://yazpik.github.io/images/lops/lab02.jpg" width="350" height="550" title="'lab'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/lab02.jpg" width="350" height="550" title="'lab'" ></p>
 
 <p><strong>-I felt like I have something here</strong></p>
 
@@ -499,7 +499,7 @@ So one idiot from networking team, throw to the trash a Cisco Catalyst switch, I
 <p>-Realized I needed some extra help, my Linux skills were not as good as I thought anymore, due I spent a lot of time playing with a SAN appliance.
 So I sent an email to my friend <a href="https://karkul.github.io">Ramon Morales</a>, if he would like to join me, and I got an email from him five minutes later with a &ldquo; <strong>let&rsquo;s fucking do it!</strong> &rdquo;  or something like that.</p>
 
-<p><img src="http://yazpik.github.io/images/lops/lab03.jpg" width="350" height="550" title="'lab'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/lab03.jpg" width="350" height="550" title="'lab'" ></p>
 
 <p>-We spent several days trying to Install Openstack in 3 nodes not even configure it.
 One month mark passed and we started to think this Openstack thing was a myth because we failed and failed
@@ -514,9 +514,9 @@ and <strong>Booooom</strong> an inovation explosion just happened.</p>
 
 <p>We can even were able to launch virtual instances from a mobile phone, using a VPN, see images below.</p>
 
-<p><img src="http://yazpik.github.io/images/lops/cloudportal_movil.png" width="650" height="400" title="'lab'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/cloudportal_movil.png" width="650" height="400" title="'lab'" ></p>
 
-<p><img src="http://yazpik.github.io/images/lops/cloudportal_movil2.png" width="650" height="450" title="'lab'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/cloudportal_movil2.png" width="650" height="450" title="'lab'" ></p>
 
 <p>-We have had a lot of ideas, we learnt as we use it, that platform was awesome&hellip; with a lot of patches and networking hacks but awesome,
 none of us managed vmware previously, also we didn&rsquo;t understand the disadvantages against vmware at that time.</p>
@@ -557,13 +557,13 @@ We got a meeting with some of the high level managers, we showed them our monste
 <p>They were thinking on an enhanced version of VMware, and we failed to explained them in a non technical way why we think this technology could help the company saving money and time.</p>
 
 <p>They said we need a TCO, Bussines Cases and so on, &hellip;again believe or not, we built a TCO and a BC with our poor financial skills, even a freaking promotional video.
-<img src="http://yazpik.github.io/images/lops/produccion1.jpg" width="500" height="500" title="'Video'" ></p>
+<img src="https://yazpik.github.io/images/lops/produccion1.jpg" width="500" height="500" title="'Video'" ></p>
 
-<p><img src="http://yazpik.github.io/images/lops/produccion2.jpg" width="500" height="500" title="'Video'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/produccion2.jpg" width="500" height="500" title="'Video'" ></p>
 
 <p>But for some reason it wasn&rsquo;t not enough, here are the results</p>
 
-<div class="embed-video-container"><iframe src="http://yazpik.github.io//www.youtube.com/embed/SF5rz2rdBLs" allowfullscreen></iframe></div>
+<div class="embed-video-container"><iframe src="https://yazpik.github.io//www.youtube.com/embed/SF5rz2rdBLs" allowfullscreen></iframe></div>
 
 
 <h4>OpenStack Summit in Vancouver 2015 &ndash; Cloud or die.</h4>
@@ -572,7 +572,7 @@ We got a meeting with some of the high level managers, we showed them our monste
 
 <p>We learnt a lot about new concepts, new technologies, we met interesting and smart people, we had fun, and even <strong>Ramon got the OpenStack certification by Redhat</strong>, I tried but failed.. again  :) , just fun so we realized after that trip, this is the new thing, not Openstack but Cloud and containers revolution.</p>
 
-<p><img src="http://yazpik.github.io/images/lops/vancouver2.jpg" width="600" height="600" title="'Vancouver'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/vancouver2.jpg" width="600" height="600" title="'Vancouver'" ></p>
 
 <h5>Spread the word!</h5>
 
@@ -581,12 +581,12 @@ By the end of 2015 one year later of Catrina creation,
 We were considered by the management to attend the <strong>OPENTELEKOM Cloud</strong> technical talk in Budapest, Hungary. <strong>(we no longer use our own money to pay for beers on that trip)</strong> ,
 OTC is a Deustche Telekom initiative to build a public cloud based on OpenStack to offer in the European Market.</p>
 
-<p><img src="http://yazpik.github.io/images/lops/frankfurt3.jpg" width="650" height="650" title="'Frankfurt'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/frankfurt3.jpg" width="650" height="650" title="'Frankfurt'" ></p>
 
 <p>Also taking advantage of the long trip we had the opportunity to show a demo in Frankfurt, Germany, to some of the Senior Cloud engineers, pretty much how we managed to run OpenStack as an Enterprise private cloud, supporting all SAP toys, SAP HANA, Big Data with Hadoop, our progress with OpenStack + VMWare, and Docker.
 we were able to launch a Hadoop cluster in just a few minutes, as I described on a previous post <a href="https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/">Big Data as a Service</a> , that was by the end of the 2015.</p>
 
-<p><img src="http://yazpik.github.io/images/lops/frankfurt.jpg" width="500" height="500" title="'Frankfurt'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/frankfurt.jpg" width="500" height="500" title="'Frankfurt'" ></p>
 
 <p>We went back to Mexico with a good feedback from Germany and Hungary, and we were proud of what we have achieved so far, but not enough for us.</p>
 
@@ -599,16 +599,16 @@ We were wrong in so many levels, and failed to explain to the management our vis
 
 <p>The only thing we were not wrong, was about to learn new things and have fun by doing it, push our own limits, and do not underestimate what we built, at the end, no one else was doing it on our small environment.</p>
 
-<p><img src="http://yazpik.github.io/images/lops/lab04.png" width="650" height="650" title="'Lab04'" ></p>
+<p><img src="https://yazpik.github.io/images/lops/lab04.png" width="650" height="650" title="'Lab04'" ></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[It's hard to say goodbye...]]></title>
-    <link href="http://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye/"/>
+    <link href="https://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye/"/>
     <updated>2016-06-22T22:18:00-05:00</updated>
-    <id>http://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye</id>
-    <content type="html"><![CDATA[<p><img src="http://yazpik.github.io/images/cowsay3.png" width="700" height="700"></p>
+    <id>https://yazpik.github.io/blog/2016/06/22/its-hard-to-say-goodbye</id>
+    <content type="html"><![CDATA[<p><img src="https://yazpik.github.io/images/cowsay3.png" width="700" height="700"></p>
 
 <p><em>When you are thankful that your family is close by</em> ..</p>
 
@@ -639,12 +639,12 @@ I&rsquo;ve broke my comfort zone many times before, But this time is my family w
   
   <entry>
     <title type="html"><![CDATA[BigData As A Service]]></title>
-    <link href="http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/"/>
+    <link href="https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/"/>
     <updated>2015-11-16T19:22:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service</id>
+    <id>https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service</id>
     <content type="html"><![CDATA[<h3>A complete elastic Hadoop cluster with OpenStack + Sahara in 15 minutes</h3>
 
-<p><img class="center" src="http://yazpik.github.io/images/bigdata.gif" width="650" height="650" title="'Dilbert Data Accuracy'" ></p>
+<p><img class="center" src="https://yazpik.github.io/images/bigdata.gif" width="650" height="650" title="'Dilbert Data Accuracy'" ></p>
 
 <p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="http://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
 the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
@@ -753,38 +753,38 @@ $ sudo sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head
 
 <p>That is a high level steps for Sahara in OpenStack, so once we have them all and you can see Data Processing panel on Horizon, so from here 15 minutes can start to count to create a cutting-edge fresh hadoop cluster.</p>
 
-<p><img src="http://yazpik.github.io/images/Hadoop_Post/01_Hadoop.png" width="200" height="600" title="" ></p>
+<p><img src="https://yazpik.github.io/images/Hadoop_Post/01_Hadoop.png" width="200" height="600" title="" ></p>
 
 <p>Then there are some pre-configured images for Hadoop vanilla plugin, you can download them from here
 <a href="http://docs.openstack.org/developer/sahara/userdoc/vanilla_plugin.html">Vanilla Plugin</a></p>
 
 <p>And it can be easily upload to glance, then to the Data processing image registry
-<img src="http://yazpik.github.io/images/Hadoop_Post/02_hadoop.png" width="600" height="200" title="" ></p>
+<img src="https://yazpik.github.io/images/Hadoop_Post/02_hadoop.png" width="600" height="200" title="" ></p>
 
 <p>Sahara makes it possible to create nodes and cluster templates, You can mix and match roles for a node, also you can scale out your cluster as many or few nodes you need.</p>
 
-<p><img src="http://yazpik.github.io/images/Hadoop_Post/03_hadoop.png" width="600" height="200" title="" ></p>
+<p><img src="https://yazpik.github.io/images/Hadoop_Post/03_hadoop.png" width="600" height="200" title="" ></p>
 
-<p><img src="http://yazpik.github.io/images/Hadoop_Post/05_hadoop.png" width="400" height="200" title="" ></p>
+<p><img src="https://yazpik.github.io/images/Hadoop_Post/05_hadoop.png" width="400" height="200" title="" ></p>
 
 <p>Because I couldn&rsquo;t say it better than mirantis.com</p>
 
 <p>&ldquo;Manually creating a Hadoop cluster on OpenStack requires spinning up instances, installing Hadoop on each instance, configuring the instances to work together, specifying the namenode, jobtracker, tasktrackers, and any storage nodes, and configuring each of hundreds, or even thousands, of nodes. Why spend all that time on manual configuration — with the possibility of human error — when you can use Sahara to specify node characteristics and roles, click to deploy, and access a individual or multiple robust, stable Hadoop clusters in parallel with minimal delay?&rdquo;</p>
 
-<p><img src="http://yazpik.github.io/images/Hadoop_Post/07_hadoop.png" width="600" height="200" title="" ></p>
+<p><img src="https://yazpik.github.io/images/Hadoop_Post/07_hadoop.png" width="600" height="200" title="" ></p>
 
 <p>Also the Hadoop cluster can be scalable with no pain, so you can save time
 when it comes to create and configure new nodes, only simply add node types by the OpenStack Sahara user interface</p>
 
-<p><img src="http://yazpik.github.io/images/Hadoop_Post/11_hadoop.gif" width="600" height="200" title="" ></p>
+<p><img src="https://yazpik.github.io/images/Hadoop_Post/11_hadoop.gif" width="600" height="200" title="" ></p>
 
 <p>And voila you have a fresh Elastic Hadoop deployment ready in just a few minutes.</p>
 
-<p><img src="http://yazpik.github.io/images/Hadoop_Post/10_hadoop.png" width="500" height="200" title="" ></p>
+<p><img src="https://yazpik.github.io/images/Hadoop_Post/10_hadoop.png" width="500" height="200" title="" ></p>
 
-<p><img src="http://yazpik.github.io/images/Hadoop_Post/09_hadoop.png"></p>
+<p><img src="https://yazpik.github.io/images/Hadoop_Post/09_hadoop.png"></p>
 
-<p><img src="http://yazpik.github.io/images/Hadoop_Post/08_hadoop.png" width="600" height="300" title="" ></p>
+<p><img src="https://yazpik.github.io/images/Hadoop_Post/08_hadoop.png" width="600" height="300" title="" ></p>
 
 <p>So this is pretty much everything about the installation of Hadoop on OpenStack (Juno)
 Next post We&rsquo;ll run a job on the cluster, stay tunned :)</p>
@@ -793,12 +793,12 @@ Next post We&rsquo;ll run a job on the cluster, stay tunned :)</p>
   
   <entry>
     <title type="html"><![CDATA[The Modern Cloud]]></title>
-    <link href="http://yazpik.github.io/blog/2015/05/14/the-modern-cloud/"/>
+    <link href="https://yazpik.github.io/blog/2015/05/14/the-modern-cloud/"/>
     <updated>2015-05-14T21:22:00-05:00</updated>
-    <id>http://yazpik.github.io/blog/2015/05/14/the-modern-cloud</id>
+    <id>https://yazpik.github.io/blog/2015/05/14/the-modern-cloud</id>
     <content type="html"><![CDATA[<h4>Or the containerization of the cloud</h4>
 
-<p><img class="center" src="http://yazpik.github.io/images/kubernetes.jpeg" width="350" height="350" title="'Kubernetes'" ></p>
+<p><img class="center" src="https://yazpik.github.io/images/kubernetes.jpeg" width="350" height="350" title="'Kubernetes'" ></p>
 
 <p>That&rsquo;s right, Openstack and Containers are no enemies, and they are not fighting at all,
 Those two technologies are a powerful combination bringing the best of &ldquo;two worlds&rdquo; but in different layers of the stack, maybe combining them does not make sense,but actually it really does.</p>
@@ -816,7 +816,7 @@ I want to share with you an interesting article from OpenStack SuperUser website
 <p>Docker on Openstack Kubernetes, Craig Peters from Mirantis and Kit Merker from Google
 <a href="https://openstacksummitmay2015vancouver.sched.org/event/57654c61f86cec3210d4d1065756409a">https://openstacksummitmay2015vancouver.sched.org/event/57654c61f86cec3210d4d1065756409a</a></p>
 
-<p><img class="center" src="http://yazpik.github.io/images/coreos-logo.png" width="350" height="350" title="'CoreOS'" ></p>
+<p><img class="center" src="https://yazpik.github.io/images/coreos-logo.png" width="350" height="350" title="'CoreOS'" ></p>
 
 <p>The guys from <a href="https://coreos.com">CoreOS</a> have already take significant advantage, they are running several projects inside CoreOS, just to mention some, <a href="https://coreos.com/etcd/">Etcd</a>, <a href="https://coreos.com/blog/rocket/">Rocket</a>, <a href="https://coreos.com/using-coreos/clustering/">Fleet</a>, all of them written in <a href="https://golang.org/">Go</a> language, helping to automatize and do things easy specially for developers delivering a powerful platform of containers.
 This topic deserve a more descriptive post, and I&rsquo;ll try to do it soon, In the meantime If you are interested to try CoreOS with all the nice stuff give it a try to <a href="https://www.vagrantup.com/">Vagrant</a>, they have put togheter some vagrant scripts to deploy a 3 nodes CoreOs cluster.</p>
@@ -833,10 +833,10 @@ This topic deserve a more descriptive post, and I&rsquo;ll try to do it soon, In
   
   <entry>
     <title type="html"><![CDATA[OpenCompute Re-Architecting the DataCenter]]></title>
-    <link href="http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/"/>
+    <link href="https://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter/"/>
     <updated>2015-03-22T19:43:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://yazpik.github.io/images/opencompute.png" width="260" height="80" title="'OpenCompute'" ></p>
+    <id>https://yazpik.github.io/blog/2015/03/22/opencompute-re-architecting-the-datacenter</id>
+    <content type="html"><![CDATA[<p><img class="center" src="https://yazpik.github.io/images/opencompute.png" width="260" height="80" title="'OpenCompute'" ></p>
 
 <p>The OpenCompute Summit 2015 has just finished and there are some interesting talks from the top companies such Intel, Facebook, Linux, foundation, Microsoft and Rackspace.
 For the ones that haven&rsquo;t heard about OpenCompute project, let me explain you with what is this about.</p>
@@ -854,8 +854,8 @@ For the ones that haven&rsquo;t heard about OpenCompute project, let me explain 
 <p>Believe it or not this is a Facebook initiative to share the design of datacenter architecture with the intention to improve efficiency on servers, storage and also general datacenter overall infrastructure with smart and &ldquo;ecofriendly&rdquo; deployments.
 I&rsquo;d say this is like an OpenSource project applied in hardware and is going to speed up the innovation on new hardware solutions.</p>
 
-<p><img src="http://yazpik.github.io/images/opencomputeserver-750.jpg" width="360" height="140" title="'OpenCompute Servers'" >
-<img src="http://yazpik.github.io/images/IODatacenter.jpg" width="360" height="140" title="'IO Datacenter in Scottsdale'" ></p>
+<p><img src="https://yazpik.github.io/images/opencomputeserver-750.jpg" width="360" height="140" title="'OpenCompute Servers'" >
+<img src="https://yazpik.github.io/images/IODatacenter.jpg" width="360" height="140" title="'IO Datacenter in Scottsdale'" ></p>
 
 <p>Big names just joined to the OpenCompute project such as Apple and HP, So I believe in the next two years or so we will see a drastical change on Datacenter deployments as well as compute architecture, and we have to be ready to be competitive or much better be part of it, this is a good opportunity to join as one of the early adopters.</p>
 
@@ -887,15 +887,15 @@ I&rsquo;d say this is like an OpenSource project applied in hardware and is goin
   
   <entry>
     <title type="html"><![CDATA[How to build a baby crib]]></title>
-    <link href="http://yazpik.github.io/blog/2015/03/06/how-to-build-a-baby-crib/"/>
+    <link href="https://yazpik.github.io/blog/2015/03/06/how-to-build-a-baby-crib/"/>
     <updated>2015-03-06T22:01:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2015/03/06/how-to-build-a-baby-crib</id>
+    <id>https://yazpik.github.io/blog/2015/03/06/how-to-build-a-baby-crib</id>
     <content type="html"><![CDATA[<h3>&mdash;With the help of a real-life hacker</h3>
 
 <p>A year ago while my wife was pregnant of my very first baby girl, I decided to build something special with my own hands for Naia, so I thought to build an small craddle, it seemed like an small project but I did not have any experience working with wood, I have to admit, it did sound crazy even for me, but possible.. why not?..
 I started looking on internet in too many DIY (Do It Yourself) sites, woodworking for newbies, and also bought a <a href="http://www.amazon.com/Childrens-Furniture-Projects-Step---Step/dp/1561585041/ref=sr_1_1?ie=UTF8&amp;qid=1425750403&amp;sr=8-1&amp;keywords=childrens+furniture+projects">e-book</a> on amazon, finally I ended up with a couple of woodworking plans that seemed reasonable to my poor skills.</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/sketchy1.jpg" width="300" height="480" title="'Sketchy1'" >   <img src="http://yazpik.github.io/images/cuna/sketchy2.jpg" width="300" height="450" title="'Sketchy2'" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/sketchy1.jpg" width="300" height="480" title="'Sketchy1'" >   <img src="https://yazpik.github.io/images/cuna/sketchy2.jpg" width="300" height="450" title="'Sketchy2'" ></p>
 
 <p>Of course I couldn&rsquo;t build it by myself on my little space at home and no skills, So I threw an email to one of the most respectable and creative hacker nowadays, my friend <a href="https://people.gnome.org/~federico/">Federico Mena Quintero</a>, who has a passion for woodworking and a place to do it.
 To people that haven&rsquo;t hear before about Federico, he is one of the most brilliant persons I have met, he has contributed with Opensource in so many levels an he is always trying to help the community, Let&rsquo;s say he should be in the &ldquo;hall of fame&rdquo; of the OpenSource history, besides that he is a young guy with a really lovely family.</p>
@@ -907,25 +907,25 @@ To people that haven&rsquo;t hear before about Federico, he is one of the most b
 
 <p>So we went out to the local wood place and got all we needed.</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/IMG_0098.JPG" width="320" height="370" title="'Federico Mena'" >  <img src="http://yazpik.github.io/images/cuna/IMG_0102.JPG" width="400" height="300" title="'Truck loaded'" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/IMG_0098.JPG" width="320" height="370" title="'Federico Mena'" >  <img src="https://yazpik.github.io/images/cuna/IMG_0102.JPG" width="400" height="300" title="'Truck loaded'" ></p>
 
 <p>We started sanding pretty much everything by hand, no electric weapons were used to sand the wood.
 Then we continue with front and end panels assembled</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/panel1.JPG" width="320" height="470">  <img src="http://yazpik.github.io/images/cuna/panel2.JPG" width="320" height="370" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/panel1.JPG" width="320" height="470">  <img src="https://yazpik.github.io/images/cuna/panel2.JPG" width="320" height="370" title="" ></p>
 
 <p>While the panels were glued, we worked on the legs, cutting the leg mortises for the end rails, and routing the shepperd&rsquo;s hook grooves.</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/leg_rails.JPG" width="600" height="750" title="'Leg rails'" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/leg_rails.JPG" width="600" height="750" title="'Leg rails'" ></p>
 
 <p>Then the lower back and front rails, and build the tenons to perfect assembly the crib, this is more likely artesan work</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/tenon1.JPG" width="300" height="350" title="'Tenon'" >  <img src="http://yazpik.github.io/images/cuna/tenon2.JPG" width="400" height="550" title="'Tenon'" >
-<img src="http://yazpik.github.io/images/cuna/tenon3.JPG" width="350" height="500" title="'Tenon'" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/tenon1.JPG" width="300" height="350" title="'Tenon'" >  <img src="https://yazpik.github.io/images/cuna/tenon2.JPG" width="400" height="550" title="'Tenon'" >
+<img src="https://yazpik.github.io/images/cuna/tenon3.JPG" width="350" height="500" title="'Tenon'" ></p>
 
 <p>And we continue with the upper rails, more hand work :)</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/upper_rails.JPG" width="500" height="500" title="'Upper Rails'" ><img src="http://yazpik.github.io/images/cuna/upper_rails2.JPG" width="500" height="500" title="'Upper Rails'" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/upper_rails.JPG" width="500" height="500" title="'Upper Rails'" ><img src="https://yazpik.github.io/images/cuna/upper_rails2.JPG" width="500" height="500" title="'Upper Rails'" ></p>
 
 <p>And that was a weekend work, So I asked my manager to work remotly for a couple of weeks, because Federico lives in Xalapa, (my hometown) and I&rsquo;m working and living in Puebla, Then I worked remotly from 9-5 from Federico&rsquo;s office, and after my regular work I could work on the crib, it was hard but is always fun to learn new things.</p>
 
@@ -933,57 +933,57 @@ Then we continue with front and end panels assembled</p>
 
 <p>We assembled legs to lower/upper end rails.</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/base1.JPG" width="500" height="500" title="" ><img src="http://yazpik.github.io/images/cuna/base_armada.JPG" width="400" height="400"></p>
+<p><img src="https://yazpik.github.io/images/cuna/base1.JPG" width="500" height="500" title="" ><img src="https://yazpik.github.io/images/cuna/base_armada.JPG" width="400" height="400"></p>
 
 <p>The panels are really good looking !</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/paneles.JPG" width="480" height="640" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/paneles.JPG" width="480" height="640" title="" ></p>
 
 <p>This one was hard,and required time to get the job and the shepherd hook done.</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/artisan.jpg" width="480" height="640" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/artisan.jpg" width="480" height="640" title="" ></p>
 
 <p>And more artesanal work &hellip;.. having a great time with Luciana and Federico</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/artisans.JPG" width="480" height="640" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/artisans.JPG" width="480" height="640" title="" ></p>
 
 <p>I have to say this one was one of my favourite part of building a crib, I got skills by then.. at least some,  slats were challenging but not that hard, I&rsquo;d say they were sized, glued and perfectly fit on the first try !&hellip; well on second try, but maybe on the third one.</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/slats.jpg" width="280" height="440" title="" > <img src="http://yazpik.github.io/images/cuna/slats1.jpg" width="280" height="440" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/slats.jpg" width="280" height="440" title="" > <img src="https://yazpik.github.io/images/cuna/slats1.jpg" width="280" height="440" title="" ></p>
 
 <p>In the meantime mommy and Naia resting&hellip;. it was kind of a race, running out of time</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/mommy.jpg" width="480" height="640" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/mommy.jpg" width="480" height="640" title="" ></p>
 
 <h3>Putting all togheter</h3>
 
 <p>And finally we were finishing the crib!..</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/aerial.JPG" width="480" height="640" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/aerial.JPG" width="480" height="640" title="" ></p>
 
-<p><img src="http://yazpik.github.io/images/cuna/almostdone.jpg" width="480" height="640" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/almostdone.jpg" width="480" height="640" title="" ></p>
 
 <p>As you can read, you will need perseverance and a lot to motivation to work in a project like this, and of course a friend like Federico with a lot of patience, (he also spent time to show me how to prepare good Sushi and Capuchinos)
 I&rsquo;m deeply thankful to had the oportunity to work on this and build something special for my baby.</p>
 
 <p>Here are the final results, my little one having fun with daddy !</p>
 
-<p><img src="http://yazpik.github.io/images/cuna/naia1.JPG" width="480" height="640" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/naia1.JPG" width="480" height="640" title="" ></p>
 
-<p><img src="http://yazpik.github.io/images/cuna/naia2.JPG" width="480" height="640" title="" ></p>
+<p><img src="https://yazpik.github.io/images/cuna/naia2.JPG" width="480" height="640" title="" ></p>
 
 <p>What can I say ? , it really feels great.</p>
 
 <p>If you want to check out the Woodworkings plans and/or the cutting list used, please feel free to shoot me an email
-<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#58;&#x79;&#x61;&#x7a;&#112;&#105;&#x6b;&#64;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#109;">&#121;&#97;&#x7a;&#x70;&#105;&#107;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#58;&#121;&#x61;&#x7a;&#x70;&#105;&#x6b;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#111;&#109;">&#121;&#97;&#x7a;&#112;&#x69;&#107;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Ceph]]></title>
-    <link href="http://yazpik.github.io/blog/2015/03/02/ceph/"/>
+    <link href="https://yazpik.github.io/blog/2015/03/02/ceph/"/>
     <updated>2015-03-02T21:40:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2015/03/02/ceph</id>
+    <id>https://yazpik.github.io/blog/2015/03/02/ceph</id>
     <content type="html"><![CDATA[<h3>The future of the storage</h3>
 
 <p>I&rsquo;ve been working/playing with Storage systems since almost 4 years now, it&rsquo;s been a journey understand how things works on this side, I&rsquo;m a Netapp certified engineer on SAN environments now and personally speaking it was not hard to understand the Netapp world because my background is based in Linux and working with the cli is a day to day task, so my friend Reynaldo Pineda introduced me few storage concepts and useful commands for a week and the next week I was totally by my own supporting a production environment, at the end I could blame my manager if something went wrong to put an unexperienced guy behind the controls&hellip; :) But fortunately nothing happened, well played, weeeell played.</p>
@@ -1000,7 +1000,7 @@ with more experience gained I faced ugly problems that cost me valuable time wit
 I was looking for an inexpensive storage solution for an &ldquo;small&rdquo; private cloud, and basically we found in Ceph everything that we needed, it&rsquo;s a distributed storage system, and it&rsquo;s OpenSource!, they claim to have a really good performance, reliability and scalability and indeed they have it all.
 Ceph supports Object and Block storage, is integrated now on the Linux kernel, and the best thing, OpenStack included Ceph as well, Ceph also has its own filesystem (no yet ready for prod environments).</p>
 
-<p><img src="http://yazpik.github.io/images/ceph+openstack.png" width="350" height="350" title="'Ceph and Openstack'" ></p>
+<p><img src="https://yazpik.github.io/images/ceph+openstack.png" width="350" height="350" title="'Ceph and Openstack'" ></p>
 
 <p>We just deployed Ceph on a test environment and things seems to be really interesting, and functional, Still working on getting more experience with that, and I&rsquo;ll start posting some more specific facts about it.</p>
 
@@ -1019,12 +1019,12 @@ That&rsquo;s why Redhat stepped out first and buy Inktank, (the company who lead
   
   <entry>
     <title type="html"><![CDATA[2015 Challenge accepted]]></title>
-    <link href="http://yazpik.github.io/blog/2015/01/01/2015-challenge-accepted/"/>
+    <link href="https://yazpik.github.io/blog/2015/01/01/2015-challenge-accepted/"/>
     <updated>2015-01-01T22:47:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2015/01/01/2015-challenge-accepted</id>
+    <id>https://yazpik.github.io/blog/2015/01/01/2015-challenge-accepted</id>
     <content type="html"><![CDATA[<p>It doesn&rsquo;t matter how many roadblocks are out there, I know is going to be fun!</p>
 
-<p><img src="http://yazpik.github.io/images/IMG_3183.JPG" width="550" height="550" title="'XamanEk'" ></p>
+<p><img src="https://yazpik.github.io/images/IMG_3183.JPG" width="550" height="550" title="'XamanEk'" ></p>
 
 <p>Photo was taken during my first ride of the year, I woke up early in the morning while everybody was sleeping after new years dinner, took my motorcycle (Yamaha XT660Z Tenere) baptized as &ldquo;XamanEk&rdquo; and rode around 80km, 30% pavement 70% offroad on an exploratory route, from my wife&rsquo;s hometown to a Geothermal zone near to Tinajitas, Veracruz, It was not hard to find the place even its not in a map, just took me one stop asking people and rest was purely joy, I rode between hills, without a GPS (currently evaluating to get one), but at the end this is part of the fun of Adventure riding!</p>
 
@@ -1036,9 +1036,9 @@ That&rsquo;s why Redhat stepped out first and buy Inktank, (the company who lead
   
   <entry>
     <title type="html"><![CDATA[Virtual Machine migration from VMware to OpenStack/KVM]]></title>
-    <link href="http://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/"/>
+    <link href="https://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/"/>
     <updated>2014-12-15T18:00:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack</id>
+    <id>https://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack</id>
     <content type="html"><![CDATA[<p>This is a quick and easy guide to migrate VMWare VM&rsquo;s to OpenStack (KVM) using Redhat Enterprise 6.5</p>
 
 <h4>Install virt-v2v</h4>
@@ -1138,9 +1138,9 @@ So you will be able to test the Exported/Imported VM from VMWare to Openstack/KV
   
   <entry>
     <title type="html"><![CDATA[Xacxamayo]]></title>
-    <link href="http://yazpik.github.io/blog/2014/12/07/xacxamayo/"/>
+    <link href="https://yazpik.github.io/blog/2014/12/07/xacxamayo/"/>
     <updated>2014-12-07T18:42:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/12/07/xacxamayo</id>
+    <id>https://yazpik.github.io/blog/2014/12/07/xacxamayo</id>
     <content type="html"><![CDATA[<h4>Xacxamayo Episode 2</h4>
 
 <p>I recently posted on my fb page about a visit to an small-remote town called Xacxamayo near to Puebla city,
@@ -1159,7 +1159,7 @@ I wanted to teach about other existing options on compute software, and also wan
 
 <p><a href="https://twitter.com/Rogfloyd" title="Roger Romero">Roger</a> gave them a 7 minute course introduction to the whole new world of photography, showing them how to use the cameras, they were pretty excited to play for a week with the &ldquo;new toys&rdquo;.</p>
 
-<p><img src="http://yazpik.github.io/images/camaras.jpg" width="440" height="280" title="'Disposable cameras'" ></p>
+<p><img src="https://yazpik.github.io/images/camaras.jpg" width="440" height="280" title="'Disposable cameras'" ></p>
 
 <!-- more -->
 
@@ -1177,17 +1177,17 @@ and voila! they can speak up to the world!</p>
 
 <p>Let me share the stunning results, (just few of them)</p>
 
-<p><img src="http://yazpik.github.io/images/foto1.jpg" width="490" height="330" title="'Foto1'" ></p>
+<p><img src="https://yazpik.github.io/images/foto1.jpg" width="490" height="330" title="'Foto1'" ></p>
 
-<p><img src="http://yazpik.github.io/images/foto3.jpg" width="490" height="330" title="'Foto3'" ></p>
+<p><img src="https://yazpik.github.io/images/foto3.jpg" width="490" height="330" title="'Foto3'" ></p>
 
-<p><img src="http://yazpik.github.io/images/foto4.jpg" width="490" height="330" title="'Foto4'" ></p>
+<p><img src="https://yazpik.github.io/images/foto4.jpg" width="490" height="330" title="'Foto4'" ></p>
 
-<p><img src="http://yazpik.github.io/images/foto5.jpg" width="490" height="330" title="'Foto5'" ></p>
+<p><img src="https://yazpik.github.io/images/foto5.jpg" width="490" height="330" title="'Foto5'" ></p>
 
-<p><img src="http://yazpik.github.io/images/foto6.jpg" width="490" height="330" title="'Foto6'" ></p>
+<p><img src="https://yazpik.github.io/images/foto6.jpg" width="490" height="330" title="'Foto6'" ></p>
 
-<p><img src="http://yazpik.github.io/images/foto2.jpg" width="490" height="330" title="'Foto2'" ></p>
+<p><img src="https://yazpik.github.io/images/foto2.jpg" width="490" height="330" title="'Foto2'" ></p>
 
 <p>Beautiful, isn&rsquo;t ?</p>
 
@@ -1203,10 +1203,10 @@ Spread the word about Opensource, Linux and technology, it was a great personal 
   
   <entry>
     <title type="html"><![CDATA[How to Troubleshoot a SAN environment]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/27/san-troubleshooting/"/>
     <updated>2014-11-27T12:15:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/27/san-troubleshooting</id>
-    <content type="html"><![CDATA[<p><img class="center" src="http://yazpik.github.io/images/mono_coco.png" width="300" height="168" title="'Chango'" ></p>
+    <id>https://yazpik.github.io/blog/2014/11/27/san-troubleshooting</id>
+    <content type="html"><![CDATA[<p><img class="center" src="https://yazpik.github.io/images/mono_coco.png" width="300" height="168" title="'Chango'" ></p>
 
 <p>A couple of years a go, I wrote a basic troubleshooting guide for a SAN environment, but it was never shared,
 I believe is a good idea to have a list of considerations to take specially when there are a ton of variables to consider, so I&rsquo;ve decided to shared this list on my blog,
@@ -1284,7 +1284,7 @@ And we are ready to get the information
 
 <p>I got the image from &hellip; honestly I do not remember it was two years a go, but it explains very well where to look at.</p>
 
-<p><img src="http://yazpik.github.io/images/SAN_Troubleshooting.jpg" width="835" height="590" title="'Where to look'" ></p>
+<p><img src="https://yazpik.github.io/images/SAN_Troubleshooting.jpg" width="835" height="590" title="'Where to look'" ></p>
 
 <h4>HOST</h4>
 
@@ -1405,9 +1405,9 @@ Ask the sysadmins to contact their vendor and review multipath configuration to 
   
   <entry>
     <title type="html"><![CDATA[Docker]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/25/docker/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/25/docker/"/>
     <updated>2014-11-25T12:46:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/25/docker</id>
+    <id>https://yazpik.github.io/blog/2014/11/25/docker</id>
     <content type="html"><![CDATA[<p>If you think you already know all about virtualization, well you should have a look on this&hellip;
 As you may know, there are virtualization technologies such as VMware, VirtualBox and Openstack, those technologies allow us to create Virtual machines that run on top of physical hardware, So we can create VM&rsquo;s for different purposes, capabilities and functionalities, and that was actually a big step in technology and everyone is happy with it&hellip;.</p>
 
@@ -1415,7 +1415,7 @@ As you may know, there are virtualization technologies such as VMware, VirtualBo
 
 <h3>Sysadmins vs DevOps the war has just begun&hellip;</h3>
 
-<p><img class="center" src="http://yazpik.github.io/images/docker_logo.jpg" width="625" height="275" title="'Docker'" ></p>
+<p><img class="center" src="https://yazpik.github.io/images/docker_logo.jpg" width="625" height="275" title="'Docker'" ></p>
 
 <p><a href="http://www.docker.com" title="Docker">Docker</a> it&rsquo;s a virtualization technology using Linux containers, let&rsquo;s say Docker use resource isolation of the Linux kernel (Cgroups and Kernel namespaces) So you can have multiple containers running on a single server, and those &ldquo;containers&rdquo; avoid the overhead of running an entire operative system, encapsulating functionalities or personalities, :)</p>
 
@@ -1428,7 +1428,7 @@ As you may know, there are virtualization technologies such as VMware, VirtualBo
 
 <p><em>Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications. Consisting of Docker Engine, a portable, lightweight runtime and packaging tool, and Docker Hub, a cloud service for sharing applications and automating workflows, Docker enables apps to be quickly assembled from components and eliminates the friction between development, QA, and production environments. As a result, IT can ship faster and run the same app, unchanged, on laptops, data center VMs, and any cloud.</em></p>
 
-<p><img class="center" src="http://yazpik.github.io/images/Docker_arch.jpg" width="587" height="438" title="'Docker vs VM'" ></p>
+<p><img class="center" src="https://yazpik.github.io/images/Docker_arch.jpg" width="587" height="438" title="'Docker vs VM'" ></p>
 
 <p>There is a docker registry which is an OS image respositorie, basically a bunch of images ready to use by docker
 <a href="https://registry.hub.docker.com/">https://registry.hub.docker.com/</a>
@@ -1441,10 +1441,10 @@ I&rsquo;ll be posting more about the use of docker in a much more detailed techn
   
   <entry>
     <title type="html"><![CDATA[Lucy - a couple of quotes]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/25/lucy-quote/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/25/lucy-quote/"/>
     <updated>2014-11-25T11:41:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/25/lucy-quote</id>
-    <content type="html"><![CDATA[<p><img class="right" src="http://yazpik.github.io/images/Lucy_(2014_film)_poster.jpg" width="225" height="421" title="'Lucy Poster'" >
+    <id>https://yazpik.github.io/blog/2014/11/25/lucy-quote</id>
+    <content type="html"><![CDATA[<p><img class="right" src="https://yazpik.github.io/images/Lucy_(2014_film)_poster.jpg" width="225" height="421" title="'Lucy Poster'" >
 A bit late but I had the opportunity to watch <a href="http://www.imdb.com/video/imdb/vi2092674329/" title="Lucy Trailer">&ldquo;Lucy&rdquo;</a>
 last weekend and I really loved it, I found it pretty interesting and it deserves a long post, I believe is pure science fiction, maybe some freaky science guys are going to hate it, But it really doesn&rsquo;t matters if it&rsquo;s scientific accurate in some topics as long as Scarlett Johansson do her thing, Anyways if you enjoy this genere judge by yourself and watch it.
 Here is a couple of my favourite quotes&hellip;</p>
@@ -1468,15 +1468,15 @@ Here is a couple of my favourite quotes&hellip;</p>
   
   <entry>
     <title type="html"><![CDATA[A new beginning]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/18/a-new-beginning/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/18/a-new-beginning/"/>
     <updated>2014-11-18T21:07:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/18/a-new-beginning</id>
+    <id>https://yazpik.github.io/blog/2014/11/18/a-new-beginning</id>
     <content type="html"><![CDATA[<p>Hi everyone outta there, Finally I&rsquo;ve decided to start writing again after some major changes on my life, I think it would be a good idea to document my recent work/ activity/ thoughts on a blog, to have access to those memories and do a favor to myself going back in time and resolve recurrent ugly technical issues, or Why not maybe help others to do so, Anyway everything can be found on internet, and this blog is not going to be any different, for sure better and high quality technical information can be found in other sites, but somehow is going to be fun.</p>
 
 <p>As a Sysadmin the best we can save in time the best we balance our personal lifes, And I&rsquo;ll call this part of my life &ldquo;Motivation&rdquo;
 Here&rsquo;s the reason &hellip;.</p>
 
-<p><img src="http://yazpik.github.io/images/Naia_homeoffice.jpg" width="650" height="650" title="'Naia'" ></p>
+<p><img src="https://yazpik.github.io/images/Naia_homeoffice.jpg" width="650" height="650" title="'Naia'" ></p>
 
 <p>It really doesn&rsquo;t matter how important is the project or how high the issue that you are working on is escalated with the higher management, your little one wants to be feeded, and that&rsquo;s a huge priority as well, at least for me.</p>
 
