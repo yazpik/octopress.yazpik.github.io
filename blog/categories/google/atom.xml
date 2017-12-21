@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="https://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: google | Life of a Sysadmin]]></title>
   <link href="https://yazpik.github.io/blog/categories/google/atom.xml" rel="self"/>
   <link href="https://yazpik.github.io/"/>
-  <updated>2017-12-21T16:20:26-06:00</updated>
+  <updated>2017-12-21T16:34:49-06:00</updated>
   <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
   </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+  <generator uri="https://octopress.org/">Octopress</generator>
 
   
   <entry>
@@ -27,7 +27,7 @@ Those two technologies are a powerful combination bringing the best of &ldquo;tw
 
 <p>Combining Openstack + Heat + Murano + Kubernetes it does sounds really complex but actually is becoming the opossite
 I want to share with you an interesting article from OpenStack SuperUser website, during the kubernetes meetup in San Francisco, there was a live demo where it was demostrated how to deploy a <a href="http://kubernetes.io/">kubernetes</a> cluster in minutes with OpenStack and Murano.
-<a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
+<a href="https://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">https://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
 
 <!-- more -->
 

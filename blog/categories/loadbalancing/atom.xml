@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="https://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: loadbalancing | Life of a Sysadmin]]></title>
   <link href="https://yazpik.github.io/blog/categories/loadbalancing/atom.xml" rel="self"/>
   <link href="https://yazpik.github.io/"/>
-  <updated>2017-12-21T16:20:26-06:00</updated>
+  <updated>2017-12-21T16:34:49-06:00</updated>
   <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
   </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+  <generator uri="https://octopress.org/">Octopress</generator>
 
   
   <entry>
@@ -59,7 +59,7 @@ I decided get hands on, follow some demos out-there and add something else, so I
 </ul>
 
 
-<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="http://quay.io">Quay.io</a> a phenomenal ally,
+<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="https://quay.io">Quay.io</a> a phenomenal ally,
 <a href="https://quay.io/repository/yazpik/spacemonkey">Spacemonkey container</a> was built to test kubernetes, changes between tags, releases, etc
 So I can test rollout/rollback updates in kubernetes very easily,
  Another good thing is that the container is automatically created when I trigger a commit on Github due a Webhook configured on quay that is a really powerfull tool. <a href="https://docs.quay.io/guides/custom-trigger.html">(see Quay.io Webhooks)</a></p>

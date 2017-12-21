@@ -4,7 +4,7 @@
   <title><![CDATA[Life of a Sysadmin]]></title>
   <link href="https://yazpik.github.io/atom.xml" rel="self"/>
   <link href="https://yazpik.github.io/"/>
-  <updated>2017-12-21T16:20:26-06:00</updated>
+  <updated>2017-12-21T16:34:49-06:00</updated>
   <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
@@ -316,7 +316,7 @@ I decided get hands on, follow some demos out-there and add something else, so I
 </ul>
 
 
-<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="http://quay.io">Quay.io</a> a phenomenal ally,
+<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="https://quay.io">Quay.io</a> a phenomenal ally,
 <a href="https://quay.io/repository/yazpik/spacemonkey">Spacemonkey container</a> was built to test kubernetes, changes between tags, releases, etc
 So I can test rollout/rollback updates in kubernetes very easily,
  Another good thing is that the container is automatically created when I trigger a commit on Github due a Webhook configured on quay that is a really powerfull tool. <a href="https://docs.quay.io/guides/custom-trigger.html">(see Quay.io Webhooks)</a></p>
@@ -398,7 +398,7 @@ Is very similar to me in the very beginning trying to deploy kubernetes.</p>
 you know as a Sysadmin we need to write some bash/ansible/perl scripts to help our-selfs and automate stuff, but things are changing now.</p>
 
 <p>I have tried different ways to use it and test it out,
-I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>
+I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="https://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>
 
 <p>The problem with this projects is that I don&rsquo;t have the compute resources on my personal laptop to have an Openstack deployment and then kubernetes, so I started dig in a bit further on the way to have a kubernetes cluster up and running.</p>
 
@@ -412,7 +412,7 @@ kubernetes components, the guide is based on GCE (Google Compute Engine), I did 
 <a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-vagrant.html">Vagrant and CoreOS</a>, I have 16GB of RAM so it works great, so far running on a 4 nodes deployment, taking half of my compute power,
 but still great, it already comes with heapster, kubedns, kube-dashboard, so this is a great way to learn how to manage a kubernetes cluster.</p>
 
-<p>Also there is the option released on kubernetes 1.4 is <a href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>
+<p>Also there is the option released on kubernetes 1.4 is <a href="https://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>
 I haven&rsquo;t tested it out yet, but I&rsquo;ve heard is a good option to start on this kubernetes world.</p>
 
 <h3>So you have kubernetes up and running.. now what?</h3>
@@ -456,7 +456,7 @@ keep an eye here more to come.</p>
 
 <p><img src="https://yazpik.github.io/images/lops/cloud-domination.jpg" width="650" height="550" title="'Our idea of Cloud computing back in 2014'" ></p>
 
-<p>Last night having a beer with my friend <a href="http://arturoochoa.wordpress.com">Arturo Ochoa</a> we were talking about what really motivates you to innovate and/or create something that help fixing problems.
+<p>Last night having a beer with my friend <a href="https://arturoochoa.wordpress.com">Arturo Ochoa</a> we were talking about what really motivates you to innovate and/or create something that help fixing problems.
 We were not sure what is all about,
 but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
 But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
@@ -646,7 +646,7 @@ I&rsquo;ve broke my comfort zone many times before, But this time is my family w
 
 <p><img class="center" src="https://yazpik.github.io/images/bigdata.gif" width="650" height="650" title="'Dilbert Data Accuracy'" ></p>
 
-<p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="http://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
+<p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="https://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
 the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
 but anyway let&rsquo;s jump on the BigData stuff.</p>
 
@@ -684,7 +684,7 @@ $ sudo tox -e genconfig
 </pre>
 
 
-<p>That will get you a sahara.conf file, you can modify basic parameters, such as Networking(Neutron), Database(Mysql), Message systems(Rabbit), Identity(Keystone), for a reference guide please see: <a href="http://docs.openstack.org/developer/sahara/userdoc/configuration.guide.html" title="Sahara config guide">Sahara Configuration Guide</a></p>
+<p>That will get you a sahara.conf file, you can modify basic parameters, such as Networking(Neutron), Database(Mysql), Message systems(Rabbit), Identity(Keystone), for a reference guide please see: <a href="https://docs.openstack.org/developer/sahara/userdoc/configuration.guide.html" title="Sahara config guide">Sahara Configuration Guide</a></p>
 
 <p>Then a Database Schema for Shara is needed, you can create it as follows (on an existing empty database)</p>
 
@@ -746,10 +746,10 @@ $ sudo sahara-db-manage --config-file /etc/sahara/sahara.conf upgrade head
 
 
 <p>Also you can setup Sahara on a virtual python environment, I didn&rsquo;t try that, but can be found here
-<a href="http://docs.openstack.org/developer/sahara/userdoc/installation.guide.html#to-install-into-a-virtual-environment">Sahara Virtualenv</a></p>
+<a href="https://docs.openstack.org/developer/sahara/userdoc/installation.guide.html#to-install-into-a-virtual-environment">Sahara Virtualenv</a></p>
 
 <p>There are also advanced configurations for Sahara, you can find them here
-<a href="http://docs.openstack.org/developer/sahara/userdoc/advanced.configuration.guide.html">Sahara Advanced configuration</a></p>
+<a href="https://docs.openstack.org/developer/sahara/userdoc/advanced.configuration.guide.html">Sahara Advanced configuration</a></p>
 
 <p>That is a high level steps for Sahara in OpenStack, so once we have them all and you can see Data Processing panel on Horizon, so from here 15 minutes can start to count to create a cutting-edge fresh hadoop cluster.</p>
 
@@ -805,7 +805,7 @@ Those two technologies are a powerful combination bringing the best of &ldquo;tw
 
 <p>Combining Openstack + Heat + Murano + Kubernetes it does sounds really complex but actually is becoming the opossite
 I want to share with you an interesting article from OpenStack SuperUser website, during the kubernetes meetup in San Francisco, there was a live demo where it was demostrated how to deploy a <a href="http://kubernetes.io/">kubernetes</a> cluster in minutes with OpenStack and Murano.
-<a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
+<a href="https://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">https://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
 
 <!-- more -->
 
@@ -893,7 +893,7 @@ I&rsquo;d say this is like an OpenSource project applied in hardware and is goin
     <content type="html"><![CDATA[<h3>&mdash;With the help of a real-life hacker</h3>
 
 <p>A year ago while my wife was pregnant of my very first baby girl, I decided to build something special with my own hands for Naia, so I thought to build an small craddle, it seemed like an small project but I did not have any experience working with wood, I have to admit, it did sound crazy even for me, but possible.. why not?..
-I started looking on internet in too many DIY (Do It Yourself) sites, woodworking for newbies, and also bought a <a href="http://www.amazon.com/Childrens-Furniture-Projects-Step---Step/dp/1561585041/ref=sr_1_1?ie=UTF8&amp;qid=1425750403&amp;sr=8-1&amp;keywords=childrens+furniture+projects">e-book</a> on amazon, finally I ended up with a couple of woodworking plans that seemed reasonable to my poor skills.</p>
+I started looking on internet in too many DIY (Do It Yourself) sites, woodworking for newbies, and also bought a <a href="https://www.amazon.com/Childrens-Furniture-Projects-Step---Step/dp/1561585041/ref=sr_1_1?ie=UTF8&amp;qid=1425750403&amp;sr=8-1&amp;keywords=childrens+furniture+projects">e-book</a> on amazon, finally I ended up with a couple of woodworking plans that seemed reasonable to my poor skills.</p>
 
 <p><img src="https://yazpik.github.io/images/cuna/sketchy1.jpg" width="300" height="480" title="'Sketchy1'" >   <img src="https://yazpik.github.io/images/cuna/sketchy2.jpg" width="300" height="450" title="'Sketchy2'" ></p>
 
@@ -975,7 +975,7 @@ I&rsquo;m deeply thankful to had the oportunity to work on this and build someth
 <p>What can I say ? , it really feels great.</p>
 
 <p>If you want to check out the Woodworkings plans and/or the cutting list used, please feel free to shoot me an email
-<a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#58;&#x79;&#97;&#x7a;&#x70;&#x69;&#x6b;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x79;&#97;&#x7a;&#x70;&#105;&#x6b;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+<a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x79;&#x61;&#x7a;&#x70;&#105;&#x6b;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x79;&#97;&#122;&#x70;&#x69;&#x6b;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a></p>
 ]]></content>
   </entry>
   
@@ -1011,9 +1011,9 @@ That&rsquo;s why Redhat stepped out first and buy Inktank, (the company who lead
 
 <h5>References:</h5>
 
-<p>Ceph main site : <a href="http://ceph.com/">http://ceph.com/</a></p>
+<p>Ceph main site : <a href="https://ceph.com/">https://ceph.com/</a></p>
 
-<p>Hardware recomendations to run ceph: <a href="http://ceph.com/docs/master/start/hardware-recommendations/">http://ceph.com/docs/master/start/hardware-recommendations/</a></p>
+<p>Hardware recomendations to run ceph: <a href="https://ceph.com/docs/master/start/hardware-recommendations/">https://ceph.com/docs/master/start/hardware-recommendations/</a></p>
 ]]></content>
   </entry>
   
@@ -1331,7 +1331,7 @@ And we are ready to get the information
 </ul>
 
 
-<p><a href="http://support.netapp.com/NOW/products/interoperability">http://support.netapp.com/NOW/products/interoperability</a></p>
+<p><a href="https://support.netapp.com/NOW/products/interoperability">https://support.netapp.com/NOW/products/interoperability</a></p>
 
 <p></ul></p>
 
@@ -1342,10 +1342,10 @@ And we are ready to get the information
 Is well known disk layout on concat layout can cause performance</p>
 
 <p><em>A RAID theory</em>
-<a href="http://www.cuddletech.com/veritas/raidtheory.html">http://www.cuddletech.com/veritas/raidtheory.html</a></p>
+<a href="https://www.cuddletech.com/veritas/raidtheory.html">https://www.cuddletech.com/veritas/raidtheory.html</a></p>
 
 <p><em>From an SQL admin</em>
-<a href="http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx">http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx</a></p>
+<a href="https://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx">https://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx</a></p>
 
 <p><em>From Oracle</em>
 <a href="https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html">https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html</a></p>
@@ -1364,7 +1364,7 @@ Please refer to a complete guide how to address LUN alignment problems on SAN en
 <a href="https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US">https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US</a></p>
 
 <p><em>Best Practices for File System Alignment in Virtual Environments</em>
-<a href="http://media.netapp.com/documents/tr-3747.pdf">http://media.netapp.com/documents/tr-3747.pdf</a></p>
+<a href="https://media.netapp.com/documents/tr-3747.pdf">https://media.netapp.com/documents/tr-3747.pdf</a></p>
 
 <h4>Multipath configuration</h4>
 
@@ -1417,7 +1417,7 @@ As you may know, there are virtualization technologies such as VMware, VirtualBo
 
 <p><img class="center" src="https://yazpik.github.io/images/docker_logo.jpg" width="625" height="275" title="'Docker'" ></p>
 
-<p><a href="http://www.docker.com" title="Docker">Docker</a> it&rsquo;s a virtualization technology using Linux containers, let&rsquo;s say Docker use resource isolation of the Linux kernel (Cgroups and Kernel namespaces) So you can have multiple containers running on a single server, and those &ldquo;containers&rdquo; avoid the overhead of running an entire operative system, encapsulating functionalities or personalities, :)</p>
+<p><a href="https://www.docker.com" title="Docker">Docker</a> it&rsquo;s a virtualization technology using Linux containers, let&rsquo;s say Docker use resource isolation of the Linux kernel (Cgroups and Kernel namespaces) So you can have multiple containers running on a single server, and those &ldquo;containers&rdquo; avoid the overhead of running an entire operative system, encapsulating functionalities or personalities, :)</p>
 
 <!-- more -->
 

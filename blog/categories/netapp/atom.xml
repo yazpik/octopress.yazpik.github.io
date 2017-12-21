@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="https://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: netapp | Life of a Sysadmin]]></title>
   <link href="https://yazpik.github.io/blog/categories/netapp/atom.xml" rel="self"/>
   <link href="https://yazpik.github.io/"/>
-  <updated>2017-12-21T16:20:26-06:00</updated>
+  <updated>2017-12-21T16:34:49-06:00</updated>
   <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
   </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+  <generator uri="https://octopress.org/">Octopress</generator>
 
   
   <entry>
@@ -143,7 +143,7 @@ And we are ready to get the information
 </ul>
 
 
-<p><a href="http://support.netapp.com/NOW/products/interoperability">http://support.netapp.com/NOW/products/interoperability</a></p>
+<p><a href="https://support.netapp.com/NOW/products/interoperability">https://support.netapp.com/NOW/products/interoperability</a></p>
 
 <p></ul></p>
 
@@ -154,10 +154,10 @@ And we are ready to get the information
 Is well known disk layout on concat layout can cause performance</p>
 
 <p><em>A RAID theory</em>
-<a href="http://www.cuddletech.com/veritas/raidtheory.html">http://www.cuddletech.com/veritas/raidtheory.html</a></p>
+<a href="https://www.cuddletech.com/veritas/raidtheory.html">https://www.cuddletech.com/veritas/raidtheory.html</a></p>
 
 <p><em>From an SQL admin</em>
-<a href="http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx">http://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx</a></p>
+<a href="https://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx">https://sqlblog.com/blogs/merrill_aldrich/archive/2009/07/26/san-disk-array-performance-beware-lun-concatenation.aspx</a></p>
 
 <p><em>From Oracle</em>
 <a href="https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html">https://docs.oracle.com/cd/E19683-01/806-6111/6jf2ve3ga/index.html</a></p>
@@ -176,7 +176,7 @@ Please refer to a complete guide how to address LUN alignment problems on SAN en
 <a href="https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US">https://kb.netapp.com/support/index?page=content&amp;id=1010717&amp;locale=en_US</a></p>
 
 <p><em>Best Practices for File System Alignment in Virtual Environments</em>
-<a href="http://media.netapp.com/documents/tr-3747.pdf">http://media.netapp.com/documents/tr-3747.pdf</a></p>
+<a href="https://media.netapp.com/documents/tr-3747.pdf">https://media.netapp.com/documents/tr-3747.pdf</a></p>
 
 <h4>Multipath configuration</h4>
 

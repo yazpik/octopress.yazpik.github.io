@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="https://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: kubernetes | Life of a Sysadmin]]></title>
   <link href="https://yazpik.github.io/blog/categories/kubernetes/atom.xml" rel="self"/>
   <link href="https://yazpik.github.io/"/>
-  <updated>2017-12-21T16:20:26-06:00</updated>
+  <updated>2017-12-21T16:34:49-06:00</updated>
   <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
   </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+  <generator uri="https://octopress.org/">Octopress</generator>
 
   
   <entry>
@@ -59,7 +59,7 @@ I decided get hands on, follow some demos out-there and add something else, so I
 </ul>
 
 
-<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="http://quay.io">Quay.io</a> a phenomenal ally,
+<p>For this demo I&rsquo;ve created my own containers, and for that I found on <a href="https://quay.io">Quay.io</a> a phenomenal ally,
 <a href="https://quay.io/repository/yazpik/spacemonkey">Spacemonkey container</a> was built to test kubernetes, changes between tags, releases, etc
 So I can test rollout/rollback updates in kubernetes very easily,
  Another good thing is that the container is automatically created when I trigger a commit on Github due a Webhook configured on quay that is a really powerfull tool. <a href="https://docs.quay.io/guides/custom-trigger.html">(see Quay.io Webhooks)</a></p>
@@ -141,7 +141,7 @@ Is very similar to me in the very beginning trying to deploy kubernetes.</p>
 you know as a Sysadmin we need to write some bash/ansible/perl scripts to help our-selfs and automate stuff, but things are changing now.</p>
 
 <p>I have tried different ways to use it and test it out,
-I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>
+I had a OpenStack cluster ready so started playing with <a href="https://wiki.openstack.org/wiki/Magnum">Magnum project</a>, it was not that hard and it really works, also tested how to do it with <a href="https://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers/">Murano</a> and this deserve a larger post, unfortunately didn&rsquo;t documented my findings, but both are good options to run kubernetes on Openstack.</p>
 
 <p>The problem with this projects is that I don&rsquo;t have the compute resources on my personal laptop to have an Openstack deployment and then kubernetes, so I started dig in a bit further on the way to have a kubernetes cluster up and running.</p>
 
@@ -155,7 +155,7 @@ kubernetes components, the guide is based on GCE (Google Compute Engine), I did 
 <a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-vagrant.html">Vagrant and CoreOS</a>, I have 16GB of RAM so it works great, so far running on a 4 nodes deployment, taking half of my compute power,
 but still great, it already comes with heapster, kubedns, kube-dashboard, so this is a great way to learn how to manage a kubernetes cluster.</p>
 
-<p>Also there is the option released on kubernetes 1.4 is <a href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>
+<p>Also there is the option released on kubernetes 1.4 is <a href="https://kubernetes.io/docs/getting-started-guides/kubeadm/">kubeadm</a>
 I haven&rsquo;t tested it out yet, but I&rsquo;ve heard is a good option to start on this kubernetes world.</p>
 
 <h3>So you have kubernetes up and running.. now what?</h3>
@@ -203,7 +203,7 @@ Those two technologies are a powerful combination bringing the best of &ldquo;tw
 
 <p>Combining Openstack + Heat + Murano + Kubernetes it does sounds really complex but actually is becoming the opossite
 I want to share with you an interesting article from OpenStack SuperUser website, during the kubernetes meetup in San Francisco, there was a live demo where it was demostrated how to deploy a <a href="http://kubernetes.io/">kubernetes</a> cluster in minutes with OpenStack and Murano.
-<a href="http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">http://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
+<a href="https://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers">https://superuser.openstack.org/articles/openstack-kubernetes-more-choice-and-flexibility-for-developers</a></p>
 
 <!-- more -->
 

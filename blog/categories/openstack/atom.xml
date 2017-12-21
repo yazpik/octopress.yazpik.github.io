@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="https://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: openstack | Life of a Sysadmin]]></title>
   <link href="https://yazpik.github.io/blog/categories/openstack/atom.xml" rel="self"/>
   <link href="https://yazpik.github.io/"/>
-  <updated>2017-12-21T16:20:26-06:00</updated>
+  <updated>2017-12-21T16:34:49-06:00</updated>
   <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
   </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+  <generator uri="https://octopress.org/">Octopress</generator>
 
   
   <entry>
@@ -22,7 +22,7 @@
 
 <p><img src="/images/lops/cloud-domination.jpg" width="650" height="550" title="&lsquo;Our idea of Cloud computing back in 2014&rsquo;" ></p>
 
-<p>Last night having a beer with my friend <a href="http://arturoochoa.wordpress.com">Arturo Ochoa</a> we were talking about what really motivates you to innovate and/or create something that help fixing problems.
+<p>Last night having a beer with my friend <a href="https://arturoochoa.wordpress.com">Arturo Ochoa</a> we were talking about what really motivates you to innovate and/or create something that help fixing problems.
 We were not sure what is all about,
 but we felt same way, when you are doing it, you always think whatever you are implementing it does really suck, ..maybe not creating something new, your skills are not enough, etc. etc
 But the reality is that maybe nobody is doing anything about it, and find yourself as the only one with you poor skills trying to do something different.
@@ -177,7 +177,7 @@ We were wrong in so many levels, and failed to explain to the management our vis
 
 <p><img class="center" src="/images/bigdata.gif" width="650" height="650" title="&lsquo;Dilbert Data Accuracy&rsquo;" ></p>
 
-<p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="http://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
+<p>Hi there&hellip; I haven&rsquo;t been here for a while for several reasons, that includes a super hyperactive baby girl and a lot of effort building an Enterprise class ready Private cloud based in OpenStack using a tremendous set of new technologies, <a href="https://en.wikipedia.org/wiki/Software-defined_storage" title="SDS">SDS</a>, <a href="https://en.wikipedia.org/wiki/Software-defined_networking" title="SDN">SDN</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="Iaas">IaaS</a>, <a href="https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29" title="PaaS">PaaS</a>, <a href="https://www.docker.com/" title="Docker">Containers</a>, <a href="https://go.sap.com/solution/in-memory-platform.html">Hana</a> and now <a href="https://en.wikipedia.org/wiki/Big_data">BigData</a>.
 the good thing is, working along with a talented guy as <a href="https://twitter.com/karkull" title="Karkull">Ramon Morales</a> things are easier to do, brainwork becomes a hobbie on a playground and innovation just flows.
 but anyway let&rsquo;s jump on the BigData stuff.</p>
 
@@ -215,7 +215,7 @@ $ sudo tox -e genconfig
 </pre>
 
 
-<p>That will get you a sahara.conf file, you can modify basic parameters, such as Networking(Neutron), Database(Mysql), Message systems(Rabbit), Identity(Keystone), for a reference guide please see: <a href="http://docs.openstack.org/developer/sahara/userdoc/configuration.guide.html" title="Sahara config guide">Sahara Configuration Guide</a></p>
+<p>That will get you a sahara.conf file, you can modify basic parameters, such as Networking(Neutron), Database(Mysql), Message systems(Rabbit), Identity(Keystone), for a reference guide please see: <a href="https://docs.openstack.org/developer/sahara/userdoc/configuration.guide.html" title="Sahara config guide">Sahara Configuration Guide</a></p>
 
 <p>Then a Database Schema for Shara is needed, you can create it as follows (on an existing empty database)</p>
 
@@ -279,10 +279,10 @@ connection=mysql://admin:ridiculouspass@localhost:3306/saharadb</p>
 
 
 <p>Also you can setup Sahara on a virtual python environment, I didn&rsquo;t try that, but can be found here
-<a href="http://docs.openstack.org/developer/sahara/userdoc/installation.guide.html#to-install-into-a-virtual-environment">Sahara Virtualenv</a></p>
+<a href="https://docs.openstack.org/developer/sahara/userdoc/installation.guide.html#to-install-into-a-virtual-environment">Sahara Virtualenv</a></p>
 
 <p>There are also advanced configurations for Sahara, you can find them here
-<a href="http://docs.openstack.org/developer/sahara/userdoc/advanced.configuration.guide.html">Sahara Advanced configuration</a></p>
+<a href="https://docs.openstack.org/developer/sahara/userdoc/advanced.configuration.guide.html">Sahara Advanced configuration</a></p>
 
 <p>That is a high level steps for Sahara in OpenStack, so once we have them all and you can see Data Processing panel on Horizon, so from here 15 minutes can start to count to create a cutting-edge fresh hadoop cluster.</p>
 
