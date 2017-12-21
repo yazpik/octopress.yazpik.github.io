@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: photography | Life of a Sysadmin]]></title>
-  <link href="https://yazpik.github.io/blog/categories/photography/atom.xml" rel="self"/>
-  <link href="https://yazpik.github.io/"/>
-  <updated>2017-12-21T12:06:35-06:00</updated>
-  <id>https://yazpik.github.io/</id>
+  <link href="http://yazpik.github.io/blog/categories/photography/atom.xml" rel="self"/>
+  <link href="http://yazpik.github.io/"/>
+  <updated>2017-12-21T14:03:22-06:00</updated>
+  <id>http://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Xacxamayo]]></title>
-    <link href="https://yazpik.github.io/blog/2014/12/07/xacxamayo/"/>
+    <link href="http://yazpik.github.io/blog/2014/12/07/xacxamayo/"/>
     <updated>2014-12-07T18:42:00-06:00</updated>
-    <id>https://yazpik.github.io/blog/2014/12/07/xacxamayo</id>
+    <id>http://yazpik.github.io/blog/2014/12/07/xacxamayo</id>
     <content type="html"><![CDATA[<h4>Xacxamayo Episode 2</h4>
 
 <p>I recently posted on my fb page about a visit to an small-remote town called Xacxamayo near to Puebla city,
