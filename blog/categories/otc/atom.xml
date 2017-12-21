@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: otc | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/otc/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-04-15T08:27:14-05:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/otc/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T12:06:35-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How I Learnt OpenStack by failing]]></title>
-    <link href="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
+    <link href="https://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
     <updated>2016-09-09T21:21:00-05:00</updated>
-    <id>http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
+    <id>https://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
     <content type="html"><![CDATA[<h3><strong><em> Demotivation of Innovation </em></strong></h3>
 
 <p><img src="/images/lops/cloud-domination.jpg" width="650" height="550" title="&lsquo;Our idea of Cloud computing back in 2014&rsquo;" ></p>

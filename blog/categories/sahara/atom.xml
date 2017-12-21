@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sahara | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/sahara/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-04-15T08:27:14-05:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/sahara/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T12:06:35-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[BigData As A Service]]></title>
-    <link href="http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/"/>
+    <link href="https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/"/>
     <updated>2015-11-16T19:22:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service</id>
+    <id>https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service</id>
     <content type="html"><![CDATA[<h3>A complete elastic Hadoop cluster with OpenStack + Sahara in 15 minutes</h3>
 
 <p><img class="center" src="/images/bigdata.gif" width="650" height="650" title="&lsquo;Dilbert Data Accuracy&rsquo;" ></p>

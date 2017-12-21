@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: troubleshooting | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/troubleshooting/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-04-15T08:27:14-05:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/troubleshooting/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T12:06:35-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Troubleshoot a SAN environment]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/27/san-troubleshooting/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/27/san-troubleshooting/"/>
     <updated>2014-11-27T12:15:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/27/san-troubleshooting</id>
+    <id>https://yazpik.github.io/blog/2014/11/27/san-troubleshooting</id>
     <content type="html"><![CDATA[<p><img class="center" src="/images/mono_coco.png" width="300" height="168" title="&lsquo;Chango&rsquo;" ></p>
 
 <p>A couple of years a go, I wrote a basic troubleshooting guide for a SAN environment, but it was never shared,

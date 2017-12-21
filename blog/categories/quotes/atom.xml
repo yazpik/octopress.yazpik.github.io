@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: quotes | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/quotes/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-04-15T08:27:14-05:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/quotes/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T12:06:35-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Lucy - a couple of quotes]]></title>
-    <link href="http://yazpik.github.io/blog/2014/11/25/lucy-quote/"/>
+    <link href="https://yazpik.github.io/blog/2014/11/25/lucy-quote/"/>
     <updated>2014-11-25T11:41:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/11/25/lucy-quote</id>
+    <id>https://yazpik.github.io/blog/2014/11/25/lucy-quote</id>
     <content type="html"><![CDATA[<p><img class="right" src="/images/Lucy<em>(2014_film)</em>poster.jpg" width="225" height="421" title="&lsquo;Lucy Poster&rsquo;" >
 A bit late but I had the opportunity to watch <a href="http://www.imdb.com/video/imdb/vi2092674329/" title="Lucy Trailer">&ldquo;Lucy&rdquo;</a>
 last weekend and I really loved it, I found it pretty interesting and it deserves a long post, I believe is pure science fiction, maybe some freaky science guys are going to hate it, But it really doesn&rsquo;t matters if it&rsquo;s scientific accurate in some topics as long as Scarlett Johansson do her thing, Anyways if you enjoy this genere judge by yourself and watch it.

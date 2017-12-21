@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: openstack | Life of a Sysadmin]]></title>
-  <link href="http://yazpik.github.io/blog/categories/openstack/atom.xml" rel="self"/>
-  <link href="http://yazpik.github.io/"/>
-  <updated>2017-04-15T08:27:14-05:00</updated>
-  <id>http://yazpik.github.io/</id>
+  <link href="https://yazpik.github.io/blog/categories/openstack/atom.xml" rel="self"/>
+  <link href="https://yazpik.github.io/"/>
+  <updated>2017-12-21T12:06:35-06:00</updated>
+  <id>https://yazpik.github.io/</id>
   <author>
     <name><![CDATA[Francisco Moctezuma]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How I Learnt OpenStack by failing]]></title>
-    <link href="http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
+    <link href="https://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack/"/>
     <updated>2016-09-09T21:21:00-05:00</updated>
-    <id>http://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
+    <id>https://yazpik.github.io/blog/2016/09/09/how-i-learn-openstack</id>
     <content type="html"><![CDATA[<h3><strong><em> Demotivation of Innovation </em></strong></h3>
 
 <p><img src="/images/lops/cloud-domination.jpg" width="650" height="550" title="&lsquo;Our idea of Cloud computing back in 2014&rsquo;" ></p>
@@ -170,9 +170,9 @@ We were wrong in so many levels, and failed to explain to the management our vis
   
   <entry>
     <title type="html"><![CDATA[BigData As A Service]]></title>
-    <link href="http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/"/>
+    <link href="https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service/"/>
     <updated>2015-11-16T19:22:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service</id>
+    <id>https://yazpik.github.io/blog/2015/11/16/bigdata-as-a-service</id>
     <content type="html"><![CDATA[<h3>A complete elastic Hadoop cluster with OpenStack + Sahara in 15 minutes</h3>
 
 <p><img class="center" src="/images/bigdata.gif" width="650" height="650" title="&lsquo;Dilbert Data Accuracy&rsquo;" ></p>
@@ -326,9 +326,9 @@ Next post We&rsquo;ll run a job on the cluster, stay tunned :)</p>
   
   <entry>
     <title type="html"><![CDATA[Virtual Machine migration from VMware to OpenStack/KVM]]></title>
-    <link href="http://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/"/>
+    <link href="https://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack/"/>
     <updated>2014-12-15T18:00:00-06:00</updated>
-    <id>http://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack</id>
+    <id>https://yazpik.github.io/blog/2014/12/15/virtual-machine-migration-from-vmware-to-openstack</id>
     <content type="html"><![CDATA[<p>This is a quick and easy guide to migrate VMWare VM&rsquo;s to OpenStack (KVM) using Redhat Enterprise 6.5</p>
 
 <h4>Install virt-v2v</h4>
